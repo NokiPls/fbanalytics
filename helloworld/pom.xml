@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>it.polimi.awt</groupId>
+	<artifactId>spring-mvc-ex1</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-mvc-ex1</name>
+	<description>First Spring MVC example </description>
+
+	<properties>
+		<org.springframework.version>4.0.0.RELEASE</org.springframework.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+
+	</dependencies>
+</project>
