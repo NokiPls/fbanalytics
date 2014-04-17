@@ -5,7 +5,7 @@
 	version="3.0"
 	metadata-complete="true">
 
-	<display-name>spring-mvc-ex1</display-name>
+	<display-name>helloFB</display-name>
 
 	<servlet>
 		<servlet-name>frontcontroller</servlet-name>
@@ -17,4 +17,14 @@
 		<servlet-name>frontcontroller</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<filter>
+	    <filter-name>hiddenHttpMethodFilter</filter-name>
+	    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>
+	
+	 <filter-mapping>
+	    <filter-name>hiddenHttpMethodFilter</filter-name>
+	    <url-pattern>/connect/*</url-pattern>
+  	</filter-mapping>
 </web-app>
