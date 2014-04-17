@@ -28,10 +28,20 @@ public class HelloController {
         }
 
         model.addAttribute(facebook.userOperations().getUserProfile());
+
+        return "personalProfile";
+    }
+
+    
+     @RequestMapping("/List")
+    public String listFriends(Model model) {
+        if (!facebook.isAuthorized()) {
+            return "redirect:/connect/facebook";
+        }
+        model.addAttribute(facebook.userOperations().getUserProfile());
         PagedList<FacebookProfile> friends = facebook.friendOperations().getFriendProfiles();
         model.addAttribute("friends", friends);
 
-        return "hello";
+        return "personalProfile";
     }
-
 }

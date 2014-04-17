@@ -7,19 +7,20 @@
 		<title>Hello Facebook</title>
 	</head>
 	<body>
-		<h3>Hello, <span th:text="${facebookProfile.name}">${facebookProfile.name}</span>!</h3>
+		<h3>Name: <span th:text="${facebookProfile.name}">${facebookProfile.name}</span></h3>
+		ID: <span th:text="${facebookProfile.id}">${facebookProfile.id}</span><br>
+		Gender: <span th:text="${facebookProfile.gender}">${facebookProfile.gender}</span><br>
+		Birthday: <span th:text="${facebookProfile.birthday}">${facebookProfile.birthday}</span><br>
+		
+		
+		Click <a href="List">here</a> to see your friends.
+		
 		<form action="connect/facebook" method="POST">
 			<input type="hidden" name="_method" value="delete">
 			<input type="submit" value="Disconnect">
 		</form>
+	
 
-		<h4>These are your 	<c:out value="${friends.size()}"></c:out> friends:</h4>
 
-		<ul>
-			<c:forEach var="x" items="${friends}" >
-	        	<li><c:out value="${x.getName()}"/></li>
-    		</c:forEach>
-    	
-		</ul>
 	</body>
 </html>
