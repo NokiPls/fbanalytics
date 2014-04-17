@@ -9,7 +9,7 @@ import org.springframework.social.connect.web.ConnectController;
 import org.springframework.social.facebook.config.annotation.EnableFacebook;
 
 @EnableFacebook(appId="279105595599278", appSecret="5b0b488281a729480a2acbaabfe83e39")
-@EnableInMemoryConnectionRepository
+@EnableInMemoryConnectionRepository// @EnableJdbcConnectionRepository
 public class FacebookConfig {
 
     @Bean
