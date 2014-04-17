@@ -10,7 +10,7 @@
 		<h3>Name: <span th:text="${facebookProfile.name}">${facebookProfile.name}</span></h3>
 		ID: <span th:text="${facebookProfile.id}">${facebookProfile.id}</span><br>
 		Gender: <span th:text="${facebookProfile.gender}">${facebookProfile.gender}</span><br>
-		Birthday: <span th:text="${facebookProfile.birthday}">${facebookProfile.birthday}</span><br>
+		Locale: <span th:text="${facebookProfile.locale}">${facebookProfile.locale}</span><br>
 		
 		
 		Click <a href="List">here</a> to see your friends.

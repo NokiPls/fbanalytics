@@ -20,7 +20,7 @@ public class HelloController {
     public HelloController(Facebook facebook) {
         this.facebook = facebook;
     }
-
+    
     @RequestMapping(method=RequestMethod.GET)
     public String helloFacebook(Model model) {
         if (!facebook.isAuthorized()) {
@@ -32,7 +32,7 @@ public class HelloController {
         return "personalProfile";
     }
 
-    
+    //controller per la lista di amici
      @RequestMapping("/List")
     public String listFriends(Model model) {
         if (!facebook.isAuthorized()) {
@@ -42,6 +42,6 @@ public class HelloController {
         PagedList<FacebookProfile> friends = facebook.friendOperations().getFriendProfiles();
         model.addAttribute("friends", friends);
 
-        return "personalProfile";
+        return "friendsList";
     }
 }
