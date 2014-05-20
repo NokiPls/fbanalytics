@@ -18,19 +18,9 @@
 	<h4>
 		These are your
 		<c:out value="${friends.size()}"></c:out>
-		friends:
+
 	</h4>
 
-	<ul>
-		<form method="post" action="hierarchical">
-			
-		<input type="submit" value="Lista gerarchica" />
-		
-			<c:forEach var="x" items="${friends}">
-				<li><input type="checkbox" name="friendname" value="${x.getName()}">
-					<c:out value="${x.getName()}" /></li>
-			</c:forEach>
-			<p>
-		</form>
+
 </body>
 </html>
