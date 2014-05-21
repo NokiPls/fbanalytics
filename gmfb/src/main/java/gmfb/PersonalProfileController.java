@@ -19,12 +19,12 @@ import bean.Friends;
 
 @Controller
 @RequestMapping("/")
-public class HelloController {
+public class PersonalProfileController {
 
     private Facebook facebook;
 
     @Inject
-    public HelloController(Facebook facebook) {
+    public PersonalProfileController(Facebook facebook) {
         this.facebook = facebook;
     }
     
