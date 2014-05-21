@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import bean.Friends;
+
 @Controller
 @RequestMapping("/")
 public class HelloController {
@@ -36,7 +38,7 @@ public class HelloController {
 
         return "personalProfile";
     }
-
+/*
     //controller per la lista di amici
      @RequestMapping("/List")
     public String listFriends(Model model) {
@@ -50,11 +52,11 @@ public class HelloController {
 
         return "friendsList";
     }
-  
+  */
 
      //form lista amici
      @RequestMapping("/hierarchical")
-     public String savePerson(@ModelAttribute SelectedFriends friendForm, Model model) {
+     public String savePerson(@ModelAttribute Friends friendForm, Model model) {
          model.addAttribute(facebook.userOperations().getUserProfile());
     	 model.addAttribute("friendForm", friendForm);
          
