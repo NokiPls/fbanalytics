@@ -38,38 +38,7 @@ public class PersonalProfileController {
 
         return "personalProfile";
     }
-/*
-    //controller per la lista di amici
-     @RequestMapping("/List")
-    public String listFriends(Model model) {
-        if (!facebook.isAuthorized()) {
-            return "redirect:/connect/facebook";
-        }
-        model.addAttribute(facebook.userOperations().getUserProfile());
-        PagedList<FacebookProfile> friends = facebook.friendOperations().getFriendProfiles();
-        model.addAttribute("friends", friends);
-    
 
-        return "friendsList";
-    }
-  */
-
-     //form lista amici
-     @RequestMapping("/hierarchical")
-     public String savePerson(@ModelAttribute Friends friendForm, Model model) {
-         model.addAttribute(facebook.userOperations().getUserProfile());
-    	 model.addAttribute("friendForm", friendForm);
-         
-         return "hierarchicallist";
-     }
-     
-     
-       
-   /*  @RequestMapping(value="/hierarchical", method=RequestMethod.POST)
-     public String savePersonPost(@ModelAttribute SelectedFriends friendForm) {
-         System.out.println(friendForm.getName() );
-         return "person";
-     }*/
 }
 
 

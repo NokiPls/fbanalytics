@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class FormFriendsController {
 
-	private Facebook facebook; //TODO
+	private Facebook facebook;
 
 	@Inject
 	public FormFriendsController(Facebook facebook) {
@@ -29,6 +29,10 @@ public class FormFriendsController {
 
 	@RequestMapping(value = "/List", method = RequestMethod.GET)
 	public String greetingForm(Model model) {
+		 if (!facebook.isAuthorized()) {
+	            return "redirect:/connect/facebook";
+	        }
+//creo bean con lista di nomi + id amici
 		PagedList<FacebookProfile> friends = facebook.friendOperations()
 				.getFriendProfiles();
 		List<String> id = new ArrayList<String>();
@@ -44,9 +48,11 @@ public class FormFriendsController {
 		model.addAttribute("friends", fbFriends);
 		return "friendsList";
 	}
-	/*
-	 * @RequestMapping(value="/greeting", method=RequestMethod.POST) public
-	 * String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
-	 * model.addAttribute("greeting", greeting); return "result"; }
-	 */
+
+	@RequestMapping(value = "/friendsList", method = RequestMethod.POST)
+	public String greetingSubmit(@ModelAttribute Friends friends, Model model) {
+		model.addAttribute("friends", friends);
+		return "hierarchicallist";
+	}
+
 }
