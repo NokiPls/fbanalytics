@@ -9,7 +9,7 @@
 <title>Hello Facebook</title>
 </head>
 <body>
-
+Hello, <span th:text="${facebookProfile.name}">${facebookProfile.name}</span>
 	<form action="checkboxes" method="post">
 		<input type="submit" value="Submit" /> <input type="reset"
 			value="Reset" /> <br>
