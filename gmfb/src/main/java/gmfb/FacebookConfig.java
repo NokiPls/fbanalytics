@@ -8,23 +8,26 @@ import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.web.ConnectController;
 import org.springframework.social.facebook.config.annotation.EnableFacebook;
 
-@EnableFacebook(appId="279105595599278", appSecret="5b0b488281a729480a2acbaabfe83e39")
+@EnableFacebook(appId = "279105595599278", appSecret = "5b0b488281a729480a2acbaabfe83e39")
 @EnableInMemoryConnectionRepository
 public class FacebookConfig {
 
-    @Bean
-    public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
-        return new ConnectController(connectionFactoryLocator, connectionRepository);
-    }
+	@Bean
+	public ConnectController connectController(
+			ConnectionFactoryLocator connectionFactoryLocator,
+			ConnectionRepository connectionRepository) {
+		return new ConnectController(connectionFactoryLocator,
+				connectionRepository);
+	}
 
-    @Bean
-    public UserIdSource userIdSource() {
-        return new UserIdSource() {
-            @Override
-            public String getUserId() {
-                return "testuser";
-            }
-        };
-    }
+	@Bean
+	public UserIdSource userIdSource() {
+		return new UserIdSource() {
+			@Override
+			public String getUserId() {
+				return "testuser";
+			}
+		};
+	}
 
 }

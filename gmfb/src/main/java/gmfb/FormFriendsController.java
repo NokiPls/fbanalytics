@@ -29,30 +29,38 @@ public class FormFriendsController {
 
 	@RequestMapping(value = "/List", method = RequestMethod.GET)
 	public String greetingForm(Model model) {
-		 if (!facebook.isAuthorized()) {
-	            return "redirect:/connect/facebook";
-	        }
-//creo bean con lista di nomi + id amici
+
+		List<String> id, name;
+		Friends fbFriends;
+
+		if (!facebook.isAuthorized()) {
+			return "redirect:/connect/facebook";
+		}
+
+		// bean with name and id of friends
 		PagedList<FacebookProfile> friends = facebook.friendOperations()
 				.getFriendProfiles();
-		List<String> id = new ArrayList<String>();
-		List<String> name = new ArrayList<String>();
+		id = new ArrayList<String>();
+		name = new ArrayList<String>();
+
 		for (int i = 0; i < friends.size(); i++) {
 			id.add(friends.get(i).getId());
 			name.add(friends.get(i).getName());
 		}
 
-		Friends fbFriends = new Friends();
+		fbFriends = new Friends();
 		fbFriends.setId(id);
 		fbFriends.setName(name);
-		model.addAttribute("friends", fbFriends.getName());
+		model.addAttribute("names", fbFriends.getName()).addAttribute("id",
+				fbFriends.getId());
 		return "friendsList";
 	}
 
 	@RequestMapping(value = "/checkboxes", method = RequestMethod.POST)
-	public String greetingSubmit(@RequestParam(value = "userIds", required = false) String[] name) {
-		
-		//model.addAttribute("friends", friends);
+	public String greetingSubmit(
+			@RequestParam(value = "userIds", required = false) String[] name) {
+
+		// model.addAttribute("friends", friends);
 		return "hierarchicallist";
 	}
 

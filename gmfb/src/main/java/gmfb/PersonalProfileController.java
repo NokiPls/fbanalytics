@@ -21,29 +21,22 @@ import bean.Friends;
 @RequestMapping("/")
 public class PersonalProfileController {
 
-    private Facebook facebook;
+	private Facebook facebook;
 
-    @Inject
-    public PersonalProfileController(Facebook facebook) {
-        this.facebook = facebook;
-    }
-    
-    @RequestMapping(method=RequestMethod.GET)
-    public String helloFacebook(Model model) {
-        if (!facebook.isAuthorized()) {
-            return "redirect:/connect/facebook";
-        }
+	@Inject
+	public PersonalProfileController(Facebook facebook) {
+		this.facebook = facebook;
+	}
 
-        model.addAttribute(facebook.userOperations().getUserProfile());
+	@RequestMapping(method = RequestMethod.GET)
+	public String helloFacebook(Model model) {
+		if (!facebook.isAuthorized()) {
+			return "redirect:/connect/facebook";
+		}
 
-        return "personalProfile";
-    }
+		model.addAttribute(facebook.userOperations().getUserProfile());
+
+		return "personalProfile";
+	}
 
 }
-
-
-
-
-
-
-
