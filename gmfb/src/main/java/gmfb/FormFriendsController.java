@@ -45,7 +45,7 @@ public class FormFriendsController {
 		Friends fbFriends = new Friends();
 		fbFriends.setId(id);
 		fbFriends.setName(name);
-		model.addAttribute("friends", fbFriends);
+		model.addAttribute("friends", fbFriends.getName());
 		return "friendsList";
 	}
 
