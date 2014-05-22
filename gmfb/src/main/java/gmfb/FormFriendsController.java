@@ -10,6 +10,7 @@ import bean.Friends;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.social.facebook.api.PagedList;
+import org.springframework.social.facebook.api.Reference;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -58,8 +59,15 @@ public class FormFriendsController {
 
 	@RequestMapping(value = "/checkboxes", method = RequestMethod.POST)
 	public String greetingSubmit(
-			@RequestParam(value = "names[]", required = false) String[] name) {
+			@RequestParam(value = "id[]", required = false) String[] id) {
+		if (id.length == 0)
+			return "redirect:/friendsList";
+		for (int i = 0; i < id.length; i++) {
 
+			PagedList<Reference> mutual = facebook.friendOperations()
+					.getMutualFriends(id[i]);
+
+		}
 		// model.addAttribute("friends", friends);
 		return "hierarchicallist";
 	}

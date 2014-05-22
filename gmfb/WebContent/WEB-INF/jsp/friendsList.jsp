@@ -3,7 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html xmlns:th="http://www.thymeleaf.org">
+
 <html>
 <head>
 <title>Hello Facebook</title>
@@ -11,13 +11,12 @@
 <body>
 
 	<form action="checkboxes" method="post">
-		<c:forEach var="i" items="${friends}">
-			<input type="checkbox" name="names[]" value="${i}" />${i} <br>
+		<input type="submit" value="Submit" /> <input type="reset"
+			value="Reset" /> <br>
+		<c:forEach var="i" items="${names}" varStatus="status">
+			<input type="checkbox" name="id[]" value="${id[status.index]}" />${i} <br>
 		</c:forEach>
-		<p>
-			<input type="submit" value="Submit" /> <input type="reset"
-				value="Reset" />
-		</p>
+		<p></p>
 	</form>
 </body>
 </html>
