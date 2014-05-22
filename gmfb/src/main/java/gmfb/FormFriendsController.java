@@ -49,9 +49,10 @@ public class FormFriendsController {
 		return "friendsList";
 	}
 
-	@RequestMapping(value = "/friendsList", method = RequestMethod.POST)
-	public String greetingSubmit(@ModelAttribute Friends friends, Model model) {
-		model.addAttribute("friends", friends);
+	@RequestMapping(value = "/checkboxes", method = RequestMethod.POST)
+	public String greetingSubmit(@RequestParam(value = "userIds", required = false) String[] name) {
+		
+		//model.addAttribute("friends", friends);
 		return "hierarchicallist";
 	}
 

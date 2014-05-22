@@ -10,9 +10,9 @@
 </head>
 <body>
 
-    <form action="/friendsList" method="post">
+    <form action="/checkboxes" method="post">
 <c:forEach var="i" items="${friends}">
-    	<input type="checkbox" value="${i}"/>${i} <br>
+    	<input type="checkbox" name = "friendsname" value="${i}"/>${i} <br>
 </c:forEach>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
