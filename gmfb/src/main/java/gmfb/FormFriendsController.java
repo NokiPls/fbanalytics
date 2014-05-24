@@ -42,11 +42,9 @@ public class FormFriendsController {
 		name = new ArrayList<String>();
 
 		for (int i = 0; i < friends.size(); i++) {
+			// creo lista di nomi e id da passare alla pagina con le chekboxes
 			id.add(friends.get(i).getId());
 			name.add(friends.get(i).getName());
-			// creo lista di amici in comune
-			// CommonFriendsList.add(i, new Friends(id.get(i), name.get(i)));
-
 		}
 
 
@@ -64,9 +62,8 @@ public class FormFriendsController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
-		model.addAttribute(facebook.userOperations().getUserProfile());
 
-		// nel ciclo esterno prendo i mutual, nell'interno id e nome
+		//creo Lista di amici selezionati e per ognuno di essi la lista degli amici in comune
 		for (int i = 0; i < idSelected.length; i++) {
 			PagedList<Reference> mutual = facebook.friendOperations()
 					.getMutualFriends(idSelected[i]);
