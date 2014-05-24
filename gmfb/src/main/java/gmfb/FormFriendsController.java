@@ -4,7 +4,9 @@ import bean.Friends;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.social.facebook.api.PagedList;
@@ -83,8 +85,9 @@ public class FormFriendsController {
 			}
 		}
 
+		
 		model.addAttribute(facebook.userOperations().getUserProfile());
-		model.addAttribute("mapMutual", CommonFriendsList);
+		model.addAttribute("Friends",CommonFriendsList);
 		return "hierarchicallist";
 	}
 }

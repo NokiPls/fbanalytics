@@ -22,4 +22,5 @@
 	
 	<bean class="gmfb.FacebookConfig"></bean>
 	
+	
 </beans>
