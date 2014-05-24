@@ -1,12 +1,10 @@
 package gmfb;
 
+import bean.Friends;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.inject.Inject;
-
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.social.facebook.api.PagedList;
@@ -21,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class FormFriendsController {
 
 	private Facebook facebook;
-	private static Map<String, List> mapMutual = new HashMap<String, List>();
+	public ArrayList<Friends> CommonFriendsList=new ArrayList<Friends>();
 
 	@Inject
 	public FormFriendsController(Facebook facebook) {
@@ -29,10 +27,9 @@ public class FormFriendsController {
 	}
 
 	@RequestMapping(value = "/List", method = RequestMethod.GET)
-	public String greetingForm(Model model) {
+	public String friendsCheckboxes(Model model) {
 
 		List<String> id, name;
-		model.addAttribute(facebook.userOperations().getUserProfile());
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
@@ -45,41 +42,49 @@ public class FormFriendsController {
 		for (int i = 0; i < friends.size(); i++) {
 			id.add(friends.get(i).getId());
 			name.add(friends.get(i).getName());
+			// creo lista di amici in comune
+			// CommonFriendsList.add(i, new Friends(id.get(i), name.get(i)));
+
 		}
 
+
+		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("names", name).addAttribute("id", id);
 		return "friendsList";
 	}
 
 	@RequestMapping(value = "/checkboxes", method = RequestMethod.POST)
-	public String greetingSubmit(
-			@RequestParam(value = "id[]", required = false) String[] id, Model model) {
-		if (id.length == 0)
+	public String friendsCheckboxesSubmit(
+			@RequestParam(value = "id[]", required = false) String[] idSelected,
+			Model model) {
+		if (idSelected.length == 0)
 			return "redirect:/friendsList";
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
 		model.addAttribute(facebook.userOperations().getUserProfile());
 
-		List<String> mutId = new ArrayList<String>();
-		List<String> mutName = new ArrayList<String>();
-
 		// nel ciclo esterno prendo i mutual, nell'interno id e nome
-		for (int i = 0; i < id.length; i++) {
+		for (int i = 0; i < idSelected.length; i++) {
 			PagedList<Reference> mutual = facebook.friendOperations()
-					.getMutualFriends(id[i]);
+					.getMutualFriends(idSelected[i]);
+
+			FacebookProfile friend = facebook.userOperations().getUserProfile(
+					idSelected[i]);
+			CommonFriendsList.add(i,
+					new Friends(friend.getId(), friend.getName()));
 			for (int k = 0; k < mutual.size(); k++) {
-				mutId.add(k, mutual.get(k).getId());
-				mutName.add(k, mutual.get(k).getName());
+				CommonFriendsList
+						.get(i)
+						.getCommonFriends()
+						.add(new Friends(mutual.get(k).getId(), mutual.get(k)
+								.getName()));
+
 			}
-
-			mapMutual.put(id[i], mutName);
-			mutName.clear();
-			mutId.clear();
-
 		}
-		model.addAttribute("mapMutual", mapMutual);
+
+		model.addAttribute(facebook.userOperations().getUserProfile());
+		model.addAttribute("mapMutual", CommonFriendsList);
 		return "hierarchicallist";
 	}
-
 }
