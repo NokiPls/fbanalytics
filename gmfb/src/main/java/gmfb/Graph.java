@@ -18,41 +18,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class FormFriendsController {
+public class Graph {
 
 	private Facebook facebook;
 	public ArrayList<Friends> CommonFriendsList = new ArrayList<Friends>();
 
 	@Inject
-	public FormFriendsController(Facebook facebook) {
+	public Graph(Facebook facebook) {
 		this.facebook = facebook;
 	}
 
-	@RequestMapping(value = "/List", method = RequestMethod.GET)
-	public String friendsCheckboxes(Model model) {
+	
 
-		List<String> id, name;
-		if (!facebook.isAuthorized()) {
-			return "redirect:/connect/facebook";
-		}
-
-		PagedList<FacebookProfile> friends = facebook.friendOperations()
-				.getFriendProfiles();
-		id = new ArrayList<String>();
-		name = new ArrayList<String>();
-
-		for (int i = 0; i < friends.size(); i++) {
-			// creo lista di nomi e id da passare alla pagina con le chekboxes
-			id.add(friends.get(i).getId());
-			name.add(friends.get(i).getName());
-		}
-
-		model.addAttribute(facebook.userOperations().getUserProfile());
-		model.addAttribute("names", name).addAttribute("id", id);
-		return "friendsList";
-	}
-
-	@RequestMapping(value = "/checkboxes", method = RequestMethod.POST)
+	@RequestMapping(value = "/openGraph", method = RequestMethod.POST)
 	public String friendsCheckboxesSubmit(
 			@RequestParam(value = "id[]", required = false) String[] idSelected,
 			Model model) {
@@ -85,16 +63,6 @@ public class FormFriendsController {
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("Friends", CommonFriendsList);
 		return "hierarchicallist";
-	}
-
-	@RequestMapping(value = "/openGraph", method = RequestMethod.POST)
-	public String newGraph(Model model) {
-		if (!facebook.isAuthorized()) {
-			return "redirect:/connect/facebook";
-		}
-
-
-		return "graphPage";
 	}
 
 }

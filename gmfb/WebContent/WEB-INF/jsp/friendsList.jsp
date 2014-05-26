@@ -11,7 +11,7 @@
 <body>
 Hello, <span th:text="${facebookProfile.name}">${facebookProfile.name}</span>
 	<form action="checkboxes" method="post">
-		<input type="submit" value="Submit" /> <input type="reset"
+		<input type="submit" value="Show Common Friends" /> <input type="reset"
 			value="Reset" /> <br>
 		<c:forEach var="i" items="${names}" varStatus="status">
 			<input type="checkbox" name="id[]" value="${id[status.index]}" />${i} <br>
