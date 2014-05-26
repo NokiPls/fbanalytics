@@ -7,6 +7,7 @@
 		<title>Hello Facebook</title>
 	</head>
 	<body>
+	<image src="https://graph.facebook.com/${facebookProfile.id}/picture?redirect=1&height=200&type=normal&width=200"/>
 		<h3>Name: <span th:text="${facebookProfile.name}">${facebookProfile.name}</span></h3>
 		ID: <span th:text="${facebookProfile.id}">${facebookProfile.id}</span><br>
 		Gender: <span th:text="${facebookProfile.gender}">${facebookProfile.gender}</span><br>

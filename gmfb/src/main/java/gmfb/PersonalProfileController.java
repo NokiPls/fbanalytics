@@ -24,9 +24,9 @@ public class PersonalProfileController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
-
+		
+	
 		model.addAttribute(facebook.userOperations().getUserProfile());
-
 		return "personalProfile";
 	}
 
