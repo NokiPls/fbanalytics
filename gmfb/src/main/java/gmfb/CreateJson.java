@@ -9,15 +9,23 @@ public class CreateJson {
 
 	CreateJson(ArrayList<Friends> friend) {
 		// creazione nodi
-		// {"nodes":[{"name":"Myriel","group":1},{"name":"Napoleon","group":1}],"links":[{"source":73,"target":48,"value":2},{"source":74,"target":48,"value":2},{"source":74,"target":73,"value":3}]}
 		json = "{\"node\":[";
 		for (int i = 0; i < friend.size(); i++) {
 			json += "{\"name\":\"" + friend.get(i).getName()
 					+ "\",\"group\":1},";
+			ArrayList<Friends> common = friend.get(i).getCommonFriends();
+			for (int j = 0; j < common.size(); i++) {
+				json += "{\"name\":\"" + common.get(j)
+						+ "\",\"group\":1},";
+			}
 		}
 		json += "],\"links\":[";
+		
+		json += "]}";
 	}
 
+//:[{\"source\":1,\"target\":0,\"value\":1}]}";
+	
 	public String getJson() {
 		return json;
 	}

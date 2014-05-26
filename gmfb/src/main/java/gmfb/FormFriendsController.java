@@ -61,7 +61,7 @@ public class FormFriendsController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
-
+		CommonFriendsList = new ArrayList<Friends>();
 		// creo Lista di amici selezionati e per ognuno di essi la lista degli
 		// amici in comune
 		for (int i = 0; i < idSelected.length; i++) {
@@ -92,8 +92,8 @@ public class FormFriendsController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
-		String json = "{\"nodes\":[{\"name\":\"Myriel\",\"group\":1},{\"name\":\"Napoleon\",\"group\":1},{\"name\":\"Mlle.Baptistine\",\"group\":1},{\"name\":\"Mme.Magloire\",\"group\":1},{\"name\":\"CountessdeLo\",\"group\":1},{\"name\":\"Geborand\",\"group\":1},{\"name\":\"Champtercier\",\"group\":1},{\"name\":\"Cravatte\",\"group\":1},{\"name\":\"Count\",\"group\":1}],\"links\":[{\"source\":1,\"target\":0,\"value\":1}]}";
-		model.addAttribute("graph", json);
+		CreateJson json=new CreateJson(CommonFriendsList);
+		model.addAttribute("graph", json.getJson());
 		model.addAttribute(facebook.userOperations().getUserProfile());
 
 		return "graphPage";
