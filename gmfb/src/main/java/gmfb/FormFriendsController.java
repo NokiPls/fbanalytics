@@ -93,6 +93,7 @@ public class FormFriendsController {
 			return "redirect:/connect/facebook";
 		}
 
+		model.addAttribute("graph");
 
 		return "graphPage";
 	}
