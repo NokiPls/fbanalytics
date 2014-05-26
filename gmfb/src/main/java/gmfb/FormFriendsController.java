@@ -92,7 +92,7 @@ public class FormFriendsController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
-
+		
 		model.addAttribute("graph");
 
 		return "graphPage";
