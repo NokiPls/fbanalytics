@@ -92,8 +92,9 @@ public class FormFriendsController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
-		
-		model.addAttribute("graph");
+		String json = "{\"nodes\":[{\"name\":\"Myriel\",\"group\":1},{\"name\":\"Napoleon\",\"group\":1},{\"name\":\"Mlle.Baptistine\",\"group\":1},{\"name\":\"Mme.Magloire\",\"group\":1},{\"name\":\"CountessdeLo\",\"group\":1},{\"name\":\"Geborand\",\"group\":1},{\"name\":\"Champtercier\",\"group\":1},{\"name\":\"Cravatte\",\"group\":1},{\"name\":\"Count\",\"group\":1}],\"links\":[{\"source\":1,\"target\":0,\"value\":1}]}";
+		model.addAttribute("graph", json);
+		model.addAttribute(facebook.userOperations().getUserProfile());
 
 		return "graphPage";
 	}

@@ -7,83 +7,66 @@
 <title>Hello Facebook</title>
 <meta charset="utf-8">
 <style>
-
 .link {
-  stroke: #ccc;
+	stroke: #ccc;
 }
 
 .node text {
-  pointer-events: none;
-  font: 10px sans-serif;
+	pointer-events: none;
+	font: 10px sans-serif;
 }
-
 </style>
 </head>
 <body>
 
 	Hello,
 	<span th:text="${facebookProfile.name}">${facebookProfile.name}</span>!
-	<form action="connect/facebook" method="POST">
-		<input type="hidden" name="_method" value="delete"> <input
-			type="submit" value="Disconnect">
-	</form>
-	
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script>
 
-var width = 960,
-    height = 500
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script>
+		var data = eval('(' + '${graph}' + ')');
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+		var width = 960, height = 500;
 
-var force = d3.layout.force()
-    .gravity(.05)
-    .distance(100)
-    .charge(-100)
-    .size([width, height]);
+		var svg = d3.select("body").append("svg").attr("width", width).attr(
+				"height", height);
 
-d3.json("${graph}", function(error, json) {
-  force
-      .nodes(json.nodes)
-      .links(json.links)
-      .start();
+		var force = d3.layout.force().gravity(.05).distance(100).charge(-100)
+				.size([width, height]);
 
-  var link = svg.selectAll(".link")
-      .data(json.links)
-    .enter().append("line")
-      .attr("class", "link");
+		force.nodes(data.nodes).links(data.links).start();
 
-  var node = svg.selectAll(".node")
-      .data(json.nodes)
-    .enter().append("g")
-      .attr("class", "node")
-      .call(force.drag);
+		var link = svg.selectAll(".link").data(data.links).enter().append(
+				"line").attr("class", "link");
 
-  node.append("image")
-      .attr("xlink:href", "https://github.com/favicon.ico")
-      .attr("x", -8)
-      .attr("y", -8)
-      .attr("width", 16)
-      .attr("height", 16);
+		var node = svg.selectAll(".node").data(data.nodes).enter().append("g")
+				.attr("class", "node").call(force.drag);
 
-  node.append("text")
-      .attr("dx", 12)
-      .attr("dy", ".35em")
-      .text(function(d) { return d.name });
+		node.append("image").attr("xlink:href",
+				"https://github.com/favicon.ico").attr("x", -8).attr("y", -8)
+				.attr("width", 16).attr("height", 16);
 
-  force.on("tick", function() {
-    link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+		node.append("text").attr("dx", 12).attr("dy", ".35em").text(
+				function(d) {
+					return d.name;
+				});
 
-    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-  });
-});
+		force.on("tick", function() {
+			link.attr("x1", function(d) {
+				return d.source.x;
+			}).attr("y1", function(d) {
+				return d.source.y;
+			}).attr("x2", function(d) {
+				return d.target.x;
+			}).attr("y2", function(d) {
+				return d.target.y;
+			});
 
-</script>
+			node.attr("transform", function(d) {
+				return "translate(" + d.x + "," + d.y + ")";
+			});
+		});
+	</script>
 
 
 
