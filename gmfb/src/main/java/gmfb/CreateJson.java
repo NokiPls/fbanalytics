@@ -14,11 +14,12 @@ public class CreateJson {
 			json += "{\"name\":\"" + friend.get(i).getName()
 					+ "\",\"group\":1},";
 			ArrayList<Friends> common = friend.get(i).getCommonFriends();
-			for (int j = 0; j < common.size(); i++) {
-				json += "{\"name\":\"" + common.get(j)
+			for (int j = 0; j < common.size(); j++) {
+				json += "{\"name\":\"" + common.get(j).getName()
 						+ "\",\"group\":1},";
 			}
 		}
+		json= (String) json.subSequence(0, json.length()-1);
 		json += "],\"links\":[";
 		
 		json += "]}";
