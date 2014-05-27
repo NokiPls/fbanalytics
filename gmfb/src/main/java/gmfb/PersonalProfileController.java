@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 @Controller
 @RequestMapping("/")
 public class PersonalProfileController {
@@ -24,8 +23,7 @@ public class PersonalProfileController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
-		
-	
+
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		return "personalProfile";
 	}
