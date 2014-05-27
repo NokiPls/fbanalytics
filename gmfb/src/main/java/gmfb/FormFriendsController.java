@@ -95,6 +95,7 @@ public class FormFriendsController {
 		CreateJson json = new CreateJson(CommonFriendsList, facebook.userOperations().getUserProfile().getName());
 		model.addAttribute("graph", json.getJson());
 		model.addAttribute(facebook.userOperations().getUserProfile());
+		model.addAttribute("Friends", CommonFriendsList);
 
 		return "graphPage";
 	}

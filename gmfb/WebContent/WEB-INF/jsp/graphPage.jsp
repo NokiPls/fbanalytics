@@ -21,7 +21,12 @@
 
 	Hello,
 	<span th:text="${facebookProfile.name}">${facebookProfile.name}</span>!
-
+	<br> You have selected
+	<c:forEach var="i" items="${Friends}" varStatus="status">
+		<ul>
+			<li><c:out value="${i.name}"></c:out></li>
+		</ul>
+	</c:forEach>
 	<script src="http://d3js.org/d3.v3.min.js"></script>
 	<script>
 		var data = eval('(' + '${graph}' + ')');
@@ -33,6 +38,12 @@
 
 		var force = d3.layout.force().gravity(.05).distance(100).charge(-100)
 				.size([width, height]);
+
+		<!--dot.on("click", click);
+		function click(d) {
+			console.log(d.title); //considering dot has a title attribute
+		}
+		-->
 
 		force.nodes(data.nodes).links(data.links).start();
 
