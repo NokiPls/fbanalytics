@@ -29,7 +29,7 @@ public class CreateJson {
 			for (j = 0; j < common.size(); j++) {
 				// "j" are the common friends between me and "i"
 				json += "{\"name\":\"" + common.get(j).getName()
-						+  "\",\"id\":\"" + friend.get(i).getId() + "\",\"group\":1},";
+						+  "\",\"id\":\"" + common.get(j).getId() + "\",\"group\":1},";
 				// link them to the user
 				links += "{\"source\":0,\"target\":" + (fpos + j + 1)
 						+ ",\"value\":1},";

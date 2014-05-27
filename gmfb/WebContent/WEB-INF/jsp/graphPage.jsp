@@ -54,7 +54,7 @@
 				.attr("class", "node").call(force.drag);
 
 		node.append("image").attr("xlink:href",
-				"https://github.com/favicon.ico").attr("x", -8).attr("y", -8)
+				function(d) { return "https://graph.facebook.com/"+ d.id +"/picture?redirect=1&height=200&type=normal&width=200"} ).attr("x", -18).attr("y", -18)
 				.attr("width", 16).attr("height", 16);
 
 		node.append("text").attr("dx", 12).attr("dy", ".35em").text(
