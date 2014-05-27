@@ -92,7 +92,7 @@ public class FormFriendsController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
-		CreateJson json=new CreateJson(CommonFriendsList);
+		CreateJson json = new CreateJson(CommonFriendsList);
 		model.addAttribute("graph", json.getJson());
 		model.addAttribute(facebook.userOperations().getUserProfile());
 

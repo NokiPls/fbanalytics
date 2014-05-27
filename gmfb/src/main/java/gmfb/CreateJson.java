@@ -9,7 +9,7 @@ public class CreateJson {
 
 	CreateJson(ArrayList<Friends> friend) {
 		// creazione nodi
-		json = "{\"node\":[";
+		json = "{\"nodes\":[";
 		for (int i = 0; i < friend.size(); i++) {
 			json += "{\"name\":\"" + friend.get(i).getName()
 					+ "\",\"group\":1},";
@@ -20,7 +20,7 @@ public class CreateJson {
 			}
 		}
 		json= (String) json.subSequence(0, json.length()-1);
-		json += "],\"links\":[";
+		json += "],\"links\":[{\"source\":1,\"target\":0,\"value\":1}";
 		
 		json += "]}";
 	}
