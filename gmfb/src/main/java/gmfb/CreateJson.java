@@ -11,16 +11,16 @@ public class CreateJson {
 	// {"nodes":[{"name":"John Bonham","group":1},{..}],"links":[{"source":"int","target":"int","value":"int"}]}
 	// in which source and target are the position in the array "nodes" of the
 	// elements to be linked
-	CreateJson(ArrayList<Friends> friend, String self) {
+	CreateJson(ArrayList<Friends> friend, String self, String id) {
 		int j = 0;
 		int i = 0;
 		int fpos = 0;
 		// Adding the user as position 0
-		json = "{\"nodes\":[{\"name\":\"" + self + "\",\"group\":1},";
+		json = "{\"nodes\":[{\"name\":\"" + self + "\",\"id\":\"" + id + "\",\"group\":1},";
 		for (i = 0; i < friend.size(); i++) {
 			// "i" are the selected friends
 			json += "{\"name\":\"" + friend.get(i).getName()
-					+ "\",\"group\":1},";
+					+  "\",\"id\":\"" + friend.get(i).getId() + "\",\"group\":1},";
 			// fpos keeps track of the position of the direct friend in the json
 			fpos += j + 1;
 			// link them to the user
@@ -29,7 +29,7 @@ public class CreateJson {
 			for (j = 0; j < common.size(); j++) {
 				// "j" are the common friends between me and "i"
 				json += "{\"name\":\"" + common.get(j).getName()
-						+ "\",\"group\":1},";
+						+  "\",\"id\":\"" + friend.get(i).getId() + "\",\"group\":1},";
 				// link them to the user
 				links += "{\"source\":0,\"target\":" + (fpos + j + 1)
 						+ ",\"value\":1},";
