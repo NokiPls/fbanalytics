@@ -36,7 +36,8 @@
 		var svg = d3.select("body").append("svg").attr("width", width).attr(
 				"height", height);
 
-		var force = d3.layout.force().gravity(.05).distance(100).charge(-100)
+		<!-- to modify graph visualization   -->
+		var force = d3.layout.force().gravity(.05).linkDistance(150).linkStrength(0.08).distance(250).charge(-30)
 				.size([width, height]);
 
 		<!--dot.on("click", click);
@@ -54,8 +55,8 @@
 				.attr("class", "node").call(force.drag);
 
 		node.append("image").attr("xlink:href",
-				function(d) { return "https://graph.facebook.com/"+ d.id +"/picture?redirect=1&height=200&type=normal&width=200"} ).attr("x", -18).attr("y", -18)
-				.attr("width", 16).attr("height", 16);
+				function(d) { return "https://graph.facebook.com/"+ d.id +"/picture?redirect=1&height=50&type=normal&width=50"} ).attr("x", -40).attr("y", -18)
+				.attr("width", 50).attr("height", 50);
 
 		node.append("text").attr("dx", 12).attr("dy", ".35em").text(
 				function(d) {
