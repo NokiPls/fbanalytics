@@ -13,7 +13,7 @@
 
 .node text {
 	pointer-events: none;
-	font: 10px sans-serif;
+	font: 12px sans-serif;
 }
 </style>
 </head>
@@ -37,14 +37,10 @@
 				"height", height);
 
 		<!-- to modify graph visualization   -->
-		var force = d3.layout.force().gravity(.05).linkDistance(150).linkStrength(0.08).distance(250).charge(-30)
+		var force = d3.layout.force().gravity(.05).linkDistance(150).linkStrength(0.08).distance(250).charge(-55)
 				.size([width, height]);
 
-		<!--dot.on("click", click);
-		function click(d) {
-			console.log(d.title); //considering dot has a title attribute
-		}
-		-->
+
 
 		force.nodes(data.nodes).links(data.links).start();
 
@@ -53,6 +49,12 @@
 
 		var node = svg.selectAll(".node").data(data.nodes).enter().append("g")
 				.attr("class", "node").call(force.drag);
+		
+		node.on("click", function(d) {
+			var p1 = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no'
+				var p2 = 'width=80,height=80,right=100,top=100'
+				open('GraphNode?id='+ d.id, 'test', p1+p2)
+});
 
 		node.append("image").attr("xlink:href",
 				function(d) { return "https://graph.facebook.com/"+ d.id +"/picture?redirect=1&height=50&type=normal&width=50"} ).attr("x", -40).attr("y", -18)
@@ -62,6 +64,10 @@
 				function(d) {
 					return d.name;
 				});
+		
+		 
+		
+		
 
 		force.on("tick", function() {
 			link.attr("x1", function(d) {
