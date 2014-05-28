@@ -14,28 +14,50 @@ public class CreateJson {
 	CreateJson(ArrayList<Friends> friend, String self, String id) {
 		int j = 0;
 		int i = 0;
-		int fpos = 0;
+		ArrayList<String> idPos = new ArrayList<String>();
 		// Adding the user as position 0
-		json = "{\"nodes\":[{\"name\":\"" + self + "\",\"id\":\"" + id + "\",\"group\":1},";
+		idPos.add(0, id);
+		json = "{\"nodes\":[{\"name\":\"" + self + "\",\"id\":\"" + id
+				+ "\",\"group\":1},";
 		for (i = 0; i < friend.size(); i++) {
 			// "i" are the selected friends
-			json += "{\"name\":\"" + friend.get(i).getName()
-					+  "\",\"id\":\"" + friend.get(i).getId() + "\",\"group\":1},";
-			// fpos keeps track of the position of the direct friend in the json
-			fpos += j + 1;
-			// link them to the user
-			links += "{\"source\":0,\"target\":" + fpos + ",\"value\":1},";
+			if (!idPos.contains(friend.get(i).getId())) {
+				idPos.add(friend.get(i).getId());
+				json += "{\"name\":\"" + friend.get(i).getName()
+						+ "\",\"id\":\"" + friend.get(i).getId()
+						+ "\",\"group\":1},";
+				// fpos keeps track of the position of the direct friend in the
+				// json
+				// link them to the user
+				links += "{\"source\":0,\"target\":"
+						+ idPos.indexOf(friend.get(i).getId())
+						+ ",\"value\":1},";
+			}
 			ArrayList<Friends> common = friend.get(i).getCommonFriends();
 			for (j = 0; j < common.size(); j++) {
-				// "j" are the common friends between me and "i"
-				json += "{\"name\":\"" + common.get(j).getName()
-						+  "\",\"id\":\"" + common.get(j).getId() + "\",\"group\":1},";
-				// link them to the user
-				links += "{\"source\":0,\"target\":" + (fpos + j + 1)
-						+ ",\"value\":1},";
-				// link them to the "i" friend
-				links += "{\"source\":" + fpos + ",\"target\":"
-						+ (fpos + j + 1) + ",\"value\":1},";
+				if (!idPos.contains(common.get(j).getId())) {
+					idPos.add(common.get(j).getId());
+					// "j" are the common friends between me and "i"
+					json += "{\"name\":\"" + common.get(j).getName()
+							+ "\",\"id\":\"" + common.get(j).getId()
+							+ "\",\"group\":1},";
+					// link them to the user
+					links += "{\"source\":0,\"target\":"
+							+ idPos.indexOf(common.get(j).getId())
+							+ ",\"value\":1},";
+					// link them to the "i" friend
+					links += "{\"source\":"
+							+ idPos.indexOf(common.get(j).getId())
+							+ ",\"target\":"
+							+ idPos.indexOf(friend.get(i).getId())
+							+ ",\"value\":1},";
+				} else {
+					links += "{\"source\":"
+							+ idPos.indexOf(common.get(j).getId())
+							+ ",\"target\":"
+							+ idPos.indexOf(friend.get(i).getId())
+							+ ",\"value\":1},";
+				}
 			}
 		}
 		// finalize the json
