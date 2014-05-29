@@ -11,26 +11,22 @@
 <body>
 
 
-	<image src="https://graph.facebook.com/${profile.id}/picture?redirect=1&height=90&type=normal&width=90"/>
+	<image src="https://graph.facebook.com/${profile.id}/picture?redirect=1&height=100&type=normal&width=100"/>
 	<br>
 	Name: ${profile.name}
 	<br>
 	Nick Name: ${profile.username}
 	<br>
 	
-	Degree centrality:
-	<br>
-	Betwennes centrality:
-	<br>
-	Closeness centrality:
-	<br>
-	
-	Normalized Degree centrality:
-	<br>
-	Normalized Betwennes centrality:
-	<br>
-	Normalized Closeness centrality:
-	<br>
+	Degree centrality =		${degree}
+		<br>
+	Normalized Degree centrality =
+		<br>
+	Betweenness centrality = ${betweenness}
+		<br>
+	Closeness centrality =
+		<br>
+	Normalized Closeness centrality  =
 
 
 

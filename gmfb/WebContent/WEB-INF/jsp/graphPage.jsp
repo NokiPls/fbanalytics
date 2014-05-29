@@ -37,7 +37,7 @@
 				"height", height);
 
 		<!-- to modify graph visualization   -->
-		var force = d3.layout.force().gravity(.05).linkDistance(150).linkStrength(0.08).distance(250).charge(-55)
+		var force = d3.layout.force().gravity(.05).linkDistance(150).linkStrength(0.08).distance(250).charge(-60)
 				.size([width, height]);
 
 
