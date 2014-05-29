@@ -8,6 +8,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.graphstream.algorithm.BetweennessCentrality;
+import org.graphstream.algorithm.measure.AbstractCentrality;
+import org.graphstream.algorithm.measure.ClosenessCentrality;
+import org.graphstream.algorithm.measure.DegreeCentrality;
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 import org.springframework.social.facebook.api.Facebook;
@@ -131,6 +134,35 @@ public class FormFriendsController {
 			}
 			
 		}
+		/* compute all the metrics*/
+
+		//compute DegreeCentrality centrality for each node
+		DegreeCentrality dc=new	DegreeCentrality();
+		dc.init(graphF);
+		dc.setCentralityAttribute("degree");
+		dc.compute();
+		
+		//compute normalized DegreeCentrality centrality for each node
+		DegreeCentrality ndc=new DegreeCentrality("norm_degree", AbstractCentrality.NormalizationMode.SUM_IS_1);
+		ndc.init(graphF);
+		ndc.compute();
+	
+		//compute betweenness centrality for each node
+			BetweennessCentrality bc = new BetweennessCentrality("betweenness");
+	        bc.init(graphF);
+	        bc.compute();
+	
+	      //compute ClosenessCentrality centrality for each node
+	        ClosenessCentrality cc= new ClosenessCentrality("closeness");
+	        cc.init(graphF);
+	        cc.compute();
+	        
+	      //compute normalized ClosenessCentrality centrality for each node
+	        ClosenessCentrality ncc= new ClosenessCentrality("norm_closeness", AbstractCentrality.NormalizationMode.SUM_IS_1, true, false);
+	        ncc.init(graphF);
+	        ncc.compute();
+	      
+	        
 		model.addAttribute("graph", json.getJson());
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("Friends", CommonFriendsList);
@@ -145,18 +177,16 @@ public class FormFriendsController {
 			return "redirect:/connect/facebook";
 		}
 		
-	
-		int degree = graphF.getNode(id).getDegree();
 
-		//compute betweenness centrality for each node
-		 BetweennessCentrality bc = new BetweennessCentrality();
-	        bc.init(graphF);
-	        bc.compute();
+		
 		
 		FacebookProfile profile = facebook.userOperations().getUserProfile(id);
 		//return bc for node selected node
-		model.addAttribute("betweenness", graphF.getNode(id).getAttribute("Cb"));
-		model.addAttribute("degree", degree);
+		model.addAttribute("betweenness", graphF.getNode(id).getAttribute("betweenness"));
+		model.addAttribute("closeness", graphF.getNode(id).getAttribute("closeness"));
+		model.addAttribute("norm_closeness", graphF.getNode(id).getAttribute("norm_closeness"));
+		model.addAttribute("degree", graphF.getNode(id).getAttribute("degree"));
+		model.addAttribute("norm_degree", graphF.getNode(id).getAttribute("norm_degree"));
 		
 		model.addAttribute("profile", profile);
 		return "nodePopUp";

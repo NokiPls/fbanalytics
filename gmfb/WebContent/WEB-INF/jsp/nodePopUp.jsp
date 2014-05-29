@@ -16,17 +16,17 @@
 	Name: ${profile.name}
 	<br>
 	Nick Name: ${profile.username}
-	<br>
+	<br><br>
 	
 	Degree centrality =		${degree}
 		<br>
-	Normalized Degree centrality =
+	Normalized Degree centrality = ${norm_degree}
 		<br>
 	Betweenness centrality = ${betweenness}
 		<br>
-	Closeness centrality =
+	Closeness centrality =  ${closeness}
 		<br>
-	Normalized Closeness centrality  =
+	Normalized Closeness centrality  =${norm_closeness}
 
 
 
