@@ -11,7 +11,6 @@ import org.graphstream.algorithm.BetweennessCentrality;
 import org.graphstream.algorithm.measure.AbstractCentrality;
 import org.graphstream.algorithm.measure.ClosenessCentrality;
 import org.graphstream.algorithm.measure.DegreeCentrality;
-import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
@@ -63,8 +62,10 @@ public class FormFriendsController {
 	public String friendsCheckboxesSubmit(
 			@RequestParam(value = "id[]", required = false) String[] idSelected,
 			Model model) {
-		if (idSelected.length == 0)
-			return "redirect:/friendsList";
+
+
+		if (idSelected==null)
+			return "redirect:/List";
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
@@ -177,11 +178,9 @@ public class FormFriendsController {
 			return "redirect:/connect/facebook";
 		}
 		
-
-		
 		
 		FacebookProfile profile = facebook.userOperations().getUserProfile(id);
-		//return bc for node selected node
+
 		model.addAttribute("betweenness", graphF.getNode(id).getAttribute("betweenness"));
 		model.addAttribute("closeness", graphF.getNode(id).getAttribute("closeness"));
 		model.addAttribute("norm_closeness", graphF.getNode(id).getAttribute("norm_closeness"));
