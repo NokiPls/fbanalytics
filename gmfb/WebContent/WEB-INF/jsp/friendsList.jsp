@@ -7,7 +7,7 @@
 <html>
 <head>
 <title>Hello Facebook</title>
-</head>
+<link href="<c:url value="/css/grid.css" />" rel="stylesheet"></head>
 <body>
 Hello, <span th:text="${facebookProfile.name}">${facebookProfile.name}</span>
 	<form action="checkboxes" method="post">
