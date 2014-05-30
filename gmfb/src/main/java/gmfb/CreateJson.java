@@ -18,14 +18,14 @@ public class CreateJson {
 		// Adding the user as position 0
 		idPos.add(0, id);
 		json = "{\"nodes\":[{\"name\":\"" + self + "\",\"id\":\"" + id
-				+ "\",\"group\":1},";
+				+ "\"},";
 		for (i = 0; i < friend.size(); i++) {
 			// "i" are the selected friends
 			if (!idPos.contains(friend.get(i).getId())) {
 				idPos.add(friend.get(i).getId());
 				json += "{\"name\":\"" + friend.get(i).getName()
 						+ "\",\"id\":\"" + friend.get(i).getId()
-						+ "\",\"group\":1},";
+						+ "\"},";
 				// fpos keeps track of the position of the direct friend in the
 				// json
 				// link them to the user
@@ -40,7 +40,7 @@ public class CreateJson {
 					// "j" are the common friends between me and "i"
 					json += "{\"name\":\"" + common.get(j).getName()
 							+ "\",\"id\":\"" + common.get(j).getId()
-							+ "\",\"group\":1},";
+							+ "\"},";
 					// link them to the user
 					links += "{\"source\":0,\"target\":"
 							+ idPos.indexOf(common.get(j).getId())
