@@ -17,13 +17,18 @@ public class CreateJson {
 		ArrayList<String> idPos = new ArrayList<String>();
 		// Adding the user as position 0
 		idPos.add(0, id);
+		if(self.contains("\'"))
+			self=self.replaceAll("\'", "`");
 		json = "{\"nodes\":[{\"name\":\"" + self + "\",\"id\":\"" + id
 				+ "\"},";
 		for (i = 0; i < friend.size(); i++) {
 			// "i" are the selected friends
 			if (!idPos.contains(friend.get(i).getId())) {
 				idPos.add(friend.get(i).getId());
-				json += "{\"name\":\"" + friend.get(i).getName()
+				String nameA = friend.get(i).getName();
+				if(nameA.contains("\'"))
+					nameA=nameA.replaceAll("\'", "`");
+				json += "{\"name\":\"" + nameA
 						+ "\",\"id\":\"" + friend.get(i).getId()
 						+ "\"},";
 				// fpos keeps track of the position of the direct friend in the
@@ -38,7 +43,10 @@ public class CreateJson {
 				if (!idPos.contains(common.get(j).getId())) {
 					idPos.add(common.get(j).getId());
 					// "j" are the common friends between me and "i"
-					json += "{\"name\":\"" + common.get(j).getName()
+					String nameB = common.get(j).getName();
+					if(nameB.contains("'"))
+						nameB=nameB.replace("'", "`");
+					json += "{\"name\":\"" + nameB
 							+ "\",\"id\":\"" + common.get(j).getId()
 							+ "\"},";
 					// link them to the user
