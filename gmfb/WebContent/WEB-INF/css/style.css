@@ -23,7 +23,7 @@ p {
 
 #header {
 	
-    height: 130px;
+    height: 110px;
     background:  #3b5998;
     border-radius: 10px;
   /**   border: 1px solid 000000; **/
@@ -60,7 +60,7 @@ p {
 }
 
 h1 { 
-	 font-size: 33px;
+	 font-size: 35px;
   	font-weight: bold;
 }
 

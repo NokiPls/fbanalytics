@@ -25,17 +25,18 @@
 		Locale: <span th:text="${facebookProfile.locale}">${facebookProfile.locale}</span><br>
 		
 		
-		Click <a href="List">here</a> to see your friends.
+		 
 		
 		<form action="connect/facebook" method="POST">
 			<input type="hidden" name="_method" value="delete">
-			<input type="submit" value="Disconnect">
+			<input type="submit"  class="button" value="Disconnect">
+			<a href="List"  class="button">see your friends</a>
 		</form>
 		</div>
 		</div>
 		<div id="footerwrap">
 			<div id="footer">
-				<p>This is the footer</p>
+				<p>POLIMI - Advanced Web Technologies project</p>
 			</div>
 		</div>
 	</div>

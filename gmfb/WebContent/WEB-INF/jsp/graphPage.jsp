@@ -107,7 +107,7 @@
 		</div>
 		<div id="footerwrap">
 			<div id="footer">
-				<p>This is the footer</p>
+				<p>POLIMI - Advanced Web Technologies project</p>
 			</div>
 		</div>
 	</div>
