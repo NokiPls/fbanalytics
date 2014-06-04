@@ -60,7 +60,7 @@ p {
 }
 
 h1 { 
-	 font-size: 35px;
+	 font-size: 37px;
   	font-weight: bold;
   	padding:15;
 }
@@ -80,6 +80,7 @@ width:100%;
     float: left;
     width: 33%;
 }
+.form1 { display: inline;}
 .button {
 	-moz-box-shadow:inset 0px 1px 0px 0px #cae3fc;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #cae3fc;

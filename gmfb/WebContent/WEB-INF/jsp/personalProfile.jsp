@@ -27,9 +27,10 @@
 		 
 		
 		<form action="connect/facebook" method="POST">
+			<a href="List"  class="button">see your friends</a>
 			<input type="hidden" name="_method" value="delete">
 			<input type="submit"  class="button" value="Disconnect">
-			<a href="List"  class="button">see your friends</a>
+			
 		</form>
 		</div>
 		</div>

@@ -19,13 +19,15 @@
 			<div id="content">
 	Hello,
 	<span th:text="${facebookProfile.name}">${facebookProfile.name}</span>!
-	<form action="connect/facebook" method="POST">
-		<input type="hidden" name="_method" value="delete"> <input
-			type="submit" value="Disconnect">
+	<br><br>
+	<form action="openGraph" method="POST" class="form1" >
+		<input type="submit" value="Open Graph" class="button">
 	</form>
-	<form action="openGraph" method="POST">
-		<input type="submit" value="Open Graph">
+	<form action="connect/facebook" method="POST"class="form1" >
+		<input type="hidden" name="_method" value="delete">
+		 <input type="submit" value="Disconnect"class="button">
 	</form>
+	
 	<c:forEach var="i" items="${Friends}" varStatus="status">
 		<ul>
 			<li><c:out value="${i.name}"></c:out></li>
