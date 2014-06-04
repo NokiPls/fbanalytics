@@ -29,8 +29,9 @@ Hello, <span th:text="${facebookProfile.name}">${facebookProfile.name}</span>
 				<li><input type="checkbox" name="id[]" value="${id[status.index]}" />${i} </li>
 				</c:forEach>
 			</ul>
-
+ <input type="reset"value="Reset" /> <br>
 	</form>
+	
 		</div>
 		</div>
 		<div id="footerwrap">
