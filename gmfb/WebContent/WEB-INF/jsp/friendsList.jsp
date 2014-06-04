@@ -8,7 +8,18 @@
 <head>
 <title>Hello Facebook</title>
 <link href="<c:url value="/css/grid.css" />" rel="stylesheet"></head>
+		<link href="<c:url value="/css/style.css" />" rel="stylesheet"></head>
+
 <body>
+<div id="wrapper">
+		<div id="headerwrap">
+			<div id="header">
+				<h1>Facebook Analyzer</h1>
+				<p>POLIMI</p>
+			</div>
+		</div>
+		<div id="contentwrap">
+			<div id="content">
 Hello, <span th:text="${facebookProfile.name}">${facebookProfile.name}</span>
 	<form action="checkboxes" method="post">
 		<input type="submit" value="Show Common Friends" /> <input type="reset"
@@ -20,5 +31,13 @@ Hello, <span th:text="${facebookProfile.name}">${facebookProfile.name}</span>
 		</ul>
 		<p></p>
 	</form>
+		</div>
+		</div>
+		<div id="footerwrap">
+			<div id="footer">
+				<p>This is the footer</p>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -5,9 +5,19 @@
 <html>
 <head>
 <title>Hello Facebook</title>
+		<link href="<c:url value="/css/style.css" />" rel="stylesheet"></head>
+
 </head>
 <body>
-
+<div id="wrapper">
+		<div id="headerwrap">
+			<div id="header">
+				<h1>Facebook Analyzer</h1>
+				<p>POLIMI</p>
+			</div>
+		</div>
+		<div id="contentwrap">
+			<div id="content">
 	Hello,
 	<span th:text="${facebookProfile.name}">${facebookProfile.name}</span>!
 	<form action="connect/facebook" method="POST">
@@ -27,7 +37,14 @@
 			</ul>
 		</ul>
 	</c:forEach>
-
+	</div>
+		</div>
+		<div id="footerwrap">
+			<div id="footer">
+				<p>This is the footer</p>
+			</div>
+		</div>
+	</div>
 
 
 
