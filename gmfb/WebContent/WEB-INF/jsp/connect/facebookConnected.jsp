@@ -19,6 +19,9 @@
 		<div id="contentwrap">
 			<div id="content">
 		<h3>Connected to Facebook</h3>
+		
+		
+		
 
 		
 			You are now connected to your Facebook account.<br>
