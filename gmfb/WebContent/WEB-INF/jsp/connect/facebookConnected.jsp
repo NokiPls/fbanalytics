@@ -13,25 +13,21 @@
 		<div id="headerwrap">
 			<div id="header">
 				<h1>Facebook Analyzer</h1>
-				<p>POLIMI</p>
 			</div>
 		</div>
 		<div id="contentwrap">
 			<div id="content">
 		<h3>Connected to Facebook</h3>
-		
-		
-		
-
-		
-			You are now connected to your Facebook account.<br>
-			Click <a href="/gmfb"  class="button">here</a> to see your Profile.
-		
+		<p>
+		You are now connected to your Facebook account.
+		<br>
+		<a href="/gmfb"  class="button">See your Profile</a>
+			</p>
 			</div>
 		</div>
 		<div id="footerwrap">
 			<div id="footer">
-				<p>This is the footer</p>
+				<p>POLIMI - Advanced Web Technologies project</p>
 			</div>
 		</div>
 	</div>

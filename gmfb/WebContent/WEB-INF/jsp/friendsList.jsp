@@ -15,14 +15,13 @@
 		<div id="headerwrap">
 			<div id="header">
 				<h1>Facebook Analyzer</h1>
-				<p>POLIMI</p>
 			</div>
 		</div>
 		<div id="contentwrap">
 			<div id="content">
 Hello, <span th:text="${facebookProfile.name}">${facebookProfile.name}</span>
 	<form action="checkboxes" method="post"  >
-		<input type="submit"   value="Show Common Friends" class="button"/> 
+		<input type="submit"   value="Common Friends" class="button"/> 
 		<input type="reset" value="Reset" class="button"/> <br>
 			<ul class="checkbox-grid">
 				<c:forEach var="i" items="${names}" varStatus="status">

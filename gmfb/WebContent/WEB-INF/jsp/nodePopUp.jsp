@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<
+
 
 	<image src="https://graph.facebook.com/${profile.id}/picture?redirect=1&height=100&type=normal&width=100"/>
 	<br>

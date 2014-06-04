@@ -13,7 +13,6 @@
 		<div id="headerwrap">
 			<div id="header">
 				<h1>Facebook Analyzer</h1>
-				<p>POLIMI</p>
 			</div>
 		</div>
 		<div id="contentwrap">

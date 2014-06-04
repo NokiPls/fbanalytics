@@ -15,26 +15,26 @@
 		<div id="headerwrap">
 			<div id="header">
 				<h1>Facebook Analyzer</h1>
-				<p>POLIMI</p>
+				
 			</div>
 		</div>
 		<div id="contentwrap">
-			<div id="content">
-				<h2>Connect to facebook</h2>
-				<p>connettiti per accedere alla webapp</p>
+		<div id="content">
+			
+			<h3>	Connect to facebook</h3>
+					
 				<form action="facebook" method="POST">
 					<div class="formInfo">
-						<p>
-							<button type="submit"  class="button">Connect to Facebook</button>
-						</p>
+							<button type="submit"  class="button">Connect </button>
 				</form>
-				<p>You aren't connected to Facebook yet. Click the button to
-					connect Spring Social Showcase with your Facebook account.</p>
+				
+			<p>You aren't connected to Facebook yet. Click the button to
+					connect this WebApp with your Facebook account.</p>
 			</div>
 		</div>
 		<div id="footerwrap">
 			<div id="footer">
-				<p>This is the footer</p>
+				<p>POLIMI - Advanced Web Technologies project</p>
 			</div>
 		</div>
 	</div>
