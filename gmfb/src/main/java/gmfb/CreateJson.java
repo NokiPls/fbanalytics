@@ -10,10 +10,10 @@ public class CreateJson {
 	// {"nodes":[{"name":"John Bonham","group":1},{..}],"links":[{"source":"int","target":"int","value":"int"}]}
 	// in which source and target are the position in the array "nodes" of the
 	// elements to be linked
-	CreateJson(ArrayList<Friends> friend, String self, String id) {
+	CreateJson(ArrayList<Friends> friend, String self, Long id) {
 		int j = 0;
 		int i = 0;
-		ArrayList<String> idPos = new ArrayList<String>();
+		ArrayList<Long> idPos = new ArrayList<Long>();
 		// Adding the user as position 0
 		idPos.add(0, id);
 		if(self.contains("\'"))

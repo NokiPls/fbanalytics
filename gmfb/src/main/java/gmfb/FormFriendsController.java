@@ -79,12 +79,12 @@ public class FormFriendsController {
 			FacebookProfile friend = facebook.userOperations().getUserProfile(
 					idSelected[i]);
 			CommonFriendsList.add(i,
-					new Friends(friend.getId(), friend.getName()));
+					new Friends(Long.parseLong(friend.getId()), friend.getName()));
 			for (int k = 0; k < mutual.size(); k++) {
 				CommonFriendsList
 						.get(i)
 						.getCommonFriends()
-						.add(new Friends(mutual.get(k).getId(), mutual.get(k)
+						.add(new Friends(Long.parseLong(mutual.get(k).getId()), mutual.get(k)
 								.getName()));
 
 			}
@@ -102,8 +102,8 @@ public class FormFriendsController {
 		}
 
 		CreateJson json = new CreateJson(CommonFriendsList, facebook
-				.userOperations().getUserProfile().getName(), facebook
-				.userOperations().getUserProfile().getId());
+				.userOperations().getUserProfile().getName(), Long.parseLong(facebook
+				.userOperations().getUserProfile().getId()));
 		
 		//creo grafo per statistica
 		String myId = facebook.userOperations().getUserProfile().getId();
@@ -111,7 +111,7 @@ public class FormFriendsController {
 		graphF.addNode(myId);
 		for(int i=0; i<CommonFriendsList.size();i++)
 		{
-			String nodeId=CommonFriendsList.get(i).getId();
+			String nodeId=Long.toString(CommonFriendsList.get(i).getId());
 			
 			if(graphF.getNode(nodeId)==null)
 			{
@@ -120,7 +120,7 @@ public class FormFriendsController {
 			}
 			for(int k=0; k<CommonFriendsList.get(i).getCommonFriends().size();k++)
 			{
-				String s_nodeId=CommonFriendsList.get(i).getCommonFriends().get(k).getId();
+				String s_nodeId=Long.toString(CommonFriendsList.get(i).getCommonFriends().get(k).getId());
 				
 				if(graphF.getNode(s_nodeId)==null)
 				{					

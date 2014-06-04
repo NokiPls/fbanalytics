@@ -16,14 +16,12 @@ import org.hibernate.annotations.Table;
 @Table(appliesTo = "")
 public class Friends {
 	private String name;
-	private String id;
-	private ArrayList<Friends> commonFriends = new ArrayList<Friends>();
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer oid;
-
+	private Long id;
+	private ArrayList<Friends> commonFriends = new ArrayList<Friends>();
+	
 	public Friends(){};
-	public Friends(String newId, String newName) {
+	public Friends(Long newId, String newName) {
 		id = newId;
 		name = newName;
 	}
@@ -36,11 +34,11 @@ public class Friends {
 		this.name = name;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
