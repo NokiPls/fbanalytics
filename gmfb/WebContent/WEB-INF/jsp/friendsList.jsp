@@ -25,11 +25,10 @@ Hello, <span th:text="${facebookProfile.name}">${facebookProfile.name}</span>
 		<input type="submit" value="Show Common Friends" /> <input type="reset"
 			value="Reset" /> <br>
 			<ul class="checkbox-grid">
-		<c:forEach var="i" items="${names}" varStatus="status">
-			<li><input type="checkbox" name="id[]" value="${id[status.index]}" />${i} </li>
-		</c:forEach>
-		</ul>
-		<p></p>
+				<c:forEach var="i" items="${names}" varStatus="status">
+				<li><input type="checkbox" name="id[]" value="${id[status.index]}" />${i} </li>
+				</c:forEach>
+			</ul>
 	</form>
 		</div>
 		</div>

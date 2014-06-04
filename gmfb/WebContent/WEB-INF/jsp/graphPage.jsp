@@ -32,19 +32,19 @@
 
 	Hello,
 	<span th:text="${facebookProfile.name}">${facebookProfile.name}</span>!
-	<br> You have selected
+	<br> You have selected: 
 	<c:forEach var="i" items="${Friends}" varStatus="status">
-		<ul>
-			<li><c:out value="${i.name}"></c:out></li>
-		</ul>
+		
+			-<c:out value="${i.name}"></c:out> 
+		
 	</c:forEach>
 	<script src="http://d3js.org/d3.v3.min.js"></script>
 	<script>
 		var data = eval('(' + '${graph}' + ')');
 
-		var width = 960, height = 500;
+		var width = 930, height = 650;
 
-		var svg = d3.select("body").append("svg").attr("width", width).attr(
+		var svg = d3.select("#content").append("svg").attr("width", width).attr(
 				"height", height);
 
 		<!-- to modify graph visualization   -->
