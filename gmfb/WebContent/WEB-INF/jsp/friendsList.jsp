@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<title>Hello Facebook</title>
+<title>Friends List</title>
 <link href="<c:url value="/css/grid.css" />" rel="stylesheet"></head>
 		<link href="<c:url value="/css/style.css" />" rel="stylesheet"></head>
 

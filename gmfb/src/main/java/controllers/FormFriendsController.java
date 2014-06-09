@@ -37,7 +37,6 @@ public class FormFriendsController {
 	@RequestMapping(value = "/List", method = RequestMethod.GET)
 	public String friendsCheckboxes(Model model) {
 
-		List<String> id, name;
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
@@ -61,6 +60,8 @@ public class FormFriendsController {
 			return "redirect:/connect/facebook";
 		}
 		CommonFriendsList = new ArrayList<Friend>();
+		
+		//TODO service che restituisca questa roba
 		// creo Lista di amici selezionati e per ognuno di essi la lista degli
 		// amici in comune
 		for (int i = 0; i < idSelected.length; i++) {
@@ -95,7 +96,7 @@ public class FormFriendsController {
 		CreateJson json = new CreateJson(CommonFriendsList, facebook
 				.userOperations().getUserProfile().getName(), Long.parseLong(facebook
 				.userOperations().getUserProfile().getId()));
-		
+		//TODO service che crei grafo per statistica
 		//creo grafo per statistica
 		String myId = facebook.userOperations().getUserProfile().getId();
 		graphF=  new SingleGraph("graph");
