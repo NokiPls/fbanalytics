@@ -1,10 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
-
 import org.graphstream.algorithm.BetweennessCentrality;
 import org.graphstream.algorithm.measure.AbstractCentrality;
 import org.graphstream.algorithm.measure.ClosenessCentrality;
@@ -12,8 +9,6 @@ import org.graphstream.algorithm.measure.DegreeCentrality;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
-import org.springframework.social.facebook.api.PagedList;
-import org.springframework.social.facebook.api.Reference;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import services.CommonFriendsList;
+import services.CreateGraph;
 import services.CreateJson;
 import services.ListOfFriends;
 import bean.Friend;
@@ -81,37 +77,11 @@ public class FormFriendsController {
 		CreateJson json = new CreateJson(commonFriendsList, facebook
 				.userOperations().getUserProfile().getName(), Long.parseLong(facebook
 				.userOperations().getUserProfile().getId()));
-		//TODO service che crei grafo per statistica
+
 		//creo grafo per statistica
 		String myId = facebook.userOperations().getUserProfile().getId();
-		graphF=  new SingleGraph("graph");
-		graphF.addNode(myId);
-		for(int i=0; i<commonFriendsList.size();i++)
-		{
-			String nodeId=Long.toString(commonFriendsList.get(i).getId());
-			
-			if(graphF.getNode(nodeId)==null)
-			{
-				graphF.addNode(nodeId);
-				graphF.addEdge(myId+nodeId,myId ,nodeId );
-			}
-			for(int k=0; k<commonFriendsList.get(i).getCommonFriends().size();k++)
-			{
-				String s_nodeId=Long.toString(commonFriendsList.get(i).getCommonFriends().get(k).getId());
-				
-				if(graphF.getNode(s_nodeId)==null)
-				{					
-					graphF.addNode(s_nodeId);
-					graphF.addEdge(nodeId+s_nodeId,nodeId ,s_nodeId);
-					graphF.addEdge(myId+s_nodeId,myId ,s_nodeId);
-				}
-				else if((graphF.getEdge(nodeId+s_nodeId)==null)&&(graphF.getEdge(s_nodeId+nodeId)==null))
-				{
-					graphF.addEdge(nodeId+s_nodeId, nodeId ,s_nodeId);
-				}
-			}
-			
-		}
+		CreateGraph graph=new CreateGraph(commonFriendsList, myId);
+		graphF=graph.getGraphF();
 		/* compute all the metrics*/
 
 		//compute DegreeCentrality centrality for each node

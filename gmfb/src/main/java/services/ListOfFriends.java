@@ -1,9 +1,6 @@
 package services;
 
 import java.util.ArrayList;
-
-import javax.inject.Inject;
-
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.social.facebook.api.PagedList;
@@ -12,7 +9,6 @@ public class ListOfFriends {
 	private ArrayList<String> id;
 	private ArrayList<String> name;
 	
-	@Inject
 	public ListOfFriends(Facebook facebook) {
 		PagedList<FacebookProfile> friends = facebook.friendOperations()
 				.getFriendProfiles();
