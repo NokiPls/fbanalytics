@@ -1,4 +1,4 @@
-package gmfb;
+package controllers;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.social.UserIdSource;

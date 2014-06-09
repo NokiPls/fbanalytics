@@ -14,14 +14,14 @@ import org.hibernate.annotations.Table;
 //@Entity deprecated!?
 @DynamicUpdate
 @Table(appliesTo = "")
-public class Friends {
+public class Friend {
 	private String name;
 	@Id
 	private Long id;
-	private ArrayList<Friends> commonFriends = new ArrayList<Friends>();
+	private ArrayList<Friend> commonFriends = new ArrayList<Friend>();
 	
-	public Friends(){};
-	public Friends(Long newId, String newName) {
+	public Friend(){};
+	public Friend(Long newId, String newName) {
 		id = newId;
 		name = newName;
 	}
@@ -42,11 +42,11 @@ public class Friends {
 		this.id = id;
 	}
 
-	public ArrayList<Friends> getCommonFriends() {
+	public ArrayList<Friend> getCommonFriends() {
 		return commonFriends;
 	}
 
-	public void setCommonFriends(ArrayList<Friends> commonFriends) {
+	public void setCommonFriends(ArrayList<Friend> commonFriends) {
 		this.commonFriends = commonFriends;
 	}
 

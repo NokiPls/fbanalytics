@@ -1,8 +1,8 @@
-package gmfb;
+package services;
 
 import java.util.ArrayList;
 
-import bean.Friends;
+import bean.Friend;
 
 public class CreateJson {
 	private String json, links = "";
@@ -10,7 +10,7 @@ public class CreateJson {
 	// {"nodes":[{"name":"John Bonham","group":1},{..}],"links":[{"source":"int","target":"int","value":"int"}]}
 	// in which source and target are the position in the array "nodes" of the
 	// elements to be linked
-	CreateJson(ArrayList<Friends> friend, String self, Long id) {
+	public CreateJson(ArrayList<Friend> friend, String self, Long id) {
 		int j = 0;
 		int i = 0;
 		ArrayList<Long> idPos = new ArrayList<Long>();
@@ -37,7 +37,7 @@ public class CreateJson {
 						+ idPos.indexOf(friend.get(i).getId())
 						+ ",\"value\":1},";
 			}
-			ArrayList<Friends> common = friend.get(i).getCommonFriends();
+			ArrayList<Friend> common = friend.get(i).getCommonFriends();
 			for (j = 0; j < common.size(); j++) {
 				if (!idPos.contains(common.get(j).getId())) {
 					idPos.add(common.get(j).getId());

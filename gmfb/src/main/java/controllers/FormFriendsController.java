@@ -1,17 +1,13 @@
-package gmfb;
-
-import bean.Friends;
+package controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import org.graphstream.algorithm.BetweennessCentrality;
 import org.graphstream.algorithm.measure.AbstractCentrality;
 import org.graphstream.algorithm.measure.ClosenessCentrality;
 import org.graphstream.algorithm.measure.DegreeCentrality;
-import org.graphstream.graph.implementations.*;
+import org.graphstream.graph.implementations.SingleGraph;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.social.facebook.api.PagedList;
@@ -22,11 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import services.CreateJson;
+import services.ListOfFriends;
+import bean.Friend;
+
 @Controller
 public class FormFriendsController {
 
 	private Facebook facebook;
-	public ArrayList<Friends> CommonFriendsList = new ArrayList<Friends>();
+	public ArrayList<Friend> CommonFriendsList = new ArrayList<Friend>();
 	public	SingleGraph graphF = new SingleGraph("graph");
 
 	@Inject
@@ -41,20 +41,11 @@ public class FormFriendsController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
-
-		PagedList<FacebookProfile> friends = facebook.friendOperations()
-				.getFriendProfiles();
-		id = new ArrayList<String>();
-		name = new ArrayList<String>();
-
-		for (int i = 0; i < friends.size(); i++) {
-			// creo lista di nomi e id da passare alla pagina con le chekboxes
-			id.add(friends.get(i).getId());
-			name.add(friends.get(i).getName());
-		}
+		//the service create list of friends to display in the checkboxes
+		ListOfFriends friends= new ListOfFriends(facebook);
 
 		model.addAttribute(facebook.userOperations().getUserProfile());
-		model.addAttribute("names", name).addAttribute("id", id);
+		model.addAttribute("names", friends.getListOfName()).addAttribute("id", friends.getListOfId());
 		return "friendsList";
 	}
 
@@ -69,7 +60,7 @@ public class FormFriendsController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
-		CommonFriendsList = new ArrayList<Friends>();
+		CommonFriendsList = new ArrayList<Friend>();
 		// creo Lista di amici selezionati e per ognuno di essi la lista degli
 		// amici in comune
 		for (int i = 0; i < idSelected.length; i++) {
@@ -79,12 +70,12 @@ public class FormFriendsController {
 			FacebookProfile friend = facebook.userOperations().getUserProfile(
 					idSelected[i]);
 			CommonFriendsList.add(i,
-					new Friends(Long.parseLong(friend.getId()), friend.getName()));
+					new Friend(Long.parseLong(friend.getId()), friend.getName()));
 			for (int k = 0; k < mutual.size(); k++) {
 				CommonFriendsList
 						.get(i)
 						.getCommonFriends()
-						.add(new Friends(Long.parseLong(mutual.get(k).getId()), mutual.get(k)
+						.add(new Friend(Long.parseLong(mutual.get(k).getId()), mutual.get(k)
 								.getName()));
 
 			}

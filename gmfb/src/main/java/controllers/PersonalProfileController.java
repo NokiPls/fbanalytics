@@ -1,4 +1,4 @@
-package gmfb;
+package controllers;
 
 import javax.inject.Inject;
 import org.springframework.social.facebook.api.Facebook;
