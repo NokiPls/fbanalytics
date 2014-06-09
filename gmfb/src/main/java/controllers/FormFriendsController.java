@@ -2,7 +2,9 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import org.graphstream.algorithm.BetweennessCentrality;
 import org.graphstream.algorithm.measure.AbstractCentrality;
 import org.graphstream.algorithm.measure.ClosenessCentrality;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import services.CommonFriendsList;
 import services.CreateJson;
 import services.ListOfFriends;
 import bean.Friend;
@@ -26,7 +29,7 @@ import bean.Friend;
 public class FormFriendsController {
 
 	private Facebook facebook;
-	public ArrayList<Friend> CommonFriendsList = new ArrayList<Friend>();
+	public ArrayList<Friend> commonFriendsList = new ArrayList<Friend>();
 	public	SingleGraph graphF = new SingleGraph("graph");
 
 	@Inject
@@ -53,37 +56,19 @@ public class FormFriendsController {
 			@RequestParam(value = "id[]", required = false) String[] idSelected,
 			Model model) {
 
-
 		if (idSelected==null)
 			return "redirect:/List";
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
-		CommonFriendsList = new ArrayList<Friend>();
 		
-		//TODO service che restituisca questa roba
-		// creo Lista di amici selezionati e per ognuno di essi la lista degli
+		// service crea Lista di amici selezionati e per ognuno di essi la lista degli
 		// amici in comune
-		for (int i = 0; i < idSelected.length; i++) {
-			PagedList<Reference> mutual = facebook.friendOperations()
-					.getMutualFriends(idSelected[i]);
-
-			FacebookProfile friend = facebook.userOperations().getUserProfile(
-					idSelected[i]);
-			CommonFriendsList.add(i,
-					new Friend(Long.parseLong(friend.getId()), friend.getName()));
-			for (int k = 0; k < mutual.size(); k++) {
-				CommonFriendsList
-						.get(i)
-						.getCommonFriends()
-						.add(new Friend(Long.parseLong(mutual.get(k).getId()), mutual.get(k)
-								.getName()));
-
-			}
-		}
+		CommonFriendsList common=new CommonFriendsList(facebook,idSelected );
+		commonFriendsList=common.getCommonFriends();
 
 		model.addAttribute(facebook.userOperations().getUserProfile());
-		model.addAttribute("Friends", CommonFriendsList);
+		model.addAttribute("Friends", commonFriendsList);
 		return "hierarchicallist";
 	}
 
@@ -93,7 +78,7 @@ public class FormFriendsController {
 			return "redirect:/connect/facebook";
 		}
 
-		CreateJson json = new CreateJson(CommonFriendsList, facebook
+		CreateJson json = new CreateJson(commonFriendsList, facebook
 				.userOperations().getUserProfile().getName(), Long.parseLong(facebook
 				.userOperations().getUserProfile().getId()));
 		//TODO service che crei grafo per statistica
@@ -101,18 +86,18 @@ public class FormFriendsController {
 		String myId = facebook.userOperations().getUserProfile().getId();
 		graphF=  new SingleGraph("graph");
 		graphF.addNode(myId);
-		for(int i=0; i<CommonFriendsList.size();i++)
+		for(int i=0; i<commonFriendsList.size();i++)
 		{
-			String nodeId=Long.toString(CommonFriendsList.get(i).getId());
+			String nodeId=Long.toString(commonFriendsList.get(i).getId());
 			
 			if(graphF.getNode(nodeId)==null)
 			{
 				graphF.addNode(nodeId);
 				graphF.addEdge(myId+nodeId,myId ,nodeId );
 			}
-			for(int k=0; k<CommonFriendsList.get(i).getCommonFriends().size();k++)
+			for(int k=0; k<commonFriendsList.get(i).getCommonFriends().size();k++)
 			{
-				String s_nodeId=Long.toString(CommonFriendsList.get(i).getCommonFriends().get(k).getId());
+				String s_nodeId=Long.toString(commonFriendsList.get(i).getCommonFriends().get(k).getId());
 				
 				if(graphF.getNode(s_nodeId)==null)
 				{					
@@ -158,7 +143,7 @@ public class FormFriendsController {
 	        
 		model.addAttribute("graph", json.getJson());
 		model.addAttribute(facebook.userOperations().getUserProfile());
-		model.addAttribute("Friends", CommonFriendsList);
+		model.addAttribute("Friends", commonFriendsList);
 
 		return "graphPage";
 	}
