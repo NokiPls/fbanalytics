@@ -7,11 +7,13 @@
 <html>
 <head>
 <title>Friends List</title>
-<link href="<c:url value="/css/grid.css" />" rel="stylesheet"></head>
-		<link href="<c:url value="/css/style.css" />" rel="stylesheet"></head>
+<link href="<c:url value="/css/grid.css" />" rel="stylesheet">
+</head>
+<link href="<c:url value="/css/style.css" />" rel="stylesheet">
+</head>
 
 <body>
-<div id="wrapper">
+	<div id="wrapper">
 		<div id="headerwrap">
 			<div id="header">
 				<h1>Facebook Analyzer</h1>
@@ -19,19 +21,20 @@
 		</div>
 		<div id="contentwrap">
 			<div id="content">
-Hello, ${facebookProfile.name}<br>
-	<form action="checkboxes" method="post"  >
-		<input type="submit"   value="Common Friends" class="button"/> 
-		<input type="reset" value="Reset" class="button"/> <br>
-			<ul class="checkbox-grid">
-				<c:forEach var="i" items="${names}" varStatus="status">
-				<li><input type="checkbox" name="id[]" value="${id[status.index]}" />${i} </li>
-				</c:forEach>
-			</ul>
- <input type="reset"value="Reset"  class="button"/> <br>
-	</form>
-	
-		</div>
+				Hello, ${facebookProfile.name}<br>
+				<form action="checkboxes" method="post">
+					<input type="submit" value="Common Friends" class="button" /> <input
+						type="reset" value="Reset" class="button" /> <br>
+					<ul class="checkbox-grid">
+						<c:forEach var="i" items="${names}" varStatus="status">
+							<li><input type="checkbox" name="id[]"
+								value="${id[status.index]}" />${i}</li>
+						</c:forEach>
+					</ul>
+					<input type="reset" value="Reset" class="button" /> <br>
+				</form>
+
+			</div>
 		</div>
 		<div id="footerwrap">
 			<div id="footer">

@@ -62,7 +62,8 @@
 							.on(
 									"click",
 									function(d) {
-										if (d3.event.defaultPrevented) return;
+										if (d3.event.defaultPrevented)
+											return;
 										var p1 = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no'
 										var p2 = 'width=80,height=80,right=100,top=100'
 										open('GraphNode?id=' + d.id, 'test', p1
