@@ -1,13 +1,17 @@
 package services;
 
 import java.util.ArrayList;
+
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.social.facebook.api.PagedList;
 import org.springframework.social.facebook.api.Reference;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import bean.Friend;
 
+@Service
 public class CommonFriendsList {
 
 	ArrayList<Friend> CommonFriendsList = new ArrayList<Friend>();

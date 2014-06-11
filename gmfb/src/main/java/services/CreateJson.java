@@ -2,8 +2,11 @@ package services;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Service;
+
 import bean.Friend;
 
+@Service
 public class CreateJson {
 	private String json, links = "";
 	private final String NODES = "\"nodes\":";

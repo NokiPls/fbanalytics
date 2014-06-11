@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Entity;
@@ -18,6 +19,7 @@ public class Friend {
 	private String name;
 	@Id
 	private Long id;
+	@OneToMany(mappedBy = "sId")//(fetch=FetchType.LAZY)
 	private ArrayList<Friend> commonFriends = new ArrayList<Friend>();
 	
 	public Friend(){};
