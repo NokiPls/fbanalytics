@@ -6,9 +6,27 @@
 <head>
 <title>Personal Profile</title>
 <link href="<c:url value="/css/style.css" />" rel="stylesheet">
-</head>
 
-</head>
+
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+    <script type="text/javascript">
+        function Facebook() {
+          FB.init({ 
+            appId:'279105595599278', cookie:true, 
+            status:true, xfbml:true
+          });
+    
+        }
+        window.onload = Facebook;
+        function logoutFacebook() {
+            FB.logout(function (response) {
+                console.log("Here logout response", response);
+                document.getElementById("disconnessionForm").submit();
+
+            });
+          }
+      </script>
+      </head>
 <body>
 	<div id="wrapper">
 		<div id="headerwrap">
@@ -29,11 +47,10 @@
 
 
 
-
-				<form action="connect/facebook" method="POST">
+				<form id="disconnessionForm" action="connect/facebook" method="POST">
 					<a href="List" class="button">see your friends</a> <input
 						type="hidden" name="_method" value="delete"> <input
-						type="submit" class="button" value="Disconnect">
+						type="button" class="button" value="Disconnect" onclick="javascript:logoutFacebook()">
 
 				</form>
 			</div>
