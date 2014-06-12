@@ -32,7 +32,12 @@
 		padding: 0;
 		list-style: none;
 	}
-	
+	.checkbox-grid li {
+    display: block;
+    float: left;
+    width: 33%;
+    text-align:left;
+}
 	p
 	{
 		line-height: 180%;

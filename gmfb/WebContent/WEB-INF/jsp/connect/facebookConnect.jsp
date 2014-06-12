@@ -28,8 +28,8 @@
 				<div id="menu">
 					<ul>
 						<li class="active"><a href="#" title="">Homepage</a></li>
-						<li><a href="javascript:submit()" title="">Sign In</a></li>
 						<li><a href="#" title="">About Us</a></li>
+						<li><a href="javascript:submit()" title="">Sign In</a></li>
 
 					</ul>
 				</div>
