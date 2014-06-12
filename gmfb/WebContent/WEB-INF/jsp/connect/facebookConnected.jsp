@@ -3,33 +3,72 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><html>
-	<head>
-		<title>Connected to Facebook</title>
-			<link href="<c:url value="/css/style.css" />" rel="stylesheet"></head>
-		
-	</head>
-	<body>
-	<div id="wrapper">
-		<div id="headerwrap">
-			<div id="header">
-				<h1>Facebook Analyzer</h1>
-			</div>
-		</div>
-		<div id="contentwrap">
-			<div id="content">
-		<h3>Connected to Facebook</h3>
-		<p>
-		You are now connected to your Facebook account.
-		<br>
-		<a href="/gmfb"  class="button">See your Profile</a>
-			</p>
-			</div>
-		</div>
-		<div id="footerwrap">
-			<div id="footer">
-				<p>POLIMI - Advanced Web Technologies project</p>
+<head>
+<title>Connected to Facebook</title>
+<link href="<c:url value="/css/style.css" />" rel="stylesheet">
+<link href="<c:url value="/css/fonts.css" />" rel="stylesheet">
+<link
+	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Quicksand:400,700|Questrial"
+	rel="stylesheet" />
+
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript">
+	function Facebook() {
+		FB.init({
+			appId : '279105595599278',
+			cookie : true,
+			status : true,
+			xfbml : true
+		});
+
+	}
+	window.onload = Facebook;
+	function logoutFacebook() {
+		FB.logout(function(response) {
+			console.log("Here logout response", response);
+			document.getElementById("disconnessionForm").submit();
+
+		});
+	}
+</script>
+
+</head>
+<body>
+<body>
+	<div id="header-wrapper">
+		<div id="header" class="container">
+			<div id="logo">
+				<h1>
+					<a href="#">Facebook Analytics</a>
+				</h1>
+				<div id="menu">
+					<ul>
+						<li class="active"><a href="#" title="">Homepage</a></li>
+						<li><a href="#" title="">About Us</a></li>
+						<li><a href="javascript:logoutFacebook()" title="">Disconnect</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
-	</body>
+	<div id="page-wrapper">
+		<div id="welcome" class="container">
+			<p>You are now connected to your Facebook account.<br>
+			<a href="/gmfb">See your Profile</a>
+			<form id="disconnessionForm" action="connect/facebook" method="POST">
+				<input type="hidden" name="_method" value="delete">
+			</form>
+			</p>
+		</div>
+	</div>
+	<div class="wrapper"></div>
+	</div>
+	<div id="copyright" class="container">
+		<p>
+		<p>POLIMI - Advanced Web Technology</p>
+
+		</p>
+
+	</div>
+</body>
 </html>
