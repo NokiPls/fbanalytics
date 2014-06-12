@@ -1,5 +1,6 @@
 package bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
@@ -13,8 +14,12 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "")
-public class Friend {
+@Table(name = "friend")
+public class Friend implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8828388186922307614L;
 	private String name;
 	@Id
 	private Long id;
