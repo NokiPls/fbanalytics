@@ -3,9 +3,11 @@ package services;
 import java.util.ArrayList;
 
 import org.graphstream.graph.implementations.SingleGraph;
+import org.springframework.stereotype.Service;
 
 import bean.Friend;
 
+@Service
 public class CreateGraph {
 	public SingleGraph graphF = new SingleGraph("graph");
 

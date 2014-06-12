@@ -10,18 +10,17 @@
 				        http://www.springframework.org/schema/mvc/spring-mvc.xsd"
 	xmlns:tx="http://www.springframework.org/schema/tx">
 
-
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://server:3306/db_schema" />
-		<property name="username" value="dbuser " />
-		<property name="password" value="dbpassword " />
+		<property name="url" value="jdbc:mysql://server:3306/fbanalytics" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
 	</bean>
 	<bean id="emf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="bean" />
-		<property name="persistenceUnitName" value="Friend" />
+		<property name="persistenceUnitName" value="friend" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
 	</bean>
 	<bean id="jpaVendorAdapter"

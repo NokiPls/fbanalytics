@@ -2,8 +2,11 @@ package services;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Service;
+
 import bean.Friend;
 
+@Service
 public class CreateJson {
 	private String json, links = "";
 	private final String NODES = "\"nodes\":";
@@ -13,6 +16,9 @@ public class CreateJson {
 	private final String SOURCE = "\"source\":";
 	private final String TARGET = "\"target\":";
 
+	
+	//org.codehouse.jackson
+	
 	// The json is like
 	// {"nodes":[{"name":"John Bonham","group":1},{..}],"links":[{"source":"int","target":"int","value":"int"}]}
 	// in which source and target are the position in the array "nodes" of the
