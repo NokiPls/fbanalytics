@@ -14,16 +14,29 @@
 
 <body>
 	<div id="wrapper">
-		<div id="headerwrap">
-			<div id="header">
-				<h1>Facebook Analyzer</h1>
+		<div id="header-wrapper">
+			<div id="header" class="container">
+				<div id="logo">
+					<h1>
+						<a href="#">Facebook Analytics</a>
+					</h1>
+					<div id="menu">
+						<ul>
+							<li class="active"><a href="#" title="">Homepage</a></li>
+							<li><a href="javascript:logoutFacebook()" title="">Log
+									Out</a></li>
+							<li><a href="#" title="">About Us</a></li>
+
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div id="contentwrap">
-			<div id="content">
-				Hello, ${facebookProfile.name}<br>
+		<div id="page-wrapper">
+			<div id="welcome" class="container">
+				Mr ${facebookProfile.name}, here's the list of your friends :)<br>
 				<form action="checkboxes" method="post">
-					<input type="submit" value="Common Friends" class="button" /> <input
+					<input type="submit" value="Fetch Common Friends" class="button" /> <input
 						type="reset" value="Reset" class="button" /> <br>
 					<ul class="checkbox-grid">
 						<c:forEach var="i" items="${names}" varStatus="status">
@@ -31,7 +44,6 @@
 								value="${id[status.index]}" />${i}</li>
 						</c:forEach>
 					</ul>
-					<input type="reset" value="Reset" class="button" /> <br>
 				</form>
 
 			</div>

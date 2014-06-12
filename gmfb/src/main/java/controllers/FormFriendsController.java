@@ -1,7 +1,9 @@
 package controllers;
 
 import java.util.ArrayList;
+
 import javax.inject.Inject;
+
 import org.graphstream.algorithm.BetweennessCentrality;
 import org.graphstream.algorithm.measure.AbstractCentrality;
 import org.graphstream.algorithm.measure.ClosenessCentrality;

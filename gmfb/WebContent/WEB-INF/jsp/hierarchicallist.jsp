@@ -11,16 +11,28 @@
 </head>
 <body>
 	<div id="wrapper">
-		<div id="headerwrap">
-			<div id="header">
-				<h1>Facebook Analyzer</h1>
+		<div id="header-wrapper">
+			<div id="header" class="container">
+				<div id="logo">
+					<h1>
+						<a href="#">Facebook Analytics</a>
+					</h1>
+					<div id="menu">
+						<ul>
+							<li class="active"><a href="#" title="">Homepage</a></li>
+							<li><a href="javascript:logoutFacebook()" title="">Log
+									Out</a></li>
+							<li><a href="#" title="">About Us</a></li>
+
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div id="contentwrap">
-			<div id="content">
-				Hello, <span th:text="${facebookProfile.name}">${facebookProfile.name}</span>!
-				<br>
-				<br>
+		<div id="page-wrapper">
+			<div id="welcome" class="container">
+				Results fetched for you, Mr ${facebookProfile.name} :)
+				<br> <br>
 				<form action="openGraph" method="POST" class="form1">
 					<input type="submit" value="Open Graph" class="button">
 				</form>

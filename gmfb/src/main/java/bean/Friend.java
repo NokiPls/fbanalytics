@@ -2,24 +2,27 @@ package bean;
 
 import java.util.ArrayList;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.Table;
+//@Repository per salvare 
 
-//@Entity deprecated!?
-@DynamicUpdate
-@Table(appliesTo = "")
+
+
+@Entity
+@Table(name = "")
 public class Friend {
 	private String name;
 	@Id
 	private Long id;
+	@OneToMany(mappedBy="nomeattributo") //attento lazy
 	private ArrayList<Friend> commonFriends = new ArrayList<Friend>();
 
+	@ManyToOne
+	private Friend nomeattributo;
 	public Friend(){};
 	public Friend(Long newId, String newName) {
 		id = newId;

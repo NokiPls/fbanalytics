@@ -21,21 +21,25 @@
 </style>
 </head>
 <body>
-	<div id="wrapper">
-		<div id="headerwrap">
-			<div id="header">
-				<h1>Facebook Analyzer</h1>
+	<div id="header" class="container">
+		<div id="logo">
+			<h1>
+				<a href="#">Facebook Analytics</a>
+			</h1>
+			<div id="menu">
+				<ul>
+					<li class="active"><a href="#" title="">Homepage</a></li>
+					<li><a href="javascript:logoutFacebook()" title="">Log Out</a></li>
+					<li><a href="#" title="">About Us</a></li>
+
+				</ul>
 			</div>
 		</div>
-		<div id="contentwrap">
-			<div id="content">
-
-				Hello, <span th:text="${facebookProfile.name}">${facebookProfile.name}</span>!
-				<br> You have selected:
-				<c:forEach var="i" items="${Friends}" varStatus="status">
 		
+				Here's your graph, Mr ${facebookProfile.name} :) <br> You have
+				selected:
+				<c:forEach var="i" items="${Friends}" varStatus="status">
 			-<c:out value="${i.name}"></c:out>
-
 				</c:forEach>
 				<script src="http://d3js.org/d3.v3.min.js"></script>
 				<script>
@@ -81,11 +85,6 @@
 									}).attr("x", -40).attr("y", -18).attr(
 									"width", 50).attr("height", 50);
 
-					node.append("text").attr("dx", 12).attr("dy", ".35em")
-							.text(function(d) {
-								return d.name;
-							});
-
 					force.on("tick", function() {
 						link.attr("x1", function(d) {
 							return d.source.x;
@@ -104,13 +103,11 @@
 				</script>
 
 			</div>
-		</div>
 		<div id="footerwrap">
 			<div id="footer">
 				<p>POLIMI - Advanced Web Technologies project</p>
 			</div>
 		</div>
-	</div>
 
 
 </body>
