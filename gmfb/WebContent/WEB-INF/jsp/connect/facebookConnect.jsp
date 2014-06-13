@@ -23,11 +23,11 @@
 		<div id="header" class="container">
 			<div id="logo">
 				<h1>
-					<a href="#">Facebook Analytics</a>
+					<a href="/gmfb">Facebook Analytics</a>
 				</h1>
 				<div id="menu">
 					<ul>
-						<li class="active"><a href="#" title="">Homepage</a></li>
+						<li class="active"><a href="/gmfb" title="">Homepage</a></li>
 						<li><a href="#" title="">About Us</a></li>
 						<li><a href="javascript:submit()" title="">Sign In</a></li>
 
