@@ -39,8 +39,8 @@
 	<div id="page-wrapper">
 		<div id="welcome" class="container">
 			<form id="connectForm" action="facebook" method="POST"></form>
-			<p>You aren't signed in to Facebook yet. Click the button to
-				connect this WebApp with your Facebook account.</p>
+			<p>You aren't connected to Facebook yet. Click the sign in button to
+				start using this webapp :)</p>
 		</div>
 	</div>
 	<div id="copyright" class="container">

@@ -167,7 +167,7 @@
 	{
 		display: inline-block;
 		margin-top: 0.4em;
-		padding: 0.7em 0.3em;
+		padding: 0.5em 0.3em;
 		background: #6d84b4;
 		line-height: 1.8em;
 		letter-spacing: 1px;
@@ -186,7 +186,7 @@
 		line-height: 40px;
 		border-radius: 20px;
 		text-align: center;
-		color: #272925;
+		color: #FFF;
 	}
 	
 	.button-small
