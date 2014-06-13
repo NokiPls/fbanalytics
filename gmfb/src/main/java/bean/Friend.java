@@ -11,11 +11,9 @@ import javax.persistence.Table;
 
 //@Repository per salvare 
 
-
-
 @Entity
 @Table(name = "friend")
-public class Friend implements Serializable{
+public class Friend implements Serializable {
 	/**
 	 * 
 	 */
@@ -23,12 +21,16 @@ public class Friend implements Serializable{
 	private String name;
 	@Id
 	private Long id;
-	@OneToMany(mappedBy="nomeattributo") //attento lazy
+	@OneToMany(mappedBy = "key")
+	// attento lazy
 	private ArrayList<Friend> commonFriends = new ArrayList<Friend>();
 
 	@ManyToOne
-	private Friend nomeattributo;
-	public Friend(){};
+	private Friend key;
+
+	public Friend() {
+	};
+
 	public Friend(Long newId, String newName) {
 		id = newId;
 		name = newName;
