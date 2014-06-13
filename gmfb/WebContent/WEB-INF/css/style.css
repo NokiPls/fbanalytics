@@ -42,8 +42,12 @@ strong {
 	
 }
 
-input[type=button] {
+input[type=button], input[type=submit], input[type=reset] {
 	border: none;
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover{
+	background: rgb(70,70,70,1);
 }
 
 a {
@@ -52,6 +56,7 @@ a {
 
 a:hover {
 	text-decoration: none;
+	background: rgb(70,70,70,1);
 }
 
 .container {

@@ -20,13 +20,13 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="bean" />
-		<property name="persistenceUnitName" value="friend" />
+		<property name="persistenceUnitName" value="Friend" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
 	</bean>
 	<bean id="jpaVendorAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="database" value="MYSQL" />
-		<property name="hibernate.hbm2ddl.auto" value="create"/>
+		<property name="hibernate.hbm2ddl.auto" value="create" />
 	</bean>
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="emf" />

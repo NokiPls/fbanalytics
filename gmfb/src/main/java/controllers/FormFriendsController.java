@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import services.CommonFriendsList;
 import services.CreateGraph;
 import services.CreateJson;
+import services.FriendsRepo;
 import services.ListOfFriends;
 import bean.Friend;
 
@@ -34,6 +35,7 @@ public class FormFriendsController {
 	public FormFriendsController(Facebook facebook) {
 		this.facebook = facebook;
 	}
+	
 
 	@RequestMapping(value = "/List", method = RequestMethod.GET)
 	public String friendsCheckboxes(Model model) {
@@ -65,6 +67,8 @@ public class FormFriendsController {
 		// degli amici in comune
 		CommonFriendsList common = new CommonFriendsList(facebook, idSelected);
 		commonFriendsList = common.getCommonFriends();
+		//FriendsRepo a = new FriendsRepo();
+		//a.addFriendList(commonFriendsList);
 
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("Friends", commonFriendsList);
