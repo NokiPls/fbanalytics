@@ -14,16 +14,21 @@
 
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
-	function Facebook() {
-		FB.init({
-			appId : '279105595599278',
-			cookie : true,
-			status : true,
-			xfbml : true
-		});
+function Facebook() {
+	 FB.init({ 
+	 appId:'279105595599278', cookie:true, 
+	 status:true, xfbml:true
+	 });
+	 FB.getLoginStatus(function(response) {
+	 if (response.status === 'unknown'){// && response.status !== 'not_authorized'
 
-	}
-	window.onload = Facebook;
+			document.getElementById("disconnectionForm").submit();
+
+
+	 }
+	 }); }
+	 window.onload = Facebook;
+
 	function logoutFacebook() {
 		FB.logout(function(response) {
 			console.log("Here logout response", response);
