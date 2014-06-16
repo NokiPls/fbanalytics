@@ -2,12 +2,6 @@ package controllers;
 
 import java.util.ArrayList;
 
-import javax.inject.Inject;
-
-import org.graphstream.algorithm.BetweennessCentrality;
-import org.graphstream.algorithm.measure.AbstractCentrality;
-import org.graphstream.algorithm.measure.ClosenessCentrality;
-import org.graphstream.algorithm.measure.DegreeCentrality;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.facebook.api.Facebook;
@@ -33,16 +27,18 @@ public class FormFriendsController {
 	public SingleGraph graphF = new SingleGraph("graph");
 	private CommonFriendsList common;
 	private Graph graph;
-
+	//private FriendsService fs;
+	
 	@Autowired
-	public FormFriendsController(Facebook facebook, ListOfFriends friends, CommonFriendsList common, Graph graph) {
+	public FormFriendsController(Facebook facebook, ListOfFriends friends, CommonFriendsList common, Graph graph/*, FriendsService fs*/) {
 		this.facebook = facebook;
 		this.friends = friends;
 		this.common = common;
 		this.graph = graph;
+	//	this.fs=fs;
+		
 	}
-	
-	
+		
 	@RequestMapping(value = "/List", method = RequestMethod.GET)
 	public String friendsCheckboxes(Model model) {
 
@@ -72,8 +68,8 @@ public class FormFriendsController {
 		// degli amici in comune
 		common.createCommonList(facebook, idSelected);;
 		commonFriendsList = common.getCommonFriends();
-		//FriendsRepo a = new FriendsRepo();
-		//a.addFriendList(commonFriendsList);
+
+		//fs.addFriends(commonFriendsList);
 
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("Friends", commonFriendsList);
