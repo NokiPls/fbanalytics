@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.springframework.stereotype.Service;
 
-import bean.Friend;
+import domain.Friend;
 
 @Service
 public class CreateGraph {

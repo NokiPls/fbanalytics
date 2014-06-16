@@ -25,6 +25,10 @@ public class ListOfFriends {
 		}
 	}
 	
+	public void createFbList(Facebook facebook){
+		
+	}
+	
 	public ArrayList<String> getListOfId()
 	{
 		return id;

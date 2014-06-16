@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import domain.Friend;
+import repository.JpaFriendsRepo;
 import services.CommonFriendsList;
 import services.CreateGraph;
 import services.CreateJson;
-import services.FriendsRepo;
 import services.ListOfFriends;
-import bean.Friend;
 
 @Controller
 public class FormFriendsController {

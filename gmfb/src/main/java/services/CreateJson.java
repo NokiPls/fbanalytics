@@ -2,7 +2,7 @@ package services;
 
 import java.util.ArrayList;
 
-import bean.Friend;
+import domain.Friend;
 
 public class CreateJson {
 	private String json, links = "";

@@ -9,7 +9,7 @@ import org.springframework.social.facebook.api.Reference;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import bean.Friend;
+import domain.Friend;
 
 @Service
 public class CommonFriendsList {

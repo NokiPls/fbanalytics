@@ -1,4 +1,4 @@
-package bean;
+package domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//@Repository per salvare 
 
 @Entity
 @Table(name = "friend")
