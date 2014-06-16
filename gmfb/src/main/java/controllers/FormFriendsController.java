@@ -9,6 +9,7 @@ import org.graphstream.algorithm.measure.AbstractCentrality;
 import org.graphstream.algorithm.measure.ClosenessCentrality;
 import org.graphstream.algorithm.measure.DegreeCentrality;
 import org.graphstream.graph.implementations.SingleGraph;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import domain.Friend;
-import repository.JpaFriendsRepo;
 import services.CommonFriendsList;
 import services.CreateGraph;
 import services.CreateJson;
@@ -28,15 +28,19 @@ import services.ListOfFriends;
 public class FormFriendsController {
 
 	private Facebook facebook;
+	private ListOfFriends friends;
 	public ArrayList<Friend> commonFriendsList = new ArrayList<Friend>();
 	public SingleGraph graphF = new SingleGraph("graph");
+	private CommonFriendsList common;
 
-	@Inject
-	public FormFriendsController(Facebook facebook) {
+	@Autowired
+	public FormFriendsController(Facebook facebook, ListOfFriends friends, CommonFriendsList common) {
 		this.facebook = facebook;
+		this.friends = friends;
+		this.common = common;
 	}
 	
-
+	
 	@RequestMapping(value = "/List", method = RequestMethod.GET)
 	public String friendsCheckboxes(Model model) {
 
@@ -44,8 +48,7 @@ public class FormFriendsController {
 			return "redirect:/connect/facebook";
 		}
 		// the service create list of friends to display in the checkboxes
-		ListOfFriends friends = new ListOfFriends(facebook);
-
+		friends.createFbList(facebook);
 		model.addAttribute(facebook.userOperations().getUserProfile())
 				.addAttribute("names", friends.getListOfName())
 				.addAttribute("id", friends.getListOfId());
@@ -65,7 +68,7 @@ public class FormFriendsController {
 
 		// service crea Lista di amici selezionati e per ognuno di essi la lista
 		// degli amici in comune
-		CommonFriendsList common = new CommonFriendsList(facebook, idSelected);
+		common.createCommonList(facebook, idSelected);;
 		commonFriendsList = common.getCommonFriends();
 		//FriendsRepo a = new FriendsRepo();
 		//a.addFriendList(commonFriendsList);

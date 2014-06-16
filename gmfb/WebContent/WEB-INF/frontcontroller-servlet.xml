@@ -10,11 +10,13 @@
 				        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<context:component-scan base-package="controllers" />
+	<context:component-scan base-package="services" />
+	<context:component-scan base-package="repository" />
+	<context:annotation-config />
 
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 	<mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
-
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

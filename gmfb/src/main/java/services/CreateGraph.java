@@ -15,6 +15,9 @@ public class CreateGraph {
 		return graphF;
 	}
 
+	public CreateGraph() {
+	};
+
 	public CreateGraph(ArrayList<Friend> commonFriendsList, String myId) {
 		graphF = new SingleGraph("graph");
 		graphF.addNode(myId);
