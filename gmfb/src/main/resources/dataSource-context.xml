@@ -25,7 +25,7 @@
 	<bean id="emf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="bean" />
+		<property name="packagesToScan" value="domain" />
 		<property name="persistenceUnitName" value="Friend" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
 	</bean>
@@ -33,6 +33,7 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="emf" />
 	</bean>
-
 	<tx:annotation-driven />
+
+
 </beans>
