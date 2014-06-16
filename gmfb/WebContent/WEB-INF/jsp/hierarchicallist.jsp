@@ -14,20 +14,22 @@
 
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
-function Facebook() {
-	 FB.init({ 
-	 appId:'279105595599278', cookie:true, 
-	 status:true, xfbml:true
-	 });
-	 FB.getLoginStatus(function(response) {
-	 if (response.status === 'unknown'){// && response.status !== 'not_authorized'
+	function Facebook() {
+		FB.init({
+			appId : '279105595599278',
+			cookie : true,
+			status : true,
+			xfbml : true
+		});
+		FB.getLoginStatus(function(response) {
+			if (response.status === 'unknown') {// && response.status !== 'not_authorized'
 
-			document.getElementById("disconnectionForm").submit();
+				document.getElementById("disconnectionForm").submit();
 
-
-	 }
-	 }); }
-	 window.onload = Facebook;
+			}
+		});
+	}
+	window.onload = Facebook;
 	function logoutFacebook() {
 		FB.logout(function(response) {
 			console.log("Here logout response", response);
@@ -62,7 +64,9 @@ function Facebook() {
 			</div>
 			Hello, <span>${facebookProfile.name}</span>! <br> <br>
 			<form action="openGraph" method="POST" class="form1">
-				<input type="submit" value="Open Graph" class="button">
+				<input type="button" class="button" value="Back to your friends" formaction="List"/>
+				<input
+					type="submit" value="Open Graph" class="button">
 			</form>
 
 			<c:forEach var="i" items="${Friends}" varStatus="status">
