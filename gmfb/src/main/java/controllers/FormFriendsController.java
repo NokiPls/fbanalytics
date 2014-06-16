@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import domain.Friend;
 import services.CommonFriendsList;
-import services.CreateGraph;
+import services.Graph;
 import services.CreateJson;
 import services.ListOfFriends;
 
@@ -32,12 +32,14 @@ public class FormFriendsController {
 	public ArrayList<Friend> commonFriendsList = new ArrayList<Friend>();
 	public SingleGraph graphF = new SingleGraph("graph");
 	private CommonFriendsList common;
+	private Graph graph;
 
 	@Autowired
-	public FormFriendsController(Facebook facebook, ListOfFriends friends, CommonFriendsList common) {
+	public FormFriendsController(Facebook facebook, ListOfFriends friends, CommonFriendsList common, Graph graph) {
 		this.facebook = facebook;
 		this.friends = friends;
 		this.common = common;
+		this.graph = graph;
 	}
 	
 	
@@ -91,38 +93,9 @@ public class FormFriendsController {
 
 		// creo grafo per statistica
 		String myId = facebook.userOperations().getUserProfile().getId();
-		CreateGraph graph = new CreateGraph(commonFriendsList, myId);
-		graphF = graph.getGraphF();
-		/* compute all the metrics */
-
-		// compute DegreeCentrality centrality for each node
-		DegreeCentrality dc = new DegreeCentrality();
-		dc.init(graphF);
-		dc.setCentralityAttribute("degree");
-		dc.compute();
-
-		// compute normalized DegreeCentrality centrality for each node
-		DegreeCentrality ndc = new DegreeCentrality("norm_degree",
-				AbstractCentrality.NormalizationMode.SUM_IS_1);
-		ndc.init(graphF);
-		ndc.compute();
-
-		// compute betweenness centrality for each node
-		BetweennessCentrality bc = new BetweennessCentrality("betweenness");
-		bc.init(graphF);
-		bc.compute();
-
-		// compute ClosenessCentrality centrality for each node
-		ClosenessCentrality cc = new ClosenessCentrality("closeness");
-		cc.init(graphF);
-		cc.compute();
-
-		// compute normalized ClosenessCentrality centrality for each node
-		ClosenessCentrality ncc = new ClosenessCentrality("norm_closeness",
-				AbstractCentrality.NormalizationMode.SUM_IS_1, true, false);
-		ncc.init(graphF);
-		ncc.compute();
-
+		graph.makeGraph(commonFriendsList, myId);
+		graphF = graph.calcMetrics();
+		
 		model.addAttribute("graph", json.getJson());
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("Friends", commonFriendsList);
