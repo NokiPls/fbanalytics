@@ -70,10 +70,10 @@
 				<input
 					type="submit" value="Open Graph" class="button">
 			</form>
-
+<br><br>
 			<c:forEach var="i" items="${Friends}" varStatus="status">
 				<ul>
-					<li><c:out value="${i.name}"></c:out></li>
+					<h3><c:out value="${i.name}"></c:out></h3>
 					<ul>
 						<c:forEach var="k" items="${i.commonFriends}" varStatus="status_k">
 							<li><c:out value="${k.name}"></c:out></li>
