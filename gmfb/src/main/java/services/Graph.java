@@ -13,17 +13,13 @@ import domain.Friend;
 
 @Service
 public class Graph {
-	public SingleGraph graphF = new SingleGraph("graph");
 
-	public SingleGraph getGraphF() {
-		return graphF;
-	}
+	public SingleGraph graphF = new SingleGraph("graph");
 
 	public Graph() {
 	};
 
-	public void makeGraph(ArrayList<Friend> commonFriendsList,
-			String myId) {
+	public void makeGraph(ArrayList<Friend> commonFriendsList, String myId) {
 		graphF = new SingleGraph("graph");
 		graphF.addNode(myId);
 		for (int i = 0; i < commonFriendsList.size(); i++) {
@@ -84,5 +80,9 @@ public class Graph {
 		ncc.compute();
 		return graphF;
 
+	}
+
+	public SingleGraph getGraphF() {
+		return graphF;
 	}
 }

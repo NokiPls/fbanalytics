@@ -16,13 +16,13 @@ import domain.Friend;
 import services.CommonFriendsList;
 import services.Graph;
 import services.CreateJson;
-import services.ListOfFriends;
+import services.FriendsList;
 
 @Controller
 public class FormFriendsController {
 
 	private Facebook facebook;
-	private ListOfFriends friends;
+	private FriendsList friends;
 	public ArrayList<Friend> commonFriendsList = new ArrayList<Friend>();
 	public SingleGraph graphF = new SingleGraph("graph");
 	private CommonFriendsList common;
@@ -30,7 +30,7 @@ public class FormFriendsController {
 	//private FriendsService fs;
 	
 	@Autowired
-	public FormFriendsController(Facebook facebook, ListOfFriends friends, CommonFriendsList common, Graph graph/*, FriendsService fs*/) {
+	public FormFriendsController(Facebook facebook, FriendsList friends, CommonFriendsList common, Graph graph/*, FriendsService fs*/) {
 		this.facebook = facebook;
 		this.friends = friends;
 		this.common = common;

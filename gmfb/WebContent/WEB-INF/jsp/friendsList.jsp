@@ -65,7 +65,7 @@ function Facebook() {
 			</div>
 			Hello, ${facebookProfile.name}<br>
 			<form action="checkboxes" method="post">
-			<input type="button" class="button" value="Back to your profile" action="personalProfile"/>
+			<input type="button" class="button" value="Back to your profile" />
 				<input type="submit" value="Common Friends" class="button" /> <input
 					type="reset" value="Clear All" class="button" /> <br>
 				<br>

@@ -7,15 +7,15 @@ import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.social.facebook.api.PagedList;
 import org.springframework.social.facebook.api.Reference;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import domain.Friend;
 
 @Service
 public class CommonFriendsList {
 
-	public CommonFriendsList() {
+	private ArrayList<Friend> CommonFriendsList = new ArrayList<Friend>();
 
+	public CommonFriendsList() {
 	};
 
 	public void createCommonList(Facebook facebook, String[] idSelected) {
@@ -23,7 +23,6 @@ public class CommonFriendsList {
 		for (int i = 0; i < idSelected.length; i++) {
 			PagedList<Reference> mutual = facebook.friendOperations()
 					.getMutualFriends(idSelected[i]);
-
 			FacebookProfile friend = facebook.userOperations().getUserProfile(
 					idSelected[i]);
 			CommonFriendsList.add(i, new Friend(Long.parseLong(friend.getId()),
@@ -39,8 +38,6 @@ public class CommonFriendsList {
 		}
 
 	}
-
-	ArrayList<Friend> CommonFriendsList = new ArrayList<Friend>();
 
 	public ArrayList<Friend> getCommonFriends() {
 		return CommonFriendsList;

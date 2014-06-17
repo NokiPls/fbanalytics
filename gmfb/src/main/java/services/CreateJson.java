@@ -6,10 +6,10 @@ import domain.Friend;
 
 public class CreateJson {
 	private String json, links = "";
-	private final String NODES = "\"nodes\":";
+	private final String NODES = "\"nodes\":[";
 	private final String NAME = "\"name\":";
 	private final String ID = "\"id\":";
-	private final String LINKS = "\"links\":";
+	private final String LINKS = "\"links\":[";
 	private final String SOURCE = "\"source\":";
 	private final String TARGET = "\"target\":";
 
@@ -25,8 +25,8 @@ public class CreateJson {
 		idPos.add(0, fid);
 		if (self.contains("\'"))
 			self = self.replaceAll("\'", "`");
-		json = "{" + NODES + "[{" + NAME + "\"" + self + "\"," + ID + "\""
-				+ fid + "\"},";
+		json = "{" + NODES + "{" + NAME + "\"" + self + "\"," + ID + "\"" + fid
+				+ "\"},";
 		for (i = 0; i < friend.size(); i++) {
 			// "i" are the selected friends
 			if (!idPos.contains(friend.get(i).getId())) {
@@ -40,8 +40,7 @@ public class CreateJson {
 				// json
 				// link them to the user
 				links += "{" + SOURCE + "0," + TARGET + ""
-						+ idPos.indexOf(friend.get(i).getId())
-						+ "},";
+						+ idPos.indexOf(friend.get(i).getId()) + "},";
 			}
 			ArrayList<Friend> common = friend.get(i).getCommonFriends();
 			for (j = 0; j < common.size(); j++) {
@@ -55,27 +54,24 @@ public class CreateJson {
 							+ common.get(j).getId() + "\"},";
 					// link them to the user
 					links += "{" + SOURCE + "0," + TARGET + ""
-							+ idPos.indexOf(common.get(j).getId())
-							+ "},";
+							+ idPos.indexOf(common.get(j).getId()) + "},";
 					// link them to the "i" friend
 					links += "{" + SOURCE + ""
 							+ idPos.indexOf(common.get(j).getId()) + ","
 							+ TARGET + ""
-							+ idPos.indexOf(friend.get(i).getId())
-							+ "},";
+							+ idPos.indexOf(friend.get(i).getId()) + "},";
 				} else {
 					links += "{" + SOURCE + ""
 							+ idPos.indexOf(common.get(j).getId()) + ","
 							+ TARGET + ""
-							+ idPos.indexOf(friend.get(i).getId())
-							+ "},";
+							+ idPos.indexOf(friend.get(i).getId()) + "},";
 				}
 			}
 		}
 		// finalize the json
 		links = (String) links.subSequence(0, links.length() - 1);
 		json = (String) json.subSequence(0, json.length() - 1);
-		json += "]," + LINKS + "[" + links + "]}";
+		json += "]," + LINKS + links + "]}";
 	}
 
 	public String getJson() {

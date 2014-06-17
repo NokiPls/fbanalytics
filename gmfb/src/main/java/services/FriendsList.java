@@ -2,19 +2,17 @@ package services;
 
 import java.util.ArrayList;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.social.facebook.api.PagedList;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ListOfFriends {
+public class FriendsList {
 	private ArrayList<String> id;
 	private ArrayList<String> name;
 
-	public ListOfFriends() {
+	public FriendsList() {
 		id = new ArrayList<String>();
 		name = new ArrayList<String>();
 	}
