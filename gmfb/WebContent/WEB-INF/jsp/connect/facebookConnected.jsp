@@ -40,7 +40,7 @@
 				</h1>
 				<div id="menu">
 					<ul>
-						<li class="active"><a href="/gmfb" title="">Homepage</a></li>
+						<li class="active"><a href="/gmfb" title="">	Homepage</a></li>
 						<li><a href="#" title="">About Us</a></li>
 					</ul>
 				</div>

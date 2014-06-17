@@ -50,13 +50,14 @@ function Facebook() {
 				</h1>
 				<div id="menu">
 					<ul>
-						<li class="active"><a href="/gmfb" title="">Homepage</a></li>
+						<li class="active"><a href="/gmfb" title="">${facebookProfile.name}</a></li>
 						<li><a href="#" title="">About Us</a></li>
 						<li><a href="javascript:logoutFacebook()">Disconnect</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
+
 	</div>
 	<div id="page-wrapper">
 	<a href="/gmfb">Personal Profile</a> > Your Friends
@@ -64,7 +65,7 @@ function Facebook() {
 			<div class="title">
 				<h2>List of Friends</h2>
 			</div>
-			Hello, ${facebookProfile.name}<br>
+			
 			
 			<form action="checkboxes" method="post" class="form1">
 				<input type="submit" value="Common Friends" class="button" /> <input

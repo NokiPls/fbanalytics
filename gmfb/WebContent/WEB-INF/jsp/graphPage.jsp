@@ -61,7 +61,7 @@
 				</h1>
 				<div id="menu">
 					<ul>
-						<li class="active"><a href="/gmfb" title="">Homepage</a></li>
+						<li class="active"><a href="/gmfb" title="">${facebookProfile.name}</a></li>
 						<li><a href="#" title="">About Us</a></li>
 						<li><a href="javascript:logoutFacebook()">Disconnect</a></li>
 					</ul>
@@ -77,7 +77,6 @@
 				<h2>Graph</h2>
 			</div>
 
-			Hello, <span>${facebookProfile.name}</span>!
 			<br> You have selected:
 			<div>
 				<c:forEach var="i" items="${Friends}" varStatus="status">

@@ -49,7 +49,7 @@
 				</h1>
 				<div id="menu">
 					<ul>
-						<li class="active"><a href="/gmfb" title="">Homepage</a></li>
+						<li class="active"><a href="/gmfb" title="">${facebookProfile.name}</a></li>
 						<li><a href="#" title="">About Us</a></li>
 						<li><a href="javascript:logoutFacebook()">Disconnect</a></li>
 					</ul>
@@ -64,7 +64,6 @@
 			<div class="title">
 				<h2>Selected Friends</h2>
 			</div>
-			Hello, <span>${facebookProfile.name}</span>! <br> <br>
 			
 			
 			<form action="openGraph" method="POST" class="form1">
