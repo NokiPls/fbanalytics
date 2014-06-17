@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import domain.Friend;
 import services.CommonFriendsList;
+import services.FriendsService;
 import services.Graph;
 import services.CreateJson;
 import services.FriendsList;
@@ -29,17 +30,18 @@ public class FormFriendsController {
 	private Graph graph;
 	private CreateJson json;
 
-	// private FriendsService fs;
+	private FriendsService fs;
 
 	@Autowired
 	public FormFriendsController(Facebook facebook, FriendsList friends,
-			CommonFriendsList common, Graph graph, CreateJson json/* , FriendsService fs */) {
+			CommonFriendsList common, Graph graph, CreateJson json,
+			FriendsService fs) {
 		this.facebook = facebook;
 		this.friends = friends;
 		this.common = common;
 		this.graph = graph;
 		this.json = json;
-		// this.fs=fs;
+		this.fs = fs;
 
 	}
 
@@ -74,7 +76,7 @@ public class FormFriendsController {
 		;
 		commonFriendsList = common.getCommonFriends();
 
-		// fs.addFriends(commonFriendsList);
+		fs.addFriends(commonFriendsList);
 
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("Friends", commonFriendsList);
@@ -96,13 +98,14 @@ public class FormFriendsController {
 	@RequestMapping(value = "/openGraph", method = RequestMethod.POST)
 	public String newGraph(Model model) {
 		String myId = "";
-		
+
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
 
-		json.makeJson(commonFriendsList, facebook
-				.userOperations().getUserProfile().getName(),
+		json.makeJson(
+				commonFriendsList,
+				facebook.userOperations().getUserProfile().getName(),
 				Long.parseLong(facebook.userOperations().getUserProfile()
 						.getId()));
 

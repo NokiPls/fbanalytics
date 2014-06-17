@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.mapping.Collection;
+
 
 @Entity
 @Table(name = "friend")
@@ -21,6 +23,7 @@ public class Friend implements Serializable {
 	@Id
 	private Long id;
 	@OneToMany(mappedBy = "key")
+	private Collection commFriends;
 	// attento lazy
 	private ArrayList<Friend> commonFriends = new ArrayList<Friend>();
 
