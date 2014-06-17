@@ -27,16 +27,18 @@ public class FormFriendsController {
 	public SingleGraph graphF = new SingleGraph("graph");
 	private CommonFriendsList common;
 	private Graph graph;
+	private CreateJson json;
 
 	// private FriendsService fs;
 
 	@Autowired
 	public FormFriendsController(Facebook facebook, FriendsList friends,
-			CommonFriendsList common, Graph graph/* , FriendsService fs */) {
+			CommonFriendsList common, Graph graph, CreateJson json/* , FriendsService fs */) {
 		this.facebook = facebook;
 		this.friends = friends;
 		this.common = common;
 		this.graph = graph;
+		this.json = json;
 		// this.fs=fs;
 
 	}
@@ -93,17 +95,19 @@ public class FormFriendsController {
 
 	@RequestMapping(value = "/openGraph", method = RequestMethod.POST)
 	public String newGraph(Model model) {
+		String myId = "";
+		
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
 
-		CreateJson json = new CreateJson(commonFriendsList, facebook
+		json.makeJson(commonFriendsList, facebook
 				.userOperations().getUserProfile().getName(),
 				Long.parseLong(facebook.userOperations().getUserProfile()
 						.getId()));
 
 		// creo grafo per statistica
-		String myId = facebook.userOperations().getUserProfile().getId();
+		myId = facebook.userOperations().getUserProfile().getId();
 		graph.makeGraph(commonFriendsList, myId);
 		graphF = graph.calcMetrics();
 
