@@ -58,14 +58,14 @@
 		</div>
 	</div>
 	<div id="page-wrapper">
+		<a href="/gmfb">Personal Profile</a> > <a href="List">Your Friends</a> > Selected Friends
+	
 		<div id="welcome" class="container">
 			<div class="title">
 				<h2>Selected Friends</h2>
 			</div>
 			Hello, <span>${facebookProfile.name}</span>! <br> <br>
-			<form action="List" method="POST" class="form1">
-				<input type="submit" class="button" value="Back to your friends" formaction="List"/>
-			</form>
+			
 			
 			<form action="openGraph" method="POST" class="form1">
 				<input

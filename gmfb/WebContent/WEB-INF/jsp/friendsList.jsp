@@ -59,16 +59,15 @@ function Facebook() {
 		</div>
 	</div>
 	<div id="page-wrapper">
+	<a href="/gmfb">Personal Profile</a> > Your Friends
 		<div id="welcome" class="container">
 			<div class="title">
 				<h2>List of Friends</h2>
 			</div>
 			Hello, ${facebookProfile.name}<br>
-			<form action="/gmfb" method="post"class="form1">
-			<input type="submit" class="button" value="Back to your profile" />
-			</form>
-			<form action="checkboxes" method="post"class="form1">
-+				<input type="submit" value="Common Friends" class="button" /> <input
+			
+			<form action="checkboxes" method="post" class="form1">
+				<input type="submit" value="Common Friends" class="button" /> <input
 					type="reset" value="Clear All" class="button" /> <br>
 				<br>
 				<br>

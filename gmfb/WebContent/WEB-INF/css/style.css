@@ -37,7 +37,10 @@ ol,ul {
 p {
 	line-height: 180%;
 }
-
+.form1
+{
+	display:inline;
+}
 strong {
 	
 }
