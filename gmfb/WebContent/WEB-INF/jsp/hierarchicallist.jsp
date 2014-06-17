@@ -63,8 +63,11 @@
 				<h2>Selected Friends</h2>
 			</div>
 			Hello, <span>${facebookProfile.name}</span>! <br> <br>
+			<form action="List" method="POST" class="form1">
+				<input type="submit" class="button" value="Back to your friends" formaction="List"/>
+			</form>
+			
 			<form action="openGraph" method="POST" class="form1">
-				<input type="button" class="button" value="Back to your friends" formaction="List"/>
 				<input
 					type="submit" value="Open Graph" class="button">
 			</form>
