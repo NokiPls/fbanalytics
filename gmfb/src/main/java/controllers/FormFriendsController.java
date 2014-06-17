@@ -27,18 +27,20 @@ public class FormFriendsController {
 	public SingleGraph graphF = new SingleGraph("graph");
 	private CommonFriendsList common;
 	private Graph graph;
-	//private FriendsService fs;
-	
+
+	// private FriendsService fs;
+
 	@Autowired
-	public FormFriendsController(Facebook facebook, FriendsList friends, CommonFriendsList common, Graph graph/*, FriendsService fs*/) {
+	public FormFriendsController(Facebook facebook, FriendsList friends,
+			CommonFriendsList common, Graph graph/* , FriendsService fs */) {
 		this.facebook = facebook;
 		this.friends = friends;
 		this.common = common;
 		this.graph = graph;
-	//	this.fs=fs;
-		
+		// this.fs=fs;
+
 	}
-		
+
 	@RequestMapping(value = "/List", method = RequestMethod.GET)
 	public String friendsCheckboxes(Model model) {
 
@@ -66,10 +68,23 @@ public class FormFriendsController {
 
 		// service crea Lista di amici selezionati e per ognuno di essi la lista
 		// degli amici in comune
-		common.createCommonList(facebook, idSelected);;
+		common.createCommonList(facebook, idSelected);
+		;
 		commonFriendsList = common.getCommonFriends();
 
-		//fs.addFriends(commonFriendsList);
+		// fs.addFriends(commonFriendsList);
+
+		model.addAttribute(facebook.userOperations().getUserProfile());
+		model.addAttribute("Friends", commonFriendsList);
+		return "hierarchicallist";
+	}
+
+	@RequestMapping(value = "/checkboxes", method = RequestMethod.GET)
+	public String friendsCheckboxesSubmit(Model model) {
+
+		if (!facebook.isAuthorized()) {
+			return "redirect:/connect/facebook";
+		}
 
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("Friends", commonFriendsList);
@@ -91,7 +106,7 @@ public class FormFriendsController {
 		String myId = facebook.userOperations().getUserProfile().getId();
 		graph.makeGraph(commonFriendsList, myId);
 		graphF = graph.calcMetrics();
-		
+
 		model.addAttribute("graph", json.getJson());
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("Friends", commonFriendsList);
