@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.graphstream.graph.implementations.SingleGraph;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import domain.Friend;
 import services.CommonFriendsList;
 import services.FriendsService;
+import services.FriendsServiceInterface;
 import services.Graph;
 import services.CreateJson;
 import services.FriendsList;
@@ -24,25 +26,23 @@ public class FormFriendsController {
 
 	private Facebook facebook;
 	private FriendsList friends;
-	public ArrayList<Friend> commonFriendsList = new ArrayList<Friend>();
+	public List<Friend> commonFriendsList = new ArrayList<Friend>();
 	public SingleGraph graphF = new SingleGraph("graph");
 	private CommonFriendsList common;
 	private Graph graph;
 	private CreateJson json;
-
-	private FriendsService fs;
+	
+	@Autowired
+	public FriendsServiceInterface fs;
 
 	@Autowired
 	public FormFriendsController(Facebook facebook, FriendsList friends,
-			CommonFriendsList common, Graph graph, CreateJson json,
-			FriendsService fs) {
+			CommonFriendsList common, Graph graph, CreateJson json) {
 		this.facebook = facebook;
 		this.friends = friends;
 		this.common = common;
 		this.graph = graph;
 		this.json = json;
-		this.fs = fs;
-
 	}
 
 	@RequestMapping(value = "/List", method = RequestMethod.GET)
@@ -73,10 +73,9 @@ public class FormFriendsController {
 		// service crea Lista di amici selezionati e per ognuno di essi la lista
 		// degli amici in comune
 		common.createCommonList(facebook, idSelected);
-		;
 		commonFriendsList = common.getCommonFriends();
 
-		fs.addFriends(commonFriendsList);
+		fs.addFriends(commonFriendsList);;
 
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("Friends", commonFriendsList);

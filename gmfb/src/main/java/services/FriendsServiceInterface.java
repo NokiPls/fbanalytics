@@ -1,9 +1,9 @@
 package services;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import domain.Friend;
 
 public interface FriendsServiceInterface {
-	public void addFriends(ArrayList<Friend> CommonFriendsList);
+	public void addFriends(List<Friend> CommonFriendsList);
 }

@@ -1,9 +1,9 @@
 package repository;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import domain.Friend;
 
 public interface FriendsRepository {
-	public void addFriendList(ArrayList<Friend> CommonFriendsList);
+	public void addFriendList(List<Friend> CommonFriendsList);
 }

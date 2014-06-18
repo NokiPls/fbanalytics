@@ -1,11 +1,12 @@
 package services;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import repository.FriendsRepository;
 import repository.JpaFriendsRepo;
 import domain.Friend;
 
@@ -17,10 +18,10 @@ public class FriendsService implements FriendsServiceInterface {
 	};
 
 	@Autowired
-	private JpaFriendsRepo friendsRepo;
+	public FriendsRepository friendsRepo;
 
 	@Override
-	public void addFriends(ArrayList<Friend> CommonFriendsList) {
+	public void addFriends(List<Friend> CommonFriendsList) {
 		friendsRepo.addFriendList(CommonFriendsList);
 	}
 }

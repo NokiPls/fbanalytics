@@ -1,6 +1,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.graphstream.algorithm.BetweennessCentrality;
 import org.graphstream.algorithm.measure.AbstractCentrality;
@@ -19,7 +20,7 @@ public class Graph {
 	public Graph() {
 	};
 
-	public void makeGraph(ArrayList<Friend> commonFriendsList, String myId) {
+	public void makeGraph(List<Friend> commonFriendsList, String myId) {
 		graphF = new SingleGraph("graph");
 		graphF.addNode(myId);
 		for (int i = 0; i < commonFriendsList.size(); i++) {

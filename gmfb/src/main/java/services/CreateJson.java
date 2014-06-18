@@ -1,6 +1,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class CreateJson {
 	// {"nodes":[{"name":"John Bonham","group":1},{..}],"links":[{"source":"int","target":"int","value":"int"}]}
 	// in which source and target are the position in the array "nodes" of the
 	// elements to be linked
-	public void makeJson(ArrayList<Friend> friend, String self, Long fid) {
+	public void makeJson(List<Friend> friend, String self, Long fid) {
 		int j = 0;
 		int i = 0;
 		ArrayList<Long> idPos = new ArrayList<Long>();
@@ -48,7 +49,7 @@ public class CreateJson {
 				links += "{" + SOURCE + "0," + TARGET + ""
 						+ idPos.indexOf(friend.get(i).getId()) + "},";
 			}
-			ArrayList<Friend> common = friend.get(i).getCommonFriends();
+			List<Friend> common = friend.get(i).getCommonFriends();
 			for (j = 0; j < common.size(); j++) {
 				if (!idPos.contains(common.get(j).getId())) {
 					idPos.add(common.get(j).getId());

@@ -1,6 +1,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
@@ -9,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class FriendsList {
-	private ArrayList<String> id;
-	private ArrayList<String> name;
+	private List<String> id;
+	private List<String> name;
 
 	public FriendsList() {
 		id = new ArrayList<String>();
@@ -28,11 +29,11 @@ public class FriendsList {
 		}
 	}
 
-	public ArrayList<String> getListOfId() {
+	public List<String> getListOfId() {
 		return id;
 	}
 
-	public ArrayList<String> getListOfName() {
+	public List<String> getListOfName() {
 		return name;
 	}
 }
