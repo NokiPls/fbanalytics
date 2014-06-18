@@ -76,6 +76,7 @@ public class FormFriendsController {
 
 		fs.addFriends(commonFriendsList);;
 
+		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("name", facebook.userOperations().getUserProfile().getName());
 		model.addAttribute("friends", commonFriendsList);
 		return "hierarchicalList";
@@ -89,6 +90,7 @@ public class FormFriendsController {
 		}
 
 		model.addAttribute(facebook.userOperations().getUserProfile().getName());
+		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("friends", commonFriendsList);
 		return "hierarchicalList";
 	}
@@ -113,6 +115,7 @@ public class FormFriendsController {
 		graphF = graph.calcMetrics();
 
 		model.addAttribute("graph", json.getJson());
+		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("name", facebook.userOperations().getUserProfile().getName());
 		model.addAttribute("friends", commonFriendsList);
 
