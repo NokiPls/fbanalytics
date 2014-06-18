@@ -49,7 +49,7 @@
 				</h1>
 				<div id="menu">
 					<ul>
-						<li class="active"><a href="/gmfb" title="">${facebookProfile.name}</a></li>
+						<li class="active"><a href="/gmfb" title="">${name}</a></li>
 						<li><a href="#" title="">About Us</a></li>
 						<li><a href="javascript:logoutFacebook()">Disconnect</a></li>
 					</ul>
@@ -71,7 +71,7 @@
 					type="submit" value="Open Graph" class="button">
 			</form>
 <br><br>
-			<c:forEach var="i" items="${Friends}" varStatus="status">
+			<c:forEach var="i" items="${friends}" varStatus="status">
 				<ul>
 					<h3><c:out value="${i.name}"></c:out></h3>
 					<ul>

@@ -61,7 +61,7 @@
 				</h1>
 				<div id="menu">
 					<ul>
-						<li class="active"><a href="/gmfb" title="">${facebookProfile.name}</a></li>
+						<li class="active"><a href="/gmfb" title="">${name}</a></li>
 						<li><a href="#" title="">About Us</a></li>
 						<li><a href="javascript:logoutFacebook()">Disconnect</a></li>
 					</ul>
@@ -79,7 +79,7 @@
 
 			<br> You have selected:
 			<div>
-				<c:forEach var="i" items="${Friends}" varStatus="status">
+				<c:forEach var="i" items="${friends}" varStatus="status">
 		
 			-<c:out value="${i.name}"></c:out>
 

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import domain.Friend;
 import services.CommonFriendsList;
-import services.FriendsService;
 import services.FriendsServiceInterface;
 import services.Graph;
 import services.CreateJson;
@@ -77,9 +76,9 @@ public class FormFriendsController {
 
 		fs.addFriends(commonFriendsList);;
 
-		model.addAttribute(facebook.userOperations().getUserProfile());
-		model.addAttribute("Friends", commonFriendsList);
-		return "hierarchicallist";
+		model.addAttribute("name", facebook.userOperations().getUserProfile().getName());
+		model.addAttribute("friends", commonFriendsList);
+		return "hierarchicalList";
 	}
 
 	@RequestMapping(value = "/checkboxes", method = RequestMethod.GET)
@@ -89,9 +88,9 @@ public class FormFriendsController {
 			return "redirect:/connect/facebook";
 		}
 
-		model.addAttribute(facebook.userOperations().getUserProfile());
-		model.addAttribute("Friends", commonFriendsList);
-		return "hierarchicallist";
+		model.addAttribute(facebook.userOperations().getUserProfile().getName());
+		model.addAttribute("friends", commonFriendsList);
+		return "hierarchicalList";
 	}
 
 	@RequestMapping(value = "/openGraph", method = RequestMethod.POST)
@@ -114,8 +113,8 @@ public class FormFriendsController {
 		graphF = graph.calcMetrics();
 
 		model.addAttribute("graph", json.getJson());
-		model.addAttribute(facebook.userOperations().getUserProfile());
-		model.addAttribute("Friends", commonFriendsList);
+		model.addAttribute("name", facebook.userOperations().getUserProfile().getName());
+		model.addAttribute("friends", commonFriendsList);
 
 		return "graphPage";
 	}
