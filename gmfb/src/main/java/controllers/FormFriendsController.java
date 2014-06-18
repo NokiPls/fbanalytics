@@ -75,7 +75,7 @@ public class FormFriendsController {
 		common.createCommonList(facebook, idSelected);
 		commonFriendsList = common.getCommonFriends();
 
-		fs.addFriends(commonFriendsList);;
+		//fs.addFriends(commonFriendsList);;
 
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("Friends", commonFriendsList);

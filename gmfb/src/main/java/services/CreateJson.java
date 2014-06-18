@@ -25,6 +25,8 @@ public class CreateJson {
 	// in which source and target are the position in the array "nodes" of the
 	// elements to be linked
 	public void makeJson(List<Friend> friend, String self, Long fid) {
+		json= "";
+		links = "";
 		int j = 0;
 		int i = 0;
 		ArrayList<Long> idPos = new ArrayList<Long>();

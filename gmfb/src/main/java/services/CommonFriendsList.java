@@ -20,7 +20,7 @@ public class CommonFriendsList {
 	};
 
 	public void createCommonList(Facebook facebook, String[] idSelected) {
-
+		CommonFriendsList = new ArrayList<Friend>();
 		for (int i = 0; i < idSelected.length; i++) {
 			PagedList<Reference> mutual = facebook.friendOperations()
 					.getMutualFriends(idSelected[i]);
