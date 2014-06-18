@@ -11,7 +11,7 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/gmfb" />
+		<property name="url" value="jdbc:mysql://localhost:3306/fbanalytics" />
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean>
@@ -20,6 +20,7 @@
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="database" value="MYSQL" />
 		<property name="showSql" value="true" />
+		<property name="generateDdl" value="true" />
 	</bean>
 
 	<bean id="emf"

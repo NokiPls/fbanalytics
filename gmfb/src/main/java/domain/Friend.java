@@ -2,14 +2,12 @@ package domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.mapping.Collection;
 
 
 @Entity
@@ -23,9 +21,8 @@ public class Friend implements Serializable {
 	@Id
 	private Long id;
 	@OneToMany(mappedBy = "key")
-	private Collection commFriends;
 	// attento lazy
-	private ArrayList<Friend> commonFriends = new ArrayList<Friend>();
+	private List<Friend> commonFriends = new ArrayList<Friend>();
 
 	@ManyToOne
 	private Friend key;
@@ -54,11 +51,11 @@ public class Friend implements Serializable {
 		this.id = id;
 	}
 
-	public ArrayList<Friend> getCommonFriends() {
+	public List<Friend> getCommonFriends() {
 		return commonFriends;
 	}
 
-	public void setCommonFriends(ArrayList<Friend> commonFriends) {
+	public void setCommonFriends(List<Friend> commonFriends) {
 		this.commonFriends = commonFriends;
 	}
 

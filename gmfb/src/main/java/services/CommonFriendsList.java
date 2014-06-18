@@ -1,6 +1,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
@@ -13,7 +14,7 @@ import domain.Friend;
 @Service
 public class CommonFriendsList {
 
-	private ArrayList<Friend> CommonFriendsList = new ArrayList<Friend>();
+	private List<Friend> CommonFriendsList = new ArrayList<Friend>();
 
 	public CommonFriendsList() {
 	};
@@ -39,7 +40,7 @@ public class CommonFriendsList {
 
 	}
 
-	public ArrayList<Friend> getCommonFriends() {
+	public List<Friend> getCommonFriends() {
 		return CommonFriendsList;
 	}
 }
