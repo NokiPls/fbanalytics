@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Repository;
+
 import domain.Friend;
 
 @ImportResource("classpath:dataSource-context.xml")
@@ -17,17 +18,17 @@ public class JpaFriendsRepo implements FriendsRepository {
 	@PersistenceContext
 	public EntityManager em;
 
-//	@Inject
-//	private void FriendRepo(EntityManager em) {
-//		this.em = em;
-//	}
+	// @Inject
+	// private void FriendRepo(EntityManager em) {
+	// this.em = em;
+	// }
 
 	@Override
 	@Transactional
-	public void addFriendList(List<Friend> CommonFriendsList) {
+	public void addFriendList(List<Friend> commonFriendsList) {
 		int i;
-		for (i = 0; i < CommonFriendsList.size(); i++) {
-			em.persist(CommonFriendsList.get(i));
+		for (i = 0; i < commonFriendsList.size(); i++) {
+			em.persist(commonFriendsList.get(i));
 		}
 	}
 }
