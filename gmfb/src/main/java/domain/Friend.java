@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,18 +17,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "friend")
 public class Friend implements Serializable {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 8828388186922307614L;
 	private String name;
+	private Long id;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long oid;
-	
-	private Long id;
-	@OneToMany(mappedBy = "key")
-	// attento lazy
+		
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "key")
 	private List<Friend> commonFriends = new ArrayList<Friend>();
 
 	@ManyToOne
@@ -36,9 +35,10 @@ public class Friend implements Serializable {
 	public Friend() {
 	};
 
-	public Friend(Long newId, String newName) {
-		id = newId;
-		name = newName;
+	public Friend(Long newId, String newName, Friend key) {
+		this.id = newId;
+		this.name = newName;
+		this.key = key;
 	}
 
 	public String getName() {
@@ -63,6 +63,10 @@ public class Friend implements Serializable {
 
 	public void setCommonFriends(List<Friend> commonFriends) {
 		this.commonFriends = commonFriends;
+	}
+	
+	public void setKey(Friend key){
+		this.key = key;
 	}
 
 }

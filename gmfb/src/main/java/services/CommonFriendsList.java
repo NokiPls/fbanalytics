@@ -27,13 +27,14 @@ public class CommonFriendsList {
 			FacebookProfile friend = facebook.userOperations().getUserProfile(
 					idSelected[i]);
 			CommonFriendsList.add(i, new Friend(Long.parseLong(friend.getId()),
-					friend.getName()));
+					friend.getName(), null)); //null è l'user
 			for (int k = 0; k < mutual.size(); k++) {
 				CommonFriendsList
 						.get(i)
 						.getCommonFriends()
 						.add(new Friend(Long.parseLong(mutual.get(k).getId()),
-								mutual.get(k).getName()));
+								mutual.get(k).getName(), CommonFriendsList
+								.get(i)));
 
 			}
 		}
