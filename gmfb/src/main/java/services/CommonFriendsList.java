@@ -14,27 +14,34 @@ import domain.Friend;
 @Service
 public class CommonFriendsList {
 
-	private List<Friend> CommonFriendsList = new ArrayList<Friend>();
+	private List<Friend> commonFriendsList;
+//	private List<Friend> commonOnly;
 
 	public CommonFriendsList() {
 	};
 
-	public void createCommonList(Facebook facebook, String[] idSelected, Friend user) {
-		CommonFriendsList = new ArrayList<Friend>();
+	public void createCommonList(Facebook facebook, String[] idSelected,
+			Friend user) {
+		commonFriendsList = new ArrayList<Friend>();
+//		commonOnly = new ArrayList<Friend>();
 		for (int i = 0; i < idSelected.length; i++) {
 			PagedList<Reference> mutual = facebook.friendOperations()
 					.getMutualFriends(idSelected[i]);
 			FacebookProfile friend = facebook.userOperations().getUserProfile(
 					idSelected[i]);
-			CommonFriendsList.add(i, new Friend(Long.parseLong(friend.getId()),
-					friend.getName(), null, user.getId())); //null è l'user
+			commonFriendsList.add(i, new Friend(Long.parseLong(friend.getId()),
+					friend.getName(), null, user.getId())); // null è l'user
 			for (int k = 0; k < mutual.size(); k++) {
-				CommonFriendsList
+				commonFriendsList
 						.get(i)
 						.getCommonFriends()
 						.add(new Friend(Long.parseLong(mutual.get(k).getId()),
-								mutual.get(k).getName(), CommonFriendsList
-								.get(i), user.getId()));
+								mutual.get(k).getName(), commonFriendsList
+										.get(i), user.getId()));
+//				commonOnly.add(new Friend(
+//						Long.parseLong(mutual.get(k).getId()), mutual.get(k)
+//								.getName(), commonFriendsList.get(i), user
+//								.getId()));
 
 			}
 		}
@@ -42,6 +49,10 @@ public class CommonFriendsList {
 	}
 
 	public List<Friend> getCommonFriends() {
-		return CommonFriendsList;
+		return commonFriendsList;
 	}
+	
+//	public List<Friend> getCommonOnly() {
+//		return commonOnly;
+//	}
 }

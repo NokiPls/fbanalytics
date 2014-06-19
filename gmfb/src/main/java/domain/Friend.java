@@ -13,24 +13,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "friend")
 public class Friend implements Serializable {
-	
+
 	private static final long serialVersionUID = 8828388186922307614L;
 	private String name;
 	private Long appUserId;
 	private Long id;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long oid;
-		
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
 	private List<Friend> commonFriends = new ArrayList<Friend>();
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Friend parent;
 
 	public Friend() {
@@ -66,8 +65,8 @@ public class Friend implements Serializable {
 	public void setCommonFriends(List<Friend> commonFriends) {
 		this.commonFriends = commonFriends;
 	}
-	
-	public void setParent(Friend parent){
+
+	public void setParent(Friend parent) {
 		this.parent = parent;
 	}
 
