@@ -19,15 +19,16 @@ public class FriendsList {
 	public FriendsList() {
 		id = new ArrayList<String>();
 		name = new ArrayList<String>();
+		friends = new ArrayList<Friend>();
 	}
 
-	public void createFbList(Facebook facebook) {
+	public void createFbList(Facebook facebook, Friend user) {
 		fbFriends = facebook.friendOperations().getFriendProfiles();
 
 		for (int i = 0; i < fbFriends.size(); i++) {
 			// creo lista di nomi e id da passare alla pagina con le chekboxes
 			friends.add(new Friend(Long.parseLong(fbFriends.get(i).getId()),
-					fbFriends.get(i).getName(), null));
+					fbFriends.get(i).getName(), null, user.getId()));
 			id.add(fbFriends.get(i).getId());
 			name.add(fbFriends.get(i).getName());
 		}

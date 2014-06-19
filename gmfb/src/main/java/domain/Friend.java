@@ -20,25 +20,27 @@ public class Friend implements Serializable {
 	
 	private static final long serialVersionUID = 8828388186922307614L;
 	private String name;
+	private Long appUserId;
 	private Long id;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long oid;
 		
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "key")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
 	private List<Friend> commonFriends = new ArrayList<Friend>();
 
 	@ManyToOne
-	private Friend key;
+	private Friend parent;
 
 	public Friend() {
 	};
 
-	public Friend(Long newId, String newName, Friend key) {
+	public Friend(Long newId, String newName, Friend parent, Long appUserId) {
+		this.appUserId = appUserId;
 		this.id = newId;
 		this.name = newName;
-		this.key = key;
+		this.parent = parent;
 	}
 
 	public String getName() {
@@ -65,8 +67,8 @@ public class Friend implements Serializable {
 		this.commonFriends = commonFriends;
 	}
 	
-	public void setKey(Friend key){
-		this.key = key;
+	public void setParent(Friend parent){
+		this.parent = parent;
 	}
 
 }

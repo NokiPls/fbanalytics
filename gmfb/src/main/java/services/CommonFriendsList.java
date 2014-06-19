@@ -19,7 +19,7 @@ public class CommonFriendsList {
 	public CommonFriendsList() {
 	};
 
-	public void createCommonList(Facebook facebook, String[] idSelected) {
+	public void createCommonList(Facebook facebook, String[] idSelected, Friend user) {
 		CommonFriendsList = new ArrayList<Friend>();
 		for (int i = 0; i < idSelected.length; i++) {
 			PagedList<Reference> mutual = facebook.friendOperations()
@@ -27,14 +27,14 @@ public class CommonFriendsList {
 			FacebookProfile friend = facebook.userOperations().getUserProfile(
 					idSelected[i]);
 			CommonFriendsList.add(i, new Friend(Long.parseLong(friend.getId()),
-					friend.getName(), null)); //null è l'user
+					friend.getName(), null, user.getId())); //null è l'user
 			for (int k = 0; k < mutual.size(); k++) {
 				CommonFriendsList
 						.get(i)
 						.getCommonFriends()
 						.add(new Friend(Long.parseLong(mutual.get(k).getId()),
 								mutual.get(k).getName(), CommonFriendsList
-								.get(i)));
+								.get(i), user.getId()));
 
 			}
 		}

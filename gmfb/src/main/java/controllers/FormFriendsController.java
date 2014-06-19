@@ -30,6 +30,7 @@ public class FormFriendsController {
 	private CommonFriendsList common;
 	private Graph graph;
 	private CreateJson json;
+	private Friend user;
 
 	@Autowired
 	public FriendsServiceInterface fs;
@@ -50,8 +51,13 @@ public class FormFriendsController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
+
+		user = new Friend(Long.parseLong(facebook.userOperations()
+				.getUserProfile().getId()), facebook.userOperations()
+				.getUserProfile().getName(), null, Long.parseLong(facebook
+				.userOperations().getUserProfile().getId()));
 		// the service create list of friends to display in the checkboxes
-		friends.createFbList(facebook);
+		friends.createFbList(facebook, user);
 		fs.addFriends(friends.getFriends());
 		model.addAttribute(facebook.userOperations().getUserProfile())
 				.addAttribute("names", friends.getListOfName())
@@ -72,7 +78,7 @@ public class FormFriendsController {
 
 		// service crea Lista di amici selezionati e per ognuno di essi la lista
 		// degli amici in comune
-		common.createCommonList(facebook, idSelected);
+		common.createCommonList(facebook, idSelected, user);
 		commonFriendsList = common.getCommonFriends();
 
 		fs.addFriends(commonFriendsList);
