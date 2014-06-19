@@ -30,7 +30,7 @@ public class FormFriendsController {
 	private CommonFriendsList common;
 	private Graph graph;
 	private CreateJson json;
-	
+
 	@Autowired
 	public FriendsServiceInterface fs;
 
@@ -52,6 +52,7 @@ public class FormFriendsController {
 		}
 		// the service create list of friends to display in the checkboxes
 		friends.createFbList(facebook);
+		fs.addFriends(friends.getFriends());
 		model.addAttribute(facebook.userOperations().getUserProfile())
 				.addAttribute("names", friends.getListOfName())
 				.addAttribute("id", friends.getListOfId());
@@ -74,10 +75,12 @@ public class FormFriendsController {
 		common.createCommonList(facebook, idSelected);
 		commonFriendsList = common.getCommonFriends();
 
-		fs.addFriends(commonFriendsList);;
+		fs.addFriends(commonFriendsList);
+		;
 
 		model.addAttribute(facebook.userOperations().getUserProfile());
-		model.addAttribute("name", facebook.userOperations().getUserProfile().getName());
+		model.addAttribute("name", facebook.userOperations().getUserProfile()
+				.getName());
 		model.addAttribute("friends", commonFriendsList);
 		return "hierarchicalList";
 	}
@@ -116,7 +119,8 @@ public class FormFriendsController {
 
 		model.addAttribute("graph", json.getJson());
 		model.addAttribute(facebook.userOperations().getUserProfile());
-		model.addAttribute("name", facebook.userOperations().getUserProfile().getName());
+		model.addAttribute("name", facebook.userOperations().getUserProfile()
+				.getName());
 		model.addAttribute("friends", commonFriendsList);
 
 		return "graphPage";

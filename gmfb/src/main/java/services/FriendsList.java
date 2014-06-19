@@ -5,13 +5,16 @@ import java.util.List;
 
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
-import org.springframework.social.facebook.api.PagedList;
 import org.springframework.stereotype.Service;
+
+import domain.Friend;
 
 @Service
 public class FriendsList {
 	private List<String> id;
 	private List<String> name;
+	private List<FacebookProfile> fbFriends;
+	private List<Friend> friends;
 
 	public FriendsList() {
 		id = new ArrayList<String>();
@@ -19,13 +22,14 @@ public class FriendsList {
 	}
 
 	public void createFbList(Facebook facebook) {
-		PagedList<FacebookProfile> friends = facebook.friendOperations()
-				.getFriendProfiles();
+		fbFriends = facebook.friendOperations().getFriendProfiles();
 
-		for (int i = 0; i < friends.size(); i++) {
+		for (int i = 0; i < fbFriends.size(); i++) {
 			// creo lista di nomi e id da passare alla pagina con le chekboxes
-			id.add(friends.get(i).getId());
-			name.add(friends.get(i).getName());
+			friends.add(new Friend(Long.parseLong(fbFriends.get(i).getId()),
+					fbFriends.get(i).getName(), null));
+			id.add(fbFriends.get(i).getId());
+			name.add(fbFriends.get(i).getName());
 		}
 	}
 
@@ -35,5 +39,9 @@ public class FriendsList {
 
 	public List<String> getListOfName() {
 		return name;
+	}
+
+	public List<Friend> getFriends() {
+		return friends;
 	}
 }
