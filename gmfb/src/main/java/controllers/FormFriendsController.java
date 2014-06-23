@@ -80,7 +80,7 @@ public class FormFriendsController {
 		// degli amici in comune
 		common.createCommonList(facebook, idSelected, user);
 		commonFriendsList = common.getCommonFriends();
-
+		
 		fs.addFriends(commonFriendsList);
 
 		model.addAttribute(facebook.userOperations().getUserProfile());
@@ -120,7 +120,7 @@ public class FormFriendsController {
 		// creo grafo per statistica
 		myId = facebook.userOperations().getUserProfile().getId();
 		graph.makeGraph(commonFriendsList, myId);
-		graphF = graph.calcMetrics(commonFriendsList, myId);
+		graphF = graph.calcMetrics(commonFriendsList, user);
 
 		model.addAttribute("graph", json.getJson());
 		model.addAttribute(facebook.userOperations().getUserProfile());

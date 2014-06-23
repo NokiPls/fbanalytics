@@ -48,7 +48,7 @@ public class Graph {
 
 	}
 
-	public SingleGraph calcMetrics(List<Friend> commonFriendsList, String myId) {
+	public SingleGraph calcMetrics(List<Friend> commonFriendsList, Friend user) {
 		/* compute all the metrics */
 
 		// compute DegreeCentrality centrality for each node
@@ -81,7 +81,18 @@ public class Graph {
 		
 		
 		//set metrics in friends
+		
+		Long user_Id = user.getId();
+		String userId = user_Id.toString();
+		user.setBetweennessCentrality( (Double) graphF.getNode(userId).getAttribute("betweenness"));
+		user.setClosenessCentrality( (Double) graphF.getNode(userId).getAttribute("closeness"));
+		user.setDegreeCentrality( (Double) graphF.getNode(userId).getAttribute("degree"));
+		user.setNormalizedClosenessCentrality( (Double) graphF.getNode(userId).getAttribute("norm_closeness"));
+		user.setNormalizedDegreeCentrality( (Double) graphF.getNode(userId).getAttribute("norm_degree"));
+		
+		
 		for (int i = 0; i < commonFriendsList.size(); i++) {
+			
 			Long _id = commonFriendsList.get(i).getId();
 			String id = _id.toString();
 			commonFriendsList.get(i).setBetweennessCentrality( (Double) graphF.getNode(id).getAttribute("betweenness"));
