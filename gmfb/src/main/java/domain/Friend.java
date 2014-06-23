@@ -23,11 +23,11 @@ public class Friend implements Serializable {
 	private Long appUserId;
 	//To distinguish between same person, same app user, but different graph requests
 	private int graphNumber;
-	private int degreeCentrality;
-	private int normalizedDegreeCentrality;
-	private int betweennessCentrality;
-	private int closenessCentrality;
-	private int normalizedClosenessCentrality;
+	private double degreeCentrality;
+	private double normalizedDegreeCentrality;
+	private double betweennessCentrality;
+	private double closenessCentrality;
+	private double normalizedClosenessCentrality;
 	private Long id;
 
 	@Id
@@ -94,44 +94,44 @@ public class Friend implements Serializable {
 		this.appUserId = appUserId;
 	}
 
-	public int getDegreeCentrality() {
+	public double getDegreeCentrality() {
 		return degreeCentrality;
 	}
 
-	public void setDegreeCentrality(int degreeCentrality) {
+	public void setDegreeCentrality(double degreeCentrality) {
 		this.degreeCentrality = degreeCentrality;
 	}
 
-	public int getNormalizedDegreeCentrality() {
+	public double getNormalizedDegreeCentrality() {
 		return normalizedDegreeCentrality;
 	}
 
-	public void setNormalizedDegreeCentrality(int normalizedDegreeCentrality) {
+	public void setNormalizedDegreeCentrality(double normalizedDegreeCentrality) {
 		this.normalizedDegreeCentrality = normalizedDegreeCentrality;
 	}
 
-	public int getBetweennessCentrality() {
+	public double getBetweennessCentrality() {
 		return betweennessCentrality;
 	}
 
-	public void setBetweennessCentrality(int betweennessCentrality) {
+	public void setBetweennessCentrality(double betweennessCentrality) {
 		this.betweennessCentrality = betweennessCentrality;
 	}
 
-	public int getClosenessCentrality() {
+	public double getClosenessCentrality() {
 		return closenessCentrality;
 	}
 
-	public void setClosenessCentrality(int closenessCentrality) {
+	public void setClosenessCentrality(double closenessCentrality) {
 		this.closenessCentrality = closenessCentrality;
 	}
 
-	public int getNormalizedClosenessCentrality() {
+	public double getNormalizedClosenessCentrality() {
 		return normalizedClosenessCentrality;
 	}
 
 	public void setNormalizedClosenessCentrality(
-			int normalizedClosenessCentrality) {
+			double normalizedClosenessCentrality) {
 		this.normalizedClosenessCentrality = normalizedClosenessCentrality;
 	}
 

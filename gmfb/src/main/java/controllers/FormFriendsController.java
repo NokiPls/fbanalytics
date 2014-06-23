@@ -120,7 +120,7 @@ public class FormFriendsController {
 		// creo grafo per statistica
 		myId = facebook.userOperations().getUserProfile().getId();
 		graph.makeGraph(commonFriendsList, myId);
-		graphF = graph.calcMetrics();
+		graphF = graph.calcMetrics(commonFriendsList, myId);
 
 		model.addAttribute("graph", json.getJson());
 		model.addAttribute(facebook.userOperations().getUserProfile());

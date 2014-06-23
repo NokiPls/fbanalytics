@@ -48,7 +48,7 @@ public class Graph {
 
 	}
 
-	public SingleGraph calcMetrics() {
+	public SingleGraph calcMetrics(List<Friend> commonFriendsList, String myId) {
 		/* compute all the metrics */
 
 		// compute DegreeCentrality centrality for each node
@@ -78,6 +78,31 @@ public class Graph {
 				AbstractCentrality.NormalizationMode.SUM_IS_1, true, false);
 		ncc.init(graphF);
 		ncc.compute();
+		
+		
+		//set metrics in friends
+		for (int i = 0; i < commonFriendsList.size(); i++) {
+			Long _id = commonFriendsList.get(i).getId();
+			String id = _id.toString();
+			commonFriendsList.get(i).setBetweennessCentrality( (Double) graphF.getNode(id).getAttribute("betweenness"));
+			commonFriendsList.get(i).setClosenessCentrality( (Double) graphF.getNode(id).getAttribute("closeness"));
+			commonFriendsList.get(i).setDegreeCentrality( (Double) graphF.getNode(id).getAttribute("degree"));
+			commonFriendsList.get(i).setNormalizedClosenessCentrality( (Double) graphF.getNode(id).getAttribute("norm_closeness"));
+			commonFriendsList.get(i).setNormalizedDegreeCentrality( (Double) graphF.getNode(id).getAttribute("norm_degree"));
+
+			
+			for (int k = 0; k < commonFriendsList.get(i).getCommonFriends().size(); k++) {
+				Long _idk = commonFriendsList.get(i).getId();
+				String idk = _id.toString();
+				commonFriendsList.get(i).getCommonFriends().get(k).setBetweennessCentrality( (Double) graphF.getNode(idk).getAttribute("betweenness"));
+				commonFriendsList.get(i).getCommonFriends().get(k).setClosenessCentrality( (Double) graphF.getNode(idk).getAttribute("closeness"));
+				commonFriendsList.get(i).getCommonFriends().get(k).setDegreeCentrality( (Double) graphF.getNode(idk).getAttribute("degree"));
+				commonFriendsList.get(i).getCommonFriends().get(k).setNormalizedClosenessCentrality( (Double) graphF.getNode(idk).getAttribute("norm_closeness"));
+				commonFriendsList.get(i).getCommonFriends().get(k).setNormalizedDegreeCentrality( (Double) graphF.getNode(idk).getAttribute("norm_degree"));
+			}
+
+		}
+	
 		return graphF;
 
 	}
