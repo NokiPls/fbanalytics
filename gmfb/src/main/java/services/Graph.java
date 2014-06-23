@@ -81,7 +81,7 @@ public class Graph {
 		
 		
 		//set metrics in friends
-		
+		//setto metriche utente
 		Long user_Id = user.getId();
 		String userId = user_Id.toString();
 		user.setBetweennessCentrality( (Double) graphF.getNode(userId).getAttribute("betweenness"));
@@ -90,6 +90,7 @@ public class Graph {
 		user.setNormalizedClosenessCentrality( (Double) graphF.getNode(userId).getAttribute("norm_closeness"));
 		user.setNormalizedDegreeCentrality( (Double) graphF.getNode(userId).getAttribute("norm_degree"));
 		
+		//setto metriche della sua lista di amici in comune
 		
 		for (int i = 0; i < commonFriendsList.size(); i++) {
 			
