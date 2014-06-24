@@ -19,6 +19,7 @@ import services.FriendsServiceInterface;
 import services.Graph;
 import services.CreateJson;
 import services.FriendsList;
+import services.UserInit;
 
 @Controller
 public class FormFriendsController {
@@ -31,18 +32,21 @@ public class FormFriendsController {
 	private Graph graph;
 	private CreateJson json;
 	private Friend user;
+	private UserInit userInit;
 
 	@Autowired
 	public FriendsServiceInterface fs;
 
 	@Autowired
 	public FormFriendsController(Facebook facebook, FriendsList friends,
-			CommonFriendsList common, Graph graph, CreateJson json) {
+			CommonFriendsList common, Graph graph, CreateJson json,
+			UserInit userInit) {
 		this.facebook = facebook;
 		this.friends = friends;
 		this.common = common;
 		this.graph = graph;
 		this.json = json;
+		this.userInit = userInit;
 	}
 
 	@RequestMapping(value = "/List", method = RequestMethod.GET)
@@ -52,10 +56,7 @@ public class FormFriendsController {
 			return "redirect:/connect/facebook";
 		}
 
-		user = new Friend(Long.parseLong(facebook.userOperations()
-				.getUserProfile().getId()), facebook.userOperations()
-				.getUserProfile().getName(), null, Long.parseLong(facebook
-				.userOperations().getUserProfile().getId()));
+		user = userInit.initialize(facebook);
 		// the service create list of friends to display in the checkboxes
 		friends.createFbList(facebook, user);
 		fs.addFriends(friends.getFriends());
@@ -80,7 +81,7 @@ public class FormFriendsController {
 		// degli amici in comune
 		common.createCommonList(facebook, idSelected, user);
 		commonFriendsList = common.getCommonFriends();
-		
+
 		fs.addFriends(commonFriendsList);
 
 		model.addAttribute(facebook.userOperations().getUserProfile());
