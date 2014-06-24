@@ -57,6 +57,7 @@ public class FormFriendsController {
 		}
 
 		user = userInit.initialize(facebook);
+		fs.addUser(user);
 		// the service create list of friends to display in the checkboxes
 		friends.createFbList(facebook, user);
 		fs.addFriends(friends.getFriends());

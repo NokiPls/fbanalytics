@@ -32,4 +32,10 @@ public class JpaFriendsRepo implements FriendsRepository {
 			
 		}
 	}
+
+	@Override
+	@Transactional
+	public void addUser(Friend user) {
+		em.persist(user);
+	}
 }

@@ -6,4 +6,5 @@ import domain.Friend;
 
 public interface FriendsServiceInterface {
 	public void addFriends(List<Friend> CommonFriendsList);
+	public void addUser(Friend user);
 }
