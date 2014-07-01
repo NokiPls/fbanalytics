@@ -38,10 +38,6 @@ public class CommonFriendsList {
 						.add(new Friend(Long.parseLong(mutual.get(k).getId()),
 								mutual.get(k).getName(), commonFriendsList
 										.get(i), user.getId()));
-//				commonOnly.add(new Friend(
-//						Long.parseLong(mutual.get(k).getId()), mutual.get(k)
-//								.getName(), commonFriendsList.get(i), user
-//								.getId()));
 
 			}
 		}

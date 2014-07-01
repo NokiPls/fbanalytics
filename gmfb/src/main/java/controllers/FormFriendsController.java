@@ -33,6 +33,7 @@ public class FormFriendsController {
 	private CreateJson json;
 	private Friend user;
 	private UserInit userInit;
+	String myId = "";
 
 	@Autowired
 	public FriendsServiceInterface fs;
@@ -82,6 +83,10 @@ public class FormFriendsController {
 		// degli amici in comune
 		common.createCommonList(facebook, idSelected, user);
 		commonFriendsList = common.getCommonFriends();
+		// creo grafo per statistica
+		myId = facebook.userOperations().getUserProfile().getId();
+		graph.makeGraph(commonFriendsList, myId);
+		graphF = graph.calcMetrics(commonFriendsList, user);
 
 		fs.addFriends(commonFriendsList);
 
@@ -107,7 +112,6 @@ public class FormFriendsController {
 
 	@RequestMapping(value = "/openGraph", method = RequestMethod.POST)
 	public String newGraph(Model model) {
-		String myId = "";
 
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
@@ -118,11 +122,6 @@ public class FormFriendsController {
 				facebook.userOperations().getUserProfile().getName(),
 				Long.parseLong(facebook.userOperations().getUserProfile()
 						.getId()));
-
-		// creo grafo per statistica
-		myId = facebook.userOperations().getUserProfile().getId();
-		graph.makeGraph(commonFriendsList, myId);
-		graphF = graph.calcMetrics(commonFriendsList, user);
 
 		model.addAttribute("graph", json.getJson());
 		model.addAttribute(facebook.userOperations().getUserProfile());

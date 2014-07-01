@@ -29,7 +29,6 @@ public class JpaFriendsRepo implements FriendsRepository {
 		int i;
 		for (i = 0; i < commonFriendsList.size(); i++) {
 			em.persist(commonFriendsList.get(i));
-			
 		}
 	}
 

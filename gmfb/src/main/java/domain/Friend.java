@@ -29,6 +29,8 @@ public class Friend implements Serializable {
 	private double closenessCentrality;
 	private double normalizedClosenessCentrality;
 	private Long id;
+	private int loginNumber;
+	private int searchCommonNumber;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
