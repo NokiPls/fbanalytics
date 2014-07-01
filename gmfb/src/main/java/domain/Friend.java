@@ -45,11 +45,13 @@ public class Friend implements Serializable {
 	public Friend() {
 	};
 
-	public Friend(Long newId, String newName, Friend parent, Long appUserId) {
+	public Friend(Long newId, String newName, Friend parent, Long appUserId, int loginNumber, int searchCommonNumber) {
 		this.setAppUserId(appUserId);
 		this.id = newId;
 		this.name = newName;
 		this.parent = parent;
+		this.loginNumber = loginNumber;
+		this.searchCommonNumber = searchCommonNumber;
 	}
 
 	public String getName() {
@@ -135,6 +137,22 @@ public class Friend implements Serializable {
 	public void setNormalizedClosenessCentrality(
 			double normalizedClosenessCentrality) {
 		this.normalizedClosenessCentrality = normalizedClosenessCentrality;
+	}
+
+	public int getLoginNumber() {
+		return loginNumber;
+	}
+
+	public void setLoginNumber(int loginNumber) {
+		this.loginNumber = loginNumber;
+	}
+
+	public int getSearchCommonNumber() {
+		return searchCommonNumber;
+	}
+
+	public void setSearchCommonNumber(int searchCommonNumber) {
+		this.searchCommonNumber = searchCommonNumber;
 	}
 
 }

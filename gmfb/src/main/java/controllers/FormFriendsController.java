@@ -78,6 +78,8 @@ public class FormFriendsController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
+		
+		UserInit.searchCommonNumber ++;
 
 		// service crea Lista di amici selezionati e per ognuno di essi la lista
 		// degli amici in comune

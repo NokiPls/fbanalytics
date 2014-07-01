@@ -1,11 +1,14 @@
 package controllers;
 
 import javax.inject.Inject;
+
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import services.UserInit;
 
 @Controller
 @RequestMapping("/")
@@ -24,6 +27,7 @@ public class PersonalProfileController {
 			return "redirect:/connect/facebook";
 		}
 
+		UserInit.loginNumber ++;
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		return "personalProfile";
 	}
