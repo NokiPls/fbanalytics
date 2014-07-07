@@ -61,8 +61,7 @@ function Facebook() {
 			<div class="title">
 				<h2>Personal Profile</h2>
 			</div>
-			<image
-				src="https://graph.facebook.com/${facebookProfile.id}/picture?redirect=1&height=300&type=normal&width=300" />
+			<image src="https://graph.facebook.com/${facebookProfile.id}/picture?redirect=1&height=210&type=normal&width=210" />
 			<h3>
 				Name: <span>${facebookProfile.name}</span>
 			</h3>
