@@ -33,6 +33,7 @@ public class FormFriendsController {
 	private CreateJson json;
 	private Friend user;
 	private UserInit userInit;
+	private int alreadyPersisted = 0;
 	String myId = "";
 
 	@Autowired
@@ -54,14 +55,18 @@ public class FormFriendsController {
 	public String friendsCheckboxes(Model model) {
 
 		if (!facebook.isAuthorized()) {
+			alreadyPersisted = 0;
 			return "redirect:/connect/facebook";
 		}
 
-		user = userInit.initialize(facebook);
-		fs.addUser(user);
 		// the service create list of friends to display in the checkboxes
-		friends.createFbList(facebook, user);
-		fs.addFriends(friends.getFriends());
+		if (alreadyPersisted == 0) {
+			user = userInit.initialize(facebook);
+			friends.createFbList(facebook, user);
+			fs.addUser(user);
+			fs.addFriends(friends.getFriends());
+			alreadyPersisted = 1;
+		}
 		model.addAttribute(facebook.userOperations().getUserProfile())
 				.addAttribute("names", friends.getListOfName())
 				.addAttribute("id", friends.getListOfId());
@@ -78,8 +83,8 @@ public class FormFriendsController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
-		
-		UserInit.searchCommonNumber ++;
+
+		UserInit.searchCommonNumber++;
 
 		// service crea Lista di amici selezionati e per ognuno di essi la lista
 		// degli amici in comune

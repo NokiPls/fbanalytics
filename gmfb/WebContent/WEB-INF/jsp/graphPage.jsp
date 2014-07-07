@@ -12,7 +12,7 @@
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Quicksand:400,700|Questrial"
 	rel="stylesheet" />
 
-
+<script   src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
 	function Facebook() {
@@ -87,6 +87,7 @@
 			</div>
 			<script src="http://d3js.org/d3.v3.min.js"></script>
 			<script>
+			
 				var data = eval('(' + '${graph}' + ')');
 
 				var width = 1000, height = 650;
@@ -112,11 +113,13 @@
 								function(d) {
 									if (d3.event.defaultPrevented)
 										return;
-									var p1 = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no'
-									var p2 = 'width=80,height=80,right=100,top=100'
-									open('GraphNode?id=' + d.id, 'test', p1
-											+ p2)
-								});
+								
+									$.ajax({
+							            url : 'GraphNode?id=' + d.id,
+							            success : function(data) {
+							                $('#result').html(data);
+							            }})
+									});
 
 				node
 						.append("image")
@@ -145,11 +148,17 @@
 					});
 				});
 			</script>
-			<form id="disconnectionForm" action="/gmfb" method="POST"></form>
+		<form id="disconnectionForm" action="/gmfb" method="POST"></form>
 
 		</div>
 	</div>
 	<div class="wrapper"></div>
+	<div id="result"></div>
+        <br>
+        <p>
+           
+        </p>
+    </div>
 	<div id="copyright" class="container">
 		<p>POLIMI - Advanced Web Technology</p>
 
