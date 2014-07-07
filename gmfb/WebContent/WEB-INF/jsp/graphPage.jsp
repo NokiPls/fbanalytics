@@ -76,7 +76,6 @@
 			<div class="title">
 				<h2>Graph</h2>
 			</div>
-
 			<br> You have selected:
 			<div>
 				<c:forEach var="i" items="${friends}" varStatus="status">
@@ -85,6 +84,13 @@
 
 				</c:forEach>
 			</div>
+			<br><br><br>
+			<div id="result"></div>
+    <div id="graph">
+      
+    </div>
+
+			
 			<script src="http://d3js.org/d3.v3.min.js"></script>
 			<script>
 			
@@ -92,7 +98,7 @@
 
 				var width = 1000, height = 650;
 
-				var svg = d3.select("#welcome").append("svg").attr("width",
+				var svg = d3.select("#graph").append("svg").attr("width",
 						width).attr("height", height);
 
 				var force = d3.layout.force().gravity(.05).linkDistance(150)
@@ -153,12 +159,7 @@
 		</div>
 	</div>
 	<div class="wrapper"></div>
-	<div id="result"></div>
-        <br>
-        <p>
-           
-        </p>
-    </div>
+	
 	<div id="copyright" class="container">
 		<p>POLIMI - Advanced Web Technology</p>
 

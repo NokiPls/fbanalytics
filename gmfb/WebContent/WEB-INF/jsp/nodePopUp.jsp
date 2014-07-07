@@ -13,9 +13,9 @@
 </head>
 <body>
 
-
+<br><br><br>
 	<image
-		src="https://graph.facebook.com/${profile.id}/picture?redirect=1&height=100&type=normal&width=100" />
+		src="https://graph.facebook.com/${profile.id}/picture?redirect=1&height=140&type=normal&width=140" />
 	<br> Name: ${profile.name}
 	<br> Nick Name: ${profile.username}
 	<br>

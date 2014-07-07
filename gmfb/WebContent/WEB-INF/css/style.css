@@ -337,10 +337,12 @@ ul.contact li a:before {
 /*********************************************************************************/
 #welcome {
 	overflow: hidden;
-	width: 1200px;
+	width: 1400px;
 	padding: 2em 0px 0em 0px;
 	text-align: center;
 }
+#result{ float:right; width:25%;}
+#graph{  float:left; width:75%;}
 
 #welcome .content {
 	padding: 0em 8em;
