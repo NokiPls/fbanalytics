@@ -6,21 +6,6 @@
 
 	<display-name>GMFB</display-name>
 
-	<servlet>
-		<servlet-name>frontcontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value></param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>frontcontroller</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
-
 	<!-- Java-based Spring container definition -->
 	<context-param>
 		<param-name>contextClass</param-name>
@@ -42,15 +27,36 @@
 	</listener>
 
 	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Enables support for DELETE and PUT request methods with web browser 
+		clients -->
+	<filter>
 		<filter-name>hiddenHttpMethodFilter</filter-name>
 		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
 	</filter>
 
 	<filter-mapping>
 		<filter-name>hiddenHttpMethodFilter</filter-name>
-		<url-pattern>/connect/*</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
+	<!-- H2 Database Console for managing the app's database -->
 	<servlet>
 		<servlet-name>H2Console</servlet-name>
 		<servlet-class>org.h2.server.web.WebServlet</servlet-class>
@@ -64,6 +70,22 @@
 	<servlet-mapping>
 		<servlet-name>H2Console</servlet-name>
 		<url-pattern>/admin/h2/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Handles requests into the application -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value></param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
 </web-app>

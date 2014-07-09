@@ -45,7 +45,7 @@ public class HomeController {
 	public String home(Model model) {
 		List<Reference> friends = facebook.friendOperations().getFriends();
 		model.addAttribute("friends", friends);
-		return "personalProfile";
+		return "home";
 	}
 
 }
