@@ -24,7 +24,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<bean class="services.FacebookConfig"></bean>
+	<bean class="org.springframework.social.quickstart.config.SocialConfig"></bean>
 
 
 </beans>
