@@ -26,6 +26,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import services.UserInit;
+
 /**
  * Simple little @Controller that invokes Facebook and renders the result.
  * The injected {@link Facebook} reference is configured with the required authorization credentials for the current user behind the scenes.
@@ -43,8 +45,9 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
-		List<Reference> friends = facebook.friendOperations().getFriends();
-		model.addAttribute("friends", friends);
+		
+		UserInit.loginNumber ++;
+		model.addAttribute(facebook.userOperations().getUserProfile());
 		return "home";
 	}
 
