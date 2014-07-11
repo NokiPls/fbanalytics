@@ -8,7 +8,7 @@
 <head>
 <title>Friends List</title>
 <link href="<c:url value="/css/style.css" />" rel="stylesheet">
-<link href="<c:url value="/css/fonts.css" />" rel="stylesheet">
+
 <link
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Quicksand:400,700|Questrial"
 	rel="stylesheet" />
@@ -79,7 +79,7 @@ function Facebook() {
 					</c:forEach>
 				</ul>
 			</form>
-			<form id="disconnectionForm" action="/gmfb" method="POST"></form>
+		<form id="disconnectionForm" action="<c:url value="/signout" />" method="POST"></form>
 		</div>
 	</div>
 
