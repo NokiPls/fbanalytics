@@ -34,8 +34,7 @@ public class FormFriendsController {
 	private Friend user;
 	private UserInit userInit;
 	private int alreadyPersisted = 0;
-	String myId = "";
-
+	
 	@Autowired
 	public FriendsServiceInterface fs;
 
@@ -88,11 +87,9 @@ public class FormFriendsController {
 
 		// service crea Lista di amici selezionati e per ognuno di essi la lista
 		// degli amici in comune
-		common.createCommonList(facebook, idSelected, user);
-		commonFriendsList = common.getCommonFriends();
+		commonFriendsList = common.createCommonList(facebook, idSelected, user);
 		// creo grafo per statistica
-		myId = facebook.userOperations().getUserProfile().getId();
-		graph.makeGraph(commonFriendsList, myId);
+		graph.makeGraph(commonFriendsList, facebook.userOperations().getUserProfile().getId());
 		graphF = graph.calcMetrics(commonFriendsList, user);
 
 		fs.addFriends(commonFriendsList);

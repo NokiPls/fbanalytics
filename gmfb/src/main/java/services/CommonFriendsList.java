@@ -19,8 +19,8 @@ public class CommonFriendsList {
 	public CommonFriendsList() {
 	};
 
-	public void createCommonList(Facebook facebook, String[] idSelected,
-			Friend user) {
+	public List<Friend> createCommonList(Facebook facebook,
+			String[] idSelected, Friend user) {
 		commonFriendsList = new ArrayList<Friend>();
 		for (int i = 0; i < idSelected.length; i++) {
 			PagedList<Reference> mutual = facebook.friendOperations()
@@ -28,22 +28,25 @@ public class CommonFriendsList {
 			FacebookProfile friend = facebook.userOperations().getUserProfile(
 					idSelected[i]);
 			commonFriendsList.add(i, new Friend(Long.parseLong(friend.getId()),
-					friend.getName(), null, user.getId(), UserInit.loginNumber, UserInit.searchCommonNumber)); // null è l'user
+					friend.getName(), null, user.getId(), UserInit.loginNumber,
+					UserInit.searchCommonNumber)); // null è l'user
 			for (int k = 0; k < mutual.size(); k++) {
 				commonFriendsList
 						.get(i)
 						.getCommonFriends()
 						.add(new Friend(Long.parseLong(mutual.get(k).getId()),
 								mutual.get(k).getName(), commonFriendsList
-										.get(i), user.getId(), UserInit.loginNumber, UserInit.searchCommonNumber));
+										.get(i), user.getId(),
+								UserInit.loginNumber,
+								UserInit.searchCommonNumber));
 
 			}
 		}
-
+		return commonFriendsList;
 	}
 
 	public List<Friend> getCommonFriends() {
 		return commonFriendsList;
 	}
-	
+
 }
