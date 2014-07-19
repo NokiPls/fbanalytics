@@ -35,12 +35,11 @@ public class FormFriendsController {
 	private Friend user;
 	private UserInitInterface userInit;
 	private FriendsServiceInterface fs;
-	private int alreadyPersisted = 0;
-
 
 	@Autowired
-	public FormFriendsController(Facebook facebook, FriendsListInterface friends,
-			CommonFriendsListInterface common, GraphInterface graph, CreateJsonInterface json,
+	public FormFriendsController(Facebook facebook,
+			FriendsListInterface friends, CommonFriendsListInterface common,
+			GraphInterface graph, CreateJsonInterface json,
 			UserInitInterface userInit, FriendsServiceInterface fs) {
 		this.facebook = facebook;
 		this.friends = friends;
@@ -55,18 +54,14 @@ public class FormFriendsController {
 	public String friendsCheckboxes(Model model) {
 
 		if (!facebook.isAuthorized()) {
-			alreadyPersisted = 0;
 			return "redirect:/connect/facebook";
 		}
 
 		// the service create list of friends to display in the checkboxes
-		if (alreadyPersisted == 0) {
-			user = userInit.initialize(facebook);
-			friends.createFbList(facebook, user);
-			fs.addUser(user);
-			fs.addFriends(friends.getFriends());
-			alreadyPersisted = 1;
-		}
+		user = userInit.initialize(facebook);
+		friends.createFbList(facebook, user);
+		fs.addUser(user);
+		fs.addFriends(friends.getFriends());
 		model.addAttribute(facebook.userOperations().getUserProfile())
 				.addAttribute("names", friends.getListOfName())
 				.addAttribute("id", friends.getListOfId());
@@ -84,13 +79,12 @@ public class FormFriendsController {
 			return "redirect:/connect/facebook";
 		}
 
-		UserInit.searchCommonNumber++;
-
 		// service crea Lista di amici selezionati e per ognuno di essi la lista
 		// degli amici in comune
 		commonFriendsList = common.createCommonList(facebook, idSelected, user);
 		// creo grafo per statistica
-		graph.makeGraph(commonFriendsList, facebook.userOperations().getUserProfile().getId());
+		graph.makeGraph(commonFriendsList, facebook.userOperations()
+				.getUserProfile().getId());
 		graphF = graph.calcMetrics(commonFriendsList, user);
 
 		fs.addFriends(commonFriendsList);

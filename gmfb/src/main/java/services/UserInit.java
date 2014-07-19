@@ -1,5 +1,8 @@
 package services;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Service;
 
@@ -7,17 +10,17 @@ import domain.Friend;
 
 @Service
 public class UserInit implements UserInitInterface {
-
-	public static int searchCommonNumber;
-	public static int loginNumber = 0;
+	
+	String timeStamp;
 	
 	@Override
 	public Friend initialize(Facebook facebook) {
-		searchCommonNumber = 0;
+		
+		timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		Friend user = new Friend(Long.parseLong(facebook.userOperations()
 				.getUserProfile().getId()), facebook.userOperations()
 				.getUserProfile().getName(), null, Long.parseLong(facebook
-				.userOperations().getUserProfile().getId()), searchCommonNumber, loginNumber);
+				.userOperations().getUserProfile().getId()), timeStamp , timeStamp);
 		return user;
 	}
 

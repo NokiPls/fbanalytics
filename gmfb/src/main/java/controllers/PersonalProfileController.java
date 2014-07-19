@@ -27,7 +27,6 @@ public class PersonalProfileController {
 			return "redirect:/connect/facebook";
 		}
 
-		UserInit.loginNumber ++;
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		return "personalProfile";
 	}

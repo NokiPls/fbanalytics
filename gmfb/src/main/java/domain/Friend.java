@@ -21,16 +21,14 @@ public class Friend implements Serializable {
 	private String name;
 	//To separate persons which are friends with different app users
 	private Long appUserId;
-	//To distinguish between same person, same app user, but different graph requests
-	private int graphNumber;
 	private double degreeCentrality;
 	private double normalizedDegreeCentrality;
 	private double betweennessCentrality;
 	private double closenessCentrality;
 	private double normalizedClosenessCentrality;
 	private Long id;
-	private int loginNumber;
-	private int searchCommonNumber;
+	private String loginDate;
+	private String searchDate;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,13 +43,13 @@ public class Friend implements Serializable {
 	public Friend() {
 	};
 
-	public Friend(Long newId, String newName, Friend parent, Long appUserId, int loginNumber, int searchCommonNumber) {
+	public Friend(Long newId, String newName, Friend parent, Long appUserId, String loginDate, String searchDate) {
 		this.setAppUserId(appUserId);
 		this.id = newId;
 		this.name = newName;
 		this.parent = parent;
-		this.loginNumber = loginNumber;
-		this.searchCommonNumber = searchCommonNumber;
+		this.setLoginDate(loginDate);
+		this.setSearchDate(searchDate);
 	}
 
 	public String getName() {
@@ -80,14 +78,6 @@ public class Friend implements Serializable {
 
 	public void setParent(Friend parent) {
 		this.parent = parent;
-	}
-
-	public int getGraphNumber() {
-		return graphNumber;
-	}
-
-	public void setGraphNumber(int graphNumber) {
-		this.graphNumber = graphNumber;
 	}
 
 	public Long getAppUserId() {
@@ -139,20 +129,22 @@ public class Friend implements Serializable {
 		this.normalizedClosenessCentrality = normalizedClosenessCentrality;
 	}
 
-	public int getLoginNumber() {
-		return loginNumber;
+	public String getLoginDate() {
+		return loginDate;
 	}
 
-	public void setLoginNumber(int loginNumber) {
-		this.loginNumber = loginNumber;
+	public void setLoginDate(String loginDate) {
+		this.loginDate = loginDate;
 	}
 
-	public int getSearchCommonNumber() {
-		return searchCommonNumber;
+	public String getSearchDate() {
+		return searchDate;
 	}
 
-	public void setSearchCommonNumber(int searchCommonNumber) {
-		this.searchCommonNumber = searchCommonNumber;
+	public void setSearchDate(String searchDate) {
+		this.searchDate = searchDate;
 	}
+
+	
 
 }
