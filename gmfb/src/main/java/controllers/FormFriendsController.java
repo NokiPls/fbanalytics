@@ -14,40 +14,41 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import domain.Friend;
-import services.CommonFriendsList;
+import services.CommonFriendsListInterface;
+import services.CreateJsonInterface;
+import services.FriendsListInterface;
 import services.FriendsServiceInterface;
-import services.Graph;
-import services.CreateJson;
-import services.FriendsList;
+import services.GraphInterface;
 import services.UserInit;
+import services.UserInitInterface;
 
 @Controller
 public class FormFriendsController {
 
 	private Facebook facebook;
-	private FriendsList friends;
+	private FriendsListInterface friends;
 	public List<Friend> commonFriendsList = new ArrayList<Friend>();
 	public SingleGraph graphF = new SingleGraph("graph");
-	private CommonFriendsList common;
-	private Graph graph;
-	private CreateJson json;
+	private CommonFriendsListInterface common;
+	private GraphInterface graph;
+	private CreateJsonInterface json;
 	private Friend user;
-	private UserInit userInit;
+	private UserInitInterface userInit;
+	private FriendsServiceInterface fs;
 	private int alreadyPersisted = 0;
-	
-	@Autowired
-	public FriendsServiceInterface fs;
+
 
 	@Autowired
-	public FormFriendsController(Facebook facebook, FriendsList friends,
-			CommonFriendsList common, Graph graph, CreateJson json,
-			UserInit userInit) {
+	public FormFriendsController(Facebook facebook, FriendsListInterface friends,
+			CommonFriendsListInterface common, GraphInterface graph, CreateJsonInterface json,
+			UserInitInterface userInit, FriendsServiceInterface fs) {
 		this.facebook = facebook;
 		this.friends = friends;
 		this.common = common;
 		this.graph = graph;
 		this.json = json;
 		this.userInit = userInit;
+		this.fs = fs;
 	}
 
 	@RequestMapping(value = "/List", method = RequestMethod.GET)

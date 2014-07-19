@@ -12,13 +12,14 @@ import org.springframework.stereotype.Service;
 import domain.Friend;
 
 @Service
-public class Graph {
+public class Graph implements GraphInterface {
 
 	public SingleGraph graphF = new SingleGraph("graph");
 
 	public Graph() {
 	};
 
+	@Override
 	public void makeGraph(List<Friend> commonFriendsList, String myId) {
 		graphF = new SingleGraph("graph");
 		graphF.addNode(myId);
@@ -47,7 +48,8 @@ public class Graph {
 		}
 
 	}
-
+	
+	@Override
 	public SingleGraph calcMetrics(List<Friend> commonFriendsList, Friend user) {
 		/* compute all the metrics */
 
@@ -119,6 +121,7 @@ public class Graph {
 
 	}
 
+	@Override
 	public SingleGraph getGraphF() {
 		return graphF;
 	}

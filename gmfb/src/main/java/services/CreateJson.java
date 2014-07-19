@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import domain.Friend;
 
 @Service
-public class CreateJson {
+public class CreateJson implements CreateJsonInterface {
 	private String json, links = "";
 	private final String NODES = "\"nodes\":[";
 	private final String NAME = "\"name\":";
@@ -24,6 +24,7 @@ public class CreateJson {
 	// {"nodes":[{"name":"John Bonham","group":1},{..}],"links":[{"source":"int","target":"int","value":"int"}]}
 	// in which source and target are the position in the array "nodes" of the
 	// elements to be linked
+	@Override
 	public void makeJson(List<Friend> friend, String self, Long fid) {
 		json= "";
 		links = "";
@@ -83,6 +84,7 @@ public class CreateJson {
 		json += "]," + LINKS + links + "]}";
 	}
 
+	@Override
 	public String getJson() {
 		return json;
 	}

@@ -12,13 +12,14 @@ import org.springframework.stereotype.Service;
 import domain.Friend;
 
 @Service
-public class CommonFriendsList {
+public class CommonFriendsList implements CommonFriendsListInterface {
 
 	private List<Friend> commonFriendsList;
 
 	public CommonFriendsList() {
 	};
 
+	@Override
 	public List<Friend> createCommonList(Facebook facebook,
 			String[] idSelected, Friend user) {
 		commonFriendsList = new ArrayList<Friend>();
@@ -45,6 +46,7 @@ public class CommonFriendsList {
 		return commonFriendsList;
 	}
 
+	@Override
 	public List<Friend> getCommonFriends() {
 		return commonFriendsList;
 	}

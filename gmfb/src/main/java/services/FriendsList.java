@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import domain.Friend;
 
 @Service
-public class FriendsList {
+public class FriendsList implements FriendsListInterface {
 	private List<String> id;
 	private List<String> name;
 	private List<FacebookProfile> fbFriends;
@@ -22,6 +22,7 @@ public class FriendsList {
 		friends = new ArrayList<Friend>();
 	}
 
+	@Override
 	public void createFbList(Facebook facebook, Friend user) {
 		fbFriends = facebook.friendOperations().getFriendProfiles();
 
@@ -34,14 +35,17 @@ public class FriendsList {
 		}
 	}
 
+	@Override
 	public List<String> getListOfId() {
 		return id;
 	}
 
+	@Override
 	public List<String> getListOfName() {
 		return name;
 	}
 
+	@Override
 	public List<Friend> getFriends() {
 		return friends;
 	}
