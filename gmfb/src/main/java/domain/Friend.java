@@ -26,7 +26,7 @@ public class Friend implements Serializable {
 	private double betweennessCentrality;
 	private double closenessCentrality;
 	private double normalizedClosenessCentrality;
-	private Long id;
+	private Long fbId;
 	private String loginDate;
 	private String searchDate;
 
@@ -45,7 +45,7 @@ public class Friend implements Serializable {
 
 	public Friend(Long newId, String newName, Friend parent, Long appUserId, String loginDate, String searchDate) {
 		this.setAppUserId(appUserId);
-		this.id = newId;
+		this.fbId = newId;
 		this.name = newName;
 		this.parent = parent;
 		this.setLoginDate(loginDate);
@@ -60,12 +60,12 @@ public class Friend implements Serializable {
 		this.name = name;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getFbId() {
+		return fbId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setFbId(Long id) {
+		this.fbId = id;
 	}
 
 	public List<Friend> getCommonFriends() {

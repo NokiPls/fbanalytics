@@ -39,42 +39,42 @@ public class CreateJson implements CreateJsonInterface {
 				+ "\"},";
 		for (i = 0; i < friend.size(); i++) {
 			// "i" are the selected friends
-			if (!idPos.contains(friend.get(i).getId())) {
-				idPos.add(friend.get(i).getId());
+			if (!idPos.contains(friend.get(i).getFbId())) {
+				idPos.add(friend.get(i).getFbId());
 				String nameA = friend.get(i).getName();
 				if (nameA.contains("\'"))
 					nameA = nameA.replaceAll("\'", "`");
 				json += "{" + NAME + "\"" + nameA + "\"," + ID + "\""
-						+ friend.get(i).getId() + "\"},";
+						+ friend.get(i).getFbId() + "\"},";
 				// fpos keeps track of the position of the direct friend in the
 				// json
 				// link them to the user
 				links += "{" + SOURCE + "0," + TARGET + ""
-						+ idPos.indexOf(friend.get(i).getId()) + "},";
+						+ idPos.indexOf(friend.get(i).getFbId()) + "},";
 			}
 			List<Friend> common = friend.get(i).getCommonFriends();
 			for (j = 0; j < common.size(); j++) {
-				if (!idPos.contains(common.get(j).getId())) {
-					idPos.add(common.get(j).getId());
+				if (!idPos.contains(common.get(j).getFbId())) {
+					idPos.add(common.get(j).getFbId());
 					// "j" are the common friends between me and "i"
 					String nameB = common.get(j).getName();
 					if (nameB.contains("'"))
 						nameB = nameB.replace("'", "`");
 					json += "{" + NAME + "\"" + nameB + "\"," + ID + "\""
-							+ common.get(j).getId() + "\"},";
+							+ common.get(j).getFbId() + "\"},";
 					// link them to the user
 					links += "{" + SOURCE + "0," + TARGET + ""
-							+ idPos.indexOf(common.get(j).getId()) + "},";
+							+ idPos.indexOf(common.get(j).getFbId()) + "},";
 					// link them to the "i" friend
 					links += "{" + SOURCE + ""
-							+ idPos.indexOf(common.get(j).getId()) + ","
+							+ idPos.indexOf(common.get(j).getFbId()) + ","
 							+ TARGET + ""
-							+ idPos.indexOf(friend.get(i).getId()) + "},";
+							+ idPos.indexOf(friend.get(i).getFbId()) + "},";
 				} else {
 					links += "{" + SOURCE + ""
-							+ idPos.indexOf(common.get(j).getId()) + ","
+							+ idPos.indexOf(common.get(j).getFbId()) + ","
 							+ TARGET + ""
-							+ idPos.indexOf(friend.get(i).getId()) + "},";
+							+ idPos.indexOf(friend.get(i).getFbId()) + "},";
 				}
 			}
 		}

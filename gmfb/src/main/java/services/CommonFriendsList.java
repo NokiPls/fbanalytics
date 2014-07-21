@@ -34,7 +34,7 @@ public class CommonFriendsList implements CommonFriendsListInterface {
 			FacebookProfile friend = facebook.userOperations().getUserProfile(
 					idSelected[i]);
 			commonFriendsList.add(i, new Friend(Long.parseLong(friend.getId()),
-					friend.getName(), null, user.getId(), user.getLoginDate(),
+					friend.getName(), null, user.getFbId(), user.getLoginDate(),
 					timeStamp)); // null è l'user
 			for (int k = 0; k < mutual.size(); k++) {
 				commonFriendsList
@@ -42,7 +42,7 @@ public class CommonFriendsList implements CommonFriendsListInterface {
 						.getCommonFriends()
 						.add(new Friend(Long.parseLong(mutual.get(k).getId()),
 								mutual.get(k).getName(), commonFriendsList
-										.get(i), user.getId(), user
+										.get(i), user.getFbId(), user
 										.getLoginDate(), timeStamp));
 
 			}

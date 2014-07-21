@@ -19,7 +19,6 @@ import services.CreateJsonInterface;
 import services.FriendsListInterface;
 import services.FriendsServiceInterface;
 import services.GraphInterface;
-import services.UserInit;
 import services.UserInitInterface;
 
 @Controller

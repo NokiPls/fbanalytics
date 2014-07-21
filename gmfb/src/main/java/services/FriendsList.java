@@ -33,7 +33,7 @@ public class FriendsList implements FriendsListInterface {
 		for (int i = 0; i < fbFriends.size(); i++) {
 			// creo lista di nomi e id da passare alla pagina con le chekboxes
 			friends.add(new Friend(Long.parseLong(fbFriends.get(i).getId()),
-					fbFriends.get(i).getName(), null, user.getId(), user.getLoginDate(), timeStamp));
+					fbFriends.get(i).getName(), null, user.getFbId(), user.getLoginDate(), timeStamp));
 			id.add(fbFriends.get(i).getId());
 			name.add(fbFriends.get(i).getName());
 		}

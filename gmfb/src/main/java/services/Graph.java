@@ -24,7 +24,7 @@ public class Graph implements GraphInterface {
 		graphF = new SingleGraph("graph");
 		graphF.addNode(myId);
 		for (int i = 0; i < commonFriendsList.size(); i++) {
-			String nodeId = Long.toString(commonFriendsList.get(i).getId());
+			String nodeId = Long.toString(commonFriendsList.get(i).getFbId());
 
 			if (graphF.getNode(nodeId) == null) {
 				graphF.addNode(nodeId);
@@ -33,7 +33,7 @@ public class Graph implements GraphInterface {
 			for (int k = 0; k < commonFriendsList.get(i).getCommonFriends()
 					.size(); k++) {
 				String s_nodeId = Long.toString(commonFriendsList.get(i)
-						.getCommonFriends().get(k).getId());
+						.getCommonFriends().get(k).getFbId());
 
 				if (graphF.getNode(s_nodeId) == null) {
 					graphF.addNode(s_nodeId);
@@ -84,7 +84,7 @@ public class Graph implements GraphInterface {
 		
 		//set metrics in friends
 		//setto metriche utente
-		Long user_Id = user.getId();
+		Long user_Id = user.getFbId();
 		String userId = user_Id.toString();
 		user.setBetweennessCentrality( (Double) graphF.getNode(userId).getAttribute("betweenness"));
 		user.setClosenessCentrality( (Double) graphF.getNode(userId).getAttribute("closeness"));
@@ -96,7 +96,7 @@ public class Graph implements GraphInterface {
 		
 		for (int i = 0; i < commonFriendsList.size(); i++) {
 			
-			Long _id = commonFriendsList.get(i).getId();
+			Long _id = commonFriendsList.get(i).getFbId();
 			String id = _id.toString();
 			commonFriendsList.get(i).setBetweennessCentrality( (Double) graphF.getNode(id).getAttribute("betweenness"));
 			commonFriendsList.get(i).setClosenessCentrality( (Double) graphF.getNode(id).getAttribute("closeness"));
@@ -106,7 +106,7 @@ public class Graph implements GraphInterface {
 
 			
 			for (int k = 0; k < commonFriendsList.get(i).getCommonFriends().size(); k++) {
-				Long _idk = commonFriendsList.get(i).getId();
+				Long _idk = commonFriendsList.get(i).getFbId();
 				String idk = _id.toString();
 				commonFriendsList.get(i).getCommonFriends().get(k).setBetweennessCentrality( (Double) graphF.getNode(idk).getAttribute("betweenness"));
 				commonFriendsList.get(i).getCommonFriends().get(k).setClosenessCentrality( (Double) graphF.getNode(idk).getAttribute("closeness"));
