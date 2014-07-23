@@ -18,11 +18,6 @@ public class JpaFriendsRepo implements FriendsRepository {
 	@PersistenceContext
 	public EntityManager em;
 
-	// @Inject
-	// private void FriendRepo(EntityManager em) {
-	// this.em = em;
-	// }
-
 	@Override
 	@Transactional
 	public void addFriendList(List<Friend> commonFriendsList) {

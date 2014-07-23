@@ -10,18 +10,32 @@ import domain.Friend;
 
 @Service
 public class UserInit implements UserInitInterface {
-	
-	String timeStamp;
-	
+
+	private String timeStamp;
+	private int done = 0;
+
 	@Override
 	public Friend initialize(Facebook facebook) {
-		
-		timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+
+		timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar
+				.getInstance().getTime());
 		Friend user = new Friend(Long.parseLong(facebook.userOperations()
 				.getUserProfile().getId()), facebook.userOperations()
 				.getUserProfile().getName(), null, Long.parseLong(facebook
-				.userOperations().getUserProfile().getId()), timeStamp , timeStamp);
+				.userOperations().getUserProfile().getId()), timeStamp,
+				timeStamp);
+		done = 1;
 		return user;
+	}
+
+	@Override
+	public int getDone() {
+		return done;
+	}
+
+	@Override
+	public void setDone(int done) {
+		this.done = done;
 	}
 
 }

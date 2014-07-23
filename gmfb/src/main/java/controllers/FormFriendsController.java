@@ -49,18 +49,26 @@ public class FormFriendsController {
 		this.fs = fs;
 	}
 
-	@RequestMapping(value = "/List", method = RequestMethod.GET)
+	@RequestMapping(value = "/friendsList", method = RequestMethod.GET)
 	public String friendsCheckboxes(Model model) {
 
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
+		
+		if (userInit.getDone() == 0) {
+			
+			// Initialize the user as a "friend" object
+			user = userInit.initialize(facebook);
 
-		// the service create list of friends to display in the checkboxes
-		user = userInit.initialize(facebook);
-		friends.createFbList(facebook, user);
-		fs.addUser(user);
-		fs.addFriends(friends.getFriends());
+			// Create the list of direct friends
+			friends.createFbList(facebook, user);
+			
+			// Persist
+			fs.addUser(user);
+			fs.addFriends(friends.getFriends());
+		}
+
 		model.addAttribute(facebook.userOperations().getUserProfile())
 				.addAttribute("names", friends.getListOfName())
 				.addAttribute("id", friends.getListOfId());
@@ -72,11 +80,11 @@ public class FormFriendsController {
 			@RequestParam(value = "id[]", required = false) String[] idSelected,
 			Model model) {
 
-		if (idSelected == null)
-			return "redirect:/List";
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
+		if (idSelected == null)
+			return "redirect:/friendsList";
 
 		// service crea Lista di amici selezionati e per ognuno di essi la lista
 		// degli amici in comune
@@ -98,7 +106,7 @@ public class FormFriendsController {
 	@RequestMapping(value = "/checkboxes", method = RequestMethod.GET)
 	public String friendsCheckboxesSubmit(Model model) {
 
-		if (!facebook.isAuthorized()) {
+		if (!facebook.isAuthorized() || commonFriendsList.isEmpty()) {
 			return "redirect:/connect/facebook";
 		}
 
@@ -130,8 +138,10 @@ public class FormFriendsController {
 		return "graphPage";
 	}
 
+	// TODO: se uno scrive sta url viene un 500
 	@RequestMapping(value = "/GraphNode", method = RequestMethod.GET)
 	public String GraphNode(Model model, @RequestParam(value = "id") String id) {
+
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}

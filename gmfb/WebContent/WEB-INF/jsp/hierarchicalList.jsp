@@ -58,7 +58,7 @@
 		</div>
 	</div>
 	<div id="page-wrapper">
-		<a href="/gmfb">Personal Profile</a> > <a href="List">Your Friends</a> > Selected Friends
+		<a href="/gmfb">Personal Profile</a> > <a href="friendsList">Your Friends</a> > Selected Friends
 	
 		<div id="welcome" class="container">
 			<div class="title">

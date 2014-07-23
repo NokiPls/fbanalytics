@@ -71,7 +71,7 @@ function Facebook() {
 
 
 			<form id="disconnectionForm" action="connect/facebook" method="POST">
-				<a href="List" class="button">See your friends</a> <input
+				<a href="friendsList" class="button">See your friends</a> <input
 					type="hidden" name="_method" value="delete">
 
 			</form>
