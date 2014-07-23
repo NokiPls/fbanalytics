@@ -3,6 +3,7 @@ package services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +12,7 @@ import domain.Friend;
 
 @Service
 @Transactional
+@ComponentScan("repository")
 public class FriendsService implements FriendsServiceInterface {
 
 	public FriendsService() {
