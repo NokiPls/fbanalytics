@@ -1,8 +1,6 @@
 package services;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.social.facebook.api.Facebook;
