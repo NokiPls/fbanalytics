@@ -1,18 +1,3 @@
-/*
- * Copyright 2014 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package org.springframework.social.quickstart.config;
 
 import javax.inject.Inject;
@@ -40,10 +25,6 @@ import org.springframework.social.quickstart.user.SecurityContext;
 import org.springframework.social.quickstart.user.SimpleConnectionSignUp;
 import org.springframework.social.quickstart.user.SimpleSignInAdapter;
 
-/**
- * Spring Social Configuration.
- * @author Craig Walls
- */
 @Configuration
 @EnableSocial
 public class SocialConfig implements SocialConfigurer {
@@ -51,26 +32,29 @@ public class SocialConfig implements SocialConfigurer {
 	@Inject
 	private DataSource dataSource;
 
-	//
 	// SocialConfigurer implementation methods
-	//
-	
+
 	@Override
-	public void addConnectionFactories(ConnectionFactoryConfigurer cfConfig, Environment env) {
-		cfConfig.addConnectionFactory(new FacebookConnectionFactory(env.getProperty("facebook.appKey"), env.getProperty("facebook.appSecret")));
+	public void addConnectionFactories(ConnectionFactoryConfigurer cfConfig,
+			Environment env) {
+		cfConfig.addConnectionFactory(new FacebookConnectionFactory(env
+				.getProperty("facebook.appKey"), env
+				.getProperty("facebook.appSecret")));
 	}
 
-
 	/**
-	 * Singleton data access object providing access to connections across all users.
+	 * Singleton data access object providing access to connections across all
+	 * users.
 	 */
 	@Override
-	public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
-		JdbcUsersConnectionRepository repository = new JdbcUsersConnectionRepository(dataSource, connectionFactoryLocator, Encryptors.noOpText());
+	public UsersConnectionRepository getUsersConnectionRepository(
+			ConnectionFactoryLocator connectionFactoryLocator) {
+		JdbcUsersConnectionRepository repository = new JdbcUsersConnectionRepository(
+				dataSource, connectionFactoryLocator, Encryptors.noOpText());
 		repository.setConnectionSignUp(new SimpleConnectionSignUp());
 		return repository;
 	}
-	
+
 	public UserIdSource getUserIdSource() {
 		return new UserIdSource() {
 			@Override
@@ -81,15 +65,19 @@ public class SocialConfig implements SocialConfigurer {
 	}
 
 	@Bean
-	@Scope(value="request", proxyMode=ScopedProxyMode.INTERFACES)
+	@Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
 	public Facebook facebook(ConnectionRepository repository) {
-		Connection<Facebook> connection = repository.findPrimaryConnection(Facebook.class);
+		Connection<Facebook> connection = repository
+				.findPrimaryConnection(Facebook.class);
 		return connection != null ? connection.getApi() : null;
 	}
 
 	@Bean
-	public ProviderSignInController providerSignInController(ConnectionFactoryLocator connectionFactoryLocator, UsersConnectionRepository usersConnectionRepository) {
-		return new ProviderSignInController(connectionFactoryLocator, usersConnectionRepository, new SimpleSignInAdapter());
+	public ProviderSignInController providerSignInController(
+			ConnectionFactoryLocator connectionFactoryLocator,
+			UsersConnectionRepository usersConnectionRepository) {
+		return new ProviderSignInController(connectionFactoryLocator,
+				usersConnectionRepository, new SimpleSignInAdapter());
 	}
 
 }
