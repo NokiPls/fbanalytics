@@ -23,8 +23,7 @@ public class UserInit implements UserInitInterface {
 				.getUserProfile().getId()), facebook.userOperations()
 				.getUserProfile().getName(), null, Long.parseLong(facebook
 				.userOperations().getUserProfile().getId()), timeStamp,
-				timeStamp);
-		done = 1;
+				null);
 		return user;
 	}
 

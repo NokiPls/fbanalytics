@@ -17,7 +17,6 @@ public class FriendsList implements FriendsListInterface {
 	private List<String> name;
 	private List<FacebookProfile> fbFriends;
 	private List<Friend> friends;
-	private String timeStamp;
 
 	public FriendsList() {
 		id = new ArrayList<String>();
@@ -29,11 +28,10 @@ public class FriendsList implements FriendsListInterface {
 	public void createFbList(Facebook facebook, Friend user) {
 		fbFriends = facebook.friendOperations().getFriendProfiles();
 
-		timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		for (int i = 0; i < fbFriends.size(); i++) {
 			// creo lista di nomi e id da passare alla pagina con le chekboxes
 			friends.add(new Friend(Long.parseLong(fbFriends.get(i).getId()),
-					fbFriends.get(i).getName(), null, user.getFbId(), user.getLoginDate(), timeStamp));
+					fbFriends.get(i).getName(), null, user.getFbId(), user.getLoginDate(), null));
 			id.add(fbFriends.get(i).getId());
 			name.add(fbFriends.get(i).getName());
 		}
