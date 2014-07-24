@@ -109,7 +109,7 @@ public class HomeController {
 		model.addAttribute("name", facebook.userOperations().getUserProfile()
 				.getName());
 		model.addAttribute("friends", commonFriendsList);
-		return "hierarchicalList";
+		return "commonFriendsList";
 	}
 
 	@RequestMapping(value = "/checkboxes", method = RequestMethod.GET)

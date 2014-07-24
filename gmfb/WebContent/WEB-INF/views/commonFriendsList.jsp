@@ -58,22 +58,25 @@
 		</div>
 	</div>
 	<div id="page-wrapper">
-		<a href="/gmfb">Personal Profile</a> > <a href="friendsList">Your Friends</a> > Selected Friends
-	
+		<a href="/gmfb">Personal Profile</a> > <a href="friendsList">Your
+			Friends</a> > Selected Friends
+
 		<div id="welcome" class="container">
 			<div class="title">
 				<h2>Selected Friends</h2>
 			</div>
-			
-			
+
+
 			<form action="openGraph" method="POST" class="form1">
-				<input
-					type="submit" value="Open Graph" class="button">
+				<input type="submit" value="Open Graph" class="button">
 			</form>
-<br><br>
+			<br>
+			<br>
 			<c:forEach var="i" items="${friends}" varStatus="status">
 				<ul>
-					<h3><c:out value="${i.name}"></c:out></h3>
+					<h3>
+						<c:out value="${i.name}"></c:out>
+					</h3>
 					<ul>
 						<c:forEach var="k" items="${i.commonFriends}" varStatus="status_k">
 							<li><c:out value="${k.name}"></c:out></li>
