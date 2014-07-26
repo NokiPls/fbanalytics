@@ -23,6 +23,15 @@ public class JpaFriendsRepo implements FriendsRepository {
 	public void addFriendList(List<Friend> commonFriendsList) {
 		int i;
 		for (i = 0; i < commonFriendsList.size(); i++) {
+			em.merge(commonFriendsList.get(i));
+		}
+	}
+	
+	@Override
+	@Transactional
+	public void addCommonFriendList(List<Friend> commonFriendsList) {
+		int i;
+		for (i = 0; i < commonFriendsList.size(); i++) {
 			em.persist(commonFriendsList.get(i));
 		}
 	}
@@ -30,6 +39,6 @@ public class JpaFriendsRepo implements FriendsRepository {
 	@Override
 	@Transactional
 	public void addUser(Friend user) {
-		em.persist(user);
+		em.merge(user);
 	}
 }

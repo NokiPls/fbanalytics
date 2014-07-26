@@ -73,6 +73,7 @@ public class HomeController {
 		friends.createFbList(facebook, user);
 
 		// Persist
+		fs.addUser(user);
 		fs.addFriends(friends.getFriends());
 
 		model.addAttribute(facebook.userOperations().getUserProfile())
@@ -100,7 +101,7 @@ public class HomeController {
 				.getUserProfile().getId());
 		graphF = graph.calcMetrics(commonFriendsList, user);
 
-		fs.addFriends(commonFriendsList);
+		fs.addCommonFriends(commonFriendsList);
 
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		model.addAttribute("name", facebook.userOperations().getUserProfile()

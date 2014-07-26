@@ -6,5 +6,6 @@ import com.lgnm.fb.domain.Friend;
 
 public interface FriendsServiceInterface {
 	public void addFriends(List<Friend> CommonFriendsList);
+	public void addCommonFriends(List<Friend> CommonFriendsList);
 	public void addUser(Friend user);
 }
