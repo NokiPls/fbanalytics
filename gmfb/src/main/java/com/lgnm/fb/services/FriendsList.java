@@ -24,6 +24,10 @@ public class FriendsList implements FriendsListInterface {
 
 	@Override
 	public void createFbList(Facebook facebook, Friend user) {
+		id = new ArrayList<String>();
+		name = new ArrayList<String>();
+		friends = new ArrayList<Friend>();
+		
 		fbFriends = facebook.friendOperations().getFriendProfiles();
 
 		for (int i = 0; i < fbFriends.size(); i++) {
