@@ -1,4 +1,4 @@
-package services;
+package com.lgnm.fb.services;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.graphstream.algorithm.measure.DegreeCentrality;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.springframework.stereotype.Service;
 
-import domain.Friend;
+import com.lgnm.fb.domain.Friend;
 
 @Service
 public class Graph implements GraphInterface {
@@ -106,7 +106,6 @@ public class Graph implements GraphInterface {
 
 			
 			for (int k = 0; k < commonFriendsList.get(i).getCommonFriends().size(); k++) {
-				Long _idk = commonFriendsList.get(i).getFbId();
 				String idk = _id.toString();
 				commonFriendsList.get(i).getCommonFriends().get(k).setBetweennessCentrality( (Double) graphF.getNode(idk).getAttribute("betweenness"));
 				commonFriendsList.get(i).getCommonFriends().get(k).setClosenessCentrality( (Double) graphF.getNode(idk).getAttribute("closeness"));

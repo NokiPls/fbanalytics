@@ -1,8 +1,8 @@
-package services;
+package com.lgnm.fb.services;
 
 import java.util.List;
 
-import domain.Friend;
+import com.lgnm.fb.domain.Friend;
 
 public interface FriendsServiceInterface {
 	public void addFriends(List<Friend> CommonFriendsList);

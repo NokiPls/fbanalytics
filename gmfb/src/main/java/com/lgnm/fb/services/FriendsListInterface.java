@@ -1,10 +1,10 @@
-package services;
+package com.lgnm.fb.services;
 
 import java.util.List;
 
 import org.springframework.social.facebook.api.Facebook;
 
-import domain.Friend;
+import com.lgnm.fb.domain.Friend;
 
 public interface FriendsListInterface {
 	public void createFbList(Facebook facebook, Friend user);

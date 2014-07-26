@@ -1,4 +1,4 @@
-package services;
+package com.lgnm.fb.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.stereotype.Service;
 
-import domain.Friend;
+import com.lgnm.fb.domain.Friend;
 
 @Service
 public class FriendsList implements FriendsListInterface {

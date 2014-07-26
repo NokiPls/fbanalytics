@@ -16,16 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import services.CommonFriendsListInterface;
-import services.CreateJsonInterface;
-import services.FriendsListInterface;
-import services.FriendsServiceInterface;
-import services.GraphInterface;
-import services.UserInitInterface;
-import domain.Friend;
+import com.lgnm.fb.domain.Friend;
+import com.lgnm.fb.services.CommonFriendsListInterface;
+import com.lgnm.fb.services.CreateJsonInterface;
+import com.lgnm.fb.services.FriendsListInterface;
+import com.lgnm.fb.services.FriendsServiceInterface;
+import com.lgnm.fb.services.GraphInterface;
+import com.lgnm.fb.services.UserInitInterface;
 
 @Controller
-@ComponentScan("services")
+@ComponentScan("com.lgnm.fb.services")
 public class HomeController {
 
 	private final Facebook facebook;

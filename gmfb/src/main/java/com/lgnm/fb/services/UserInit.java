@@ -1,4 +1,4 @@
-package services;
+package com.lgnm.fb.services;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -6,7 +6,7 @@ import java.util.Calendar;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Service;
 
-import domain.Friend;
+import com.lgnm.fb.domain.Friend;
 
 @Service
 public class UserInit implements UserInitInterface {

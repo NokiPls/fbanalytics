@@ -1,4 +1,4 @@
-package domain;
+package com.lgnm.fb.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;

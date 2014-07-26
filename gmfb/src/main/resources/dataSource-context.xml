@@ -26,7 +26,7 @@
 	<bean id="emf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSourceJpa" />
-		<property name="packagesToScan" value="domain" />
+		<property name="packagesToScan" value="com.lgnm.fb.domain" />
 		<property name="persistenceUnitName" value="Friend" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
 	</bean>
@@ -35,6 +35,5 @@
 		<property name="entityManagerFactory" ref="emf" />
 	</bean>
 	<tx:annotation-driven/>
-
 
 </beans>

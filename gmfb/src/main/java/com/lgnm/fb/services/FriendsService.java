@@ -1,4 +1,4 @@
-package services;
+package com.lgnm.fb.services;
 
 import java.util.List;
 
@@ -7,12 +7,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import repository.FriendsRepository;
-import domain.Friend;
+import com.lgnm.fb.domain.Friend;
+import com.lgnm.fb.repository.FriendsRepository;
 
 @Service
 @Transactional
-@ComponentScan("repository")
+@ComponentScan("com.lgnm.fb.repository")
 public class FriendsService implements FriendsServiceInterface {
 
 	public FriendsService() {

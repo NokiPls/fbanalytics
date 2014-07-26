@@ -1,10 +1,10 @@
-package services;
+package com.lgnm.fb.services;
 
 import java.util.List;
 
 import org.graphstream.graph.implementations.SingleGraph;
 
-import domain.Friend;
+import com.lgnm.fb.domain.Friend;
 
 public interface GraphInterface {
 	

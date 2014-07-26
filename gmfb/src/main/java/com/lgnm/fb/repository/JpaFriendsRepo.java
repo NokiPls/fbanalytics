@@ -1,4 +1,4 @@
-package repository;
+package com.lgnm.fb.repository;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Repository;
 
-import domain.Friend;
+import com.lgnm.fb.domain.Friend;
 
 @ImportResource("classpath:dataSource-context.xml")
 @Repository

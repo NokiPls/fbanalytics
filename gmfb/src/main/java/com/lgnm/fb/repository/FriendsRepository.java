@@ -1,8 +1,8 @@
-package repository;
+package com.lgnm.fb.repository;
 
 import java.util.List;
 
-import domain.Friend;
+import com.lgnm.fb.domain.Friend;
 
 public interface FriendsRepository {
 	public void addFriendList(List<Friend> CommonFriendsList);

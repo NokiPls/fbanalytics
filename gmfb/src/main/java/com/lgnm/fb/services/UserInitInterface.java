@@ -1,8 +1,8 @@
-package services;
+package com.lgnm.fb.services;
 
 import org.springframework.social.facebook.api.Facebook;
 
-import domain.Friend;
+import com.lgnm.fb.domain.Friend;
 
 public interface UserInitInterface {
 
