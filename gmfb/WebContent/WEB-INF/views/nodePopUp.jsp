@@ -13,8 +13,10 @@
 </head>
 <body>
 
-<br><br><br>
-	<image
+	<br>
+	<br>
+	<br>
+	<img
 		src="https://graph.facebook.com/${profile.id}/picture?redirect=1&height=140&type=normal&width=140" />
 	<br> Name: ${profile.name}
 	<br> Nick Name: ${profile.username}

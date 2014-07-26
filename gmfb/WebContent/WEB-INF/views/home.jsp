@@ -14,19 +14,15 @@
 
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
-function Facebook() {
-	 FB.init({ 
-	 appId:'279105595599278', cookie:true, 
-	 status:true, xfbml:true
-	 });
-	 FB.getLoginStatus(function(response) {
-	 if (response.status === 'unknown'){// && response.status !== 'not_authorized'
-
-			document.getElementById("disconnectionForm").submit();
-
-
-	 }
-	 }); }
+	function Facebook() {
+		FB.init({
+			appId : '279105595599278',
+			cookie : true,
+			status : true,
+			xfbml : true
+		});
+	}
+	window.onload = Facebook;
 
 	function logoutFacebook() {
 		FB.logout(function(response) {
@@ -46,21 +42,23 @@ function Facebook() {
 				</h1>
 				<div id="menu">
 					<ul>
-						<li class="active"><a href="/gmfb" title="">${facebookProfile.name} </a></li>
+						<li class="active"><a href="/gmfb" title="">${facebookProfile.name}
+						</a></li>
 						<li><a href="#" title="">About Us</a></li>
 						<li><a href="javascript:logoutFacebook()">Disconnect</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-			
+
 	</div>
 	<div id="page-wrapper">
 		<div id="welcome" class="container">
 			<div class="title">
 				<h2>Personal Profile</h2>
 			</div>
-			<image src="https://graph.facebook.com/${facebookProfile.id}/picture?redirect=1&height=200&type=normal&width=200" />
+			<img
+				src="https://graph.facebook.com/${facebookProfile.id}/picture?redirect=1&height=200&type=normal&width=200" />
 			<h3>
 				Name: <span>${facebookProfile.name}</span>
 			</h3>
@@ -69,7 +67,8 @@ function Facebook() {
 
 
 
-			<form id="disconnectionForm" action="connect/facebook" method="POST">
+			<form id="disconnectionForm"
+				action="${pageContext.request.contextPath}/signout">
 				<a href="friendsList" class="button">See your friends</a> <input
 					type="hidden" name="_method" value="delete">
 

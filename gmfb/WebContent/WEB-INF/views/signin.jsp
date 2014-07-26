@@ -11,6 +11,11 @@
 <link
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Quicksand:400,700|Questrial"
 	rel="stylesheet" />
+	<script type="text/javascript">
+	function submit() {
+		document.getElementById("connectForm").submit();
+	}
+</script>
 </head>
 
 <body>
@@ -32,9 +37,9 @@
 	</div>
 	<div id="page-wrapper">
 		<div id="welcome" class="container">
-			<form action="${pageContext.request.contextPath}/signin/facebook"
+			<form id="connectForm" action="${pageContext.request.contextPath}/signin/facebook"
 				method="POST">
-				<button type="submit">Sign in with Facebook</button>
+				<button class="button" type="submit">Sign in with Facebook</button>
 				<input type="hidden" name="scope"
 					value="email,publish_stream,offline_access" />
 			</form>

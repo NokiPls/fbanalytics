@@ -3,6 +3,8 @@ package org.springframework.social.quickstart;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.graphstream.graph.implementations.SingleGraph;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -41,7 +43,7 @@ public class HomeController {
 	public HomeController(Facebook facebook, FriendsListInterface friends,
 			CommonFriendsListInterface common, GraphInterface graph,
 			CreateJsonInterface json, UserInitInterface userInit,
-			FriendsServiceInterface fs) {
+			FriendsServiceInterface fs, HttpSession session) {
 		this.facebook = facebook;
 		this.friends = friends;
 		this.common = common;
@@ -143,7 +145,7 @@ public class HomeController {
 	}
 
 	// TODO: se uno scrive sta url viene un 500
-	@RequestMapping(value = "/GraphNode", method = RequestMethod.GET)
+	@RequestMapping(value = "/graphNode", method = RequestMethod.GET)
 	public String GraphNode(Model model, @RequestParam(value = "id") String id) {
 
 		if (!facebook.isAuthorized()) {

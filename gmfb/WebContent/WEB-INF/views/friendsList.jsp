@@ -21,14 +21,8 @@ function Facebook() {
 	 appId:'279105595599278', cookie:true, 
 	 status:true, xfbml:true
 	 });
-	 FB.getLoginStatus(function(response) {
-	 if (response.status === 'unknown'){// && response.status !== 'not_authorized'
-
-			document.getElementById("disconnectionForm").submit();
-
-
-	 }
-	 }); }
+}
+	 window.onload = Facebook;
 	function logoutFacebook() {
 		FB.logout(function(response) {
 			console.log("Here logout response", response);
@@ -78,7 +72,7 @@ function Facebook() {
 					</c:forEach>
 				</ul>
 			</form>
-			<form id="disconnectionForm" action="/gmfb" method="POST"></form>
+			<form id="disconnectionForm" action="${pageContext.request.contextPath}/signout"></form>
 		</div>
 	</div>
 

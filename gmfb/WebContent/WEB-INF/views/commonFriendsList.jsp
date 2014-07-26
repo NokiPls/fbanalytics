@@ -21,13 +21,6 @@
 			status : true,
 			xfbml : true
 		});
-		FB.getLoginStatus(function(response) {
-			if (response.status === 'unknown') {// && response.status !== 'not_authorized'
-
-				document.getElementById("disconnectionForm").submit();
-
-			}
-		});
 	}
 	window.onload = Facebook;
 	function logoutFacebook() {
@@ -70,8 +63,7 @@
 			<form action="openGraph" method="POST" class="form1">
 				<input type="submit" value="Open Graph" class="button">
 			</form>
-			<br>
-			<br>
+			<br> <br>
 			<c:forEach var="i" items="${friends}" varStatus="status">
 				<ul>
 					<h3>
@@ -84,7 +76,8 @@
 					</ul>
 				</ul>
 			</c:forEach>
-			<form id="disconnectionForm" action="/gmfb" method="POST"></form>
+			<form id="disconnectionForm"
+				action="${pageContext.request.contextPath}/signout"></form>
 
 		</div>
 	</div>

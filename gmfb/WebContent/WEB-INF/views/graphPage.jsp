@@ -22,13 +22,6 @@
 			status : true,
 			xfbml : true
 		});
-		FB.getLoginStatus(function(response) {
-			if (response.status === 'unknown') {// && response.status !== 'not_authorized'
-
-				document.getElementById("disconnectionForm").submit();
-
-			}
-		});
 	}
 	window.onload = Facebook;
 	function logoutFacebook() {
@@ -121,7 +114,7 @@
 										return;
 								
 									$.ajax({
-							            url : 'GraphNode?id=' + d.id,
+							            url : 'graphNode?id=' + d.id,
 							            success : function(data) {
 							                $('#result').html(data);
 							            }})
@@ -154,7 +147,7 @@
 					});
 				});
 			</script>
-		<form id="disconnectionForm" action="/gmfb" method="POST"></form>
+		<form id="disconnectionForm" action="${pageContext.request.contextPath}/signout"></form>
 
 		</div>
 	</div>
