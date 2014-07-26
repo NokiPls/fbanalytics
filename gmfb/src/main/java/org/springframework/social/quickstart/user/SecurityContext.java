@@ -18,6 +18,7 @@ public final class SecurityContext {
 
 	public static void setCurrentUser(User user) {
 		currentUser.set(user);
+		
 	}
 
 	public static boolean userSignedIn() {

@@ -63,8 +63,7 @@ public final class UserInterceptor extends HandlerInterceptorAdapter {
 			connectionRepository.createConnectionRepository(SecurityContext.getCurrentUser().getId()).removeConnections("facebook");
 			userCookieGenerator.removeCookie(response);
 			SecurityContext.remove();
-			//TODO
-			userInit.setDone(0);
+		
 		}
 	}
 		

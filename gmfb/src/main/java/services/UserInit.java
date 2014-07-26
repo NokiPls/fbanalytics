@@ -12,7 +12,8 @@ import domain.Friend;
 public class UserInit implements UserInitInterface {
 
 	private String timeStamp;
-	private int done = 0;
+	//private int done = 0;
+
 
 	@Override
 	public Friend initialize(Facebook facebook) {
@@ -26,7 +27,7 @@ public class UserInit implements UserInitInterface {
 				null);
 		return user;
 	}
-
+/*
 	@Override
 	public int getDone() {
 		return done;
@@ -35,6 +36,6 @@ public class UserInit implements UserInitInterface {
 	@Override
 	public void setDone(int done) {
 		this.done = done;
-	}
+	}*/
 
 }

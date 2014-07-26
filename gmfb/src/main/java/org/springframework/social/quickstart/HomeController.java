@@ -64,7 +64,7 @@ public class HomeController {
 			return "redirect:/connect/facebook";
 		}
 
-		if (userInit.getDone() == 0) {
+	
 
 			// Initialize the user as a "friend" object
 			user = userInit.initialize(facebook);
@@ -75,8 +75,7 @@ public class HomeController {
 			// Persist
 			fs.addUser(user);
 			fs.addFriends(friends.getFriends());
-			userInit.setDone(1);
-		}
+		
 
 		model.addAttribute(facebook.userOperations().getUserProfile())
 				.addAttribute("names", friends.getListOfName())
