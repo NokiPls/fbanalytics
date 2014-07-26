@@ -29,7 +29,6 @@ function Facebook() {
 
 	 }
 	 }); }
-	 window.onload = Facebook;
 	function logoutFacebook() {
 		FB.logout(function(response) {
 			console.log("Here logout response", response);

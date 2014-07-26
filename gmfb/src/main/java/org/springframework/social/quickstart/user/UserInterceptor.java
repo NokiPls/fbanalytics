@@ -3,13 +3,10 @@ package org.springframework.social.quickstart.user;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.springframework.web.servlet.view.RedirectView;
-
-import services.UserInitInterface;
 
 /**
  * Before a request is handled:
@@ -23,9 +20,6 @@ public final class UserInterceptor extends HandlerInterceptorAdapter {
 	
 	private final UserCookieGenerator userCookieGenerator = new UserCookieGenerator();
 	
-	@Autowired
-	private UserInitInterface userInit;
-
 	public UserInterceptor(UsersConnectionRepository connectionRepository) {
 		this.connectionRepository = connectionRepository;
 	}

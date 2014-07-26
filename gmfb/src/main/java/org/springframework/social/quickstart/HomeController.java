@@ -32,8 +32,8 @@ public class HomeController {
 	public SingleGraph graphF = new SingleGraph("graph");
 	private CommonFriendsListInterface common;
 	private GraphInterface graph;
-	private CreateJsonInterface json;
 	private Friend user;
+	private CreateJsonInterface json;
 	private UserInitInterface userInit;
 	private FriendsServiceInterface fs;
 
@@ -64,18 +64,14 @@ public class HomeController {
 			return "redirect:/connect/facebook";
 		}
 
-	
+		// Initialize the user as a "friend" object
+		user = userInit.initialize(facebook);
 
-			// Initialize the user as a "friend" object
-			user = userInit.initialize(facebook);
+		// Create the list of direct friends
+		friends.createFbList(facebook, user);
 
-			// Create the list of direct friends
-			friends.createFbList(facebook, user);
-
-			// Persist
-			fs.addUser(user);
-			fs.addFriends(friends.getFriends());
-		
+		// Persist
+		fs.addFriends(friends.getFriends());
 
 		model.addAttribute(facebook.userOperations().getUserProfile())
 				.addAttribute("names", friends.getListOfName())
