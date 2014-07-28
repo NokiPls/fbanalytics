@@ -25,13 +25,7 @@
 				<h1>
 					<a href="/gmfb">Facebook Analytics</a>
 				</h1>
-				<div id="menu">
-					<ul>
-						<li><a href="about" title="">About Us</a></li>
-						<li><a href="javascript:submit()" title="">Sign In</a></li>
-
-					</ul>
-				</div>
+		<br><br><br>
 
 			</div>
 		</div>
