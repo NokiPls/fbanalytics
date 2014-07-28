@@ -63,7 +63,7 @@
 		</div>
 	</div>
 	<div id="page-wrapper">
-		<a href="/gmfb">Personal Profile</a> > <a href="friendsList">Your Friends</a> > <a href="checkboxes">Selected Friends</a> > Graph
+		<a href="/gmfb">Personal Profile</a> > <a href="friendsList">Your Friends</a> > Selected Friends  > Graph
 	
 		<div id="welcome" class="container">
 			<div class="title">

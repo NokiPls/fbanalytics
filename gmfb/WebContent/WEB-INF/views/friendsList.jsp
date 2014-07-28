@@ -60,7 +60,7 @@ function Facebook() {
 			</div>
 			
 			
-			<form action="checkboxes" method="post" class="form1">
+			<form action="commonFriends" method="post" class="form1">
 				<input type="submit" value="Common Friends" class="button" /> <input
 					type="reset" value="Clear All" class="button" /> <br>
 				<br>
@@ -71,7 +71,9 @@ function Facebook() {
 							value="${id[status.index]}" />${i}</li>
 					</c:forEach>
 				</ul>
+
 			</form>
+			
 			<form id="disconnectionForm" action="${pageContext.request.contextPath}/signout"></form>
 		</div>
 	</div>

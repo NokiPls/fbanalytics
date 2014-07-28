@@ -25,13 +25,7 @@
 				<h1>
 					<a href="/gmfb">Facebook Analytics</a>
 				</h1>
-				<div id="menu">
-					<ul>
-						<li><a href="#" title="">About Us</a></li>
-						<li><a href="javascript:submit()" title="">Sign In</a></li>
-
-					</ul>
-				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -39,7 +33,7 @@
 		<div id="welcome" class="container">
 			<form id="connectForm" action="${pageContext.request.contextPath}/signin/facebook"
 				method="POST">
-				<button class="button" type="submit">Sign in with Facebook</button>
+				<input type="submit" value="Sign in with Facebook" class="button">
 				<input type="hidden" name="scope"
 					value="email,publish_stream,offline_access" />
 			</form>

@@ -53,7 +53,7 @@ public class HomeController {
 		this.fs = fs;
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = {"/","/openGraph","/commonFriends"}, method = RequestMethod.GET)
 	public String home(Model model) {
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		return "home";
@@ -82,7 +82,7 @@ public class HomeController {
 		return "friendsList";
 	}
 
-	@RequestMapping(value = "/checkboxes", method = RequestMethod.POST)
+	@RequestMapping(value = "/commonFriends", method = RequestMethod.POST)
 	public String friendsCheckboxesSubmit(
 			@RequestParam(value = "id[]", required = false) String[] idSelected,
 			Model model) {
@@ -110,18 +110,6 @@ public class HomeController {
 		return "commonFriendsList";
 	}
 
-	@RequestMapping(value = "/checkboxes", method = RequestMethod.GET)
-	public String friendsCheckboxesSubmit(Model model) {
-
-		if (!facebook.isAuthorized() || commonFriendsList.isEmpty()) {
-			return "redirect:/connect/facebook";
-		}
-
-		model.addAttribute(facebook.userOperations().getUserProfile().getName());
-		model.addAttribute(facebook.userOperations().getUserProfile());
-		model.addAttribute("friends", commonFriendsList);
-		return "hierarchicalList";
-	}
 
 	@RequestMapping(value = "/openGraph", method = RequestMethod.POST)
 	public String newGraph(Model model) {
@@ -145,7 +133,6 @@ public class HomeController {
 		return "graphPage";
 	}
 
-	// TODO: se uno scrive sta url viene un 500
 	@RequestMapping(value = "/graphNode", method = RequestMethod.GET)
 	public String GraphNode(Model model, @RequestParam(value = "id") String id) {
 
