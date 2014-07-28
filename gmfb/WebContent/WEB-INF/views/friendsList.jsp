@@ -44,7 +44,7 @@ function Facebook() {
 				<div id="menu">
 					<ul>
 						<li class="active"><a href="/gmfb" title="">${facebookProfile.name}</a></li>
-						<li><a href="about" title="">About Us</a></li>
+						<li><a href="aboutUs" title="">About Us</a></li>
 						<li><a href="javascript:logoutFacebook()">Disconnect</a></li>
 					</ul>
 				</div>

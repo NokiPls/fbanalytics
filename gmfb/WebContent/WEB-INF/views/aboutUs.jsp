@@ -58,10 +58,10 @@
 				<h2>About Us</h2>
 			</div>
 			Advanced Web Technologies Project 2013/14
-			<br>
+			<br><br>
 			<img src="<c:url value="/img/polimi.png"/>"/>
 			
-			<br>
+			<br><br>
 			Lorenzo Graziano
 			<br>
 			Nicola Mariani

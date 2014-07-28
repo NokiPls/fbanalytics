@@ -178,7 +178,7 @@ ul.contact li a:before {
 /* Heading Titles                                                                */
 /*********************************************************************************/
 .title {
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 }
 
 .title h2 {
@@ -197,7 +197,7 @@ ul.contact li a:before {
 #header-wrapper {
 	background-color: #6d84b4;
 	overflow: hidden;
-	padding: 3em 0em 1em 0em;
+	padding: 1em 0em 0em 0em;
 }
 
 #header {
@@ -311,7 +311,7 @@ ul.contact li a:before {
 /*********************************************************************************/
 .wrapper {
 	overflow: hidden;
-	padding: 0em 0em 5em 0em;
+	padding: 0em 0em 3em 0em;
 }
 
 #wrapper1 {
@@ -338,7 +338,7 @@ ul.contact li a:before {
 #welcome {
 	overflow: hidden;
 	width: 1400px;
-	padding: 2em 0px 0em 0px;
+	padding: 1em 0px 0em 0px;
 	text-align: center;
 }
 #result{ float:right; width:25%;  }

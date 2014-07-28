@@ -58,10 +58,14 @@ public class HomeController {
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		return "home";
 	}
-	@RequestMapping(value = "about", method = RequestMethod.GET)
-	public String about(Model model) {
+	@RequestMapping(value = "aboutUs", method = RequestMethod.GET)
+	public String aboutUs(Model model) {
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		return "aboutUs";
+	}
+	@RequestMapping(value = "about", method = RequestMethod.GET)
+	public String about(Model model) {
+		return "about";
 	}
 
 	@RequestMapping(value = "/friendsList", method = RequestMethod.GET)

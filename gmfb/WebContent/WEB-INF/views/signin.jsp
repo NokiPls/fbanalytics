@@ -11,7 +11,7 @@
 <link
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Quicksand:400,700|Questrial"
 	rel="stylesheet" />
-	<script type="text/javascript">
+<script type="text/javascript">
 	function submit() {
 		document.getElementById("connectForm").submit();
 	}
@@ -25,13 +25,21 @@
 				<h1>
 					<a href="/gmfb">Facebook Analytics</a>
 				</h1>
-				
+				<div id="menu">
+					<ul>
+						<li><a href="about" title="">About Us</a></li>
+						<li><a href="javascript:submit()" title="">Sign In</a></li>
+
+					</ul>
+				</div>
+
 			</div>
 		</div>
 	</div>
 	<div id="page-wrapper">
 		<div id="welcome" class="container">
-			<form id="connectForm" action="${pageContext.request.contextPath}/signin/facebook"
+			<form id="connectForm"
+				action="${pageContext.request.contextPath}/signin/facebook"
 				method="POST">
 				<input type="submit" value="Sign in with Facebook" class="button">
 				<input type="hidden" name="scope"

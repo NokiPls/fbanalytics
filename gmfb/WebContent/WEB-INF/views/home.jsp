@@ -44,7 +44,7 @@
 					<ul>
 						<li class="active"><a href="/gmfb" title="">${facebookProfile.name}
 						</a></li>
-						<li><a href="about" title="">About Us</a></li>
+						<li><a href="aboutUs" title="">About Us</a></li>
 						<li><a href="javascript:logoutFacebook()">Disconnect</a></li>
 					</ul>
 				</div>
@@ -53,7 +53,7 @@
 
 	</div>
 	<div id="page-wrapper">
-		<div id="welcome" class="container">
+		
 			<div class="title">
 				<h2>Personal Profile</h2>
 			</div>
@@ -73,7 +73,7 @@
 					type="hidden" name="_method" value="delete">
 
 			</form>
-		</div>
+		
 	</div>
 	<div class="wrapper"></div>
 	<div id="copyright" class="container">
