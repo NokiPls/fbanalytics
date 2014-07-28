@@ -74,7 +74,7 @@ public class HomeController {
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
-
+ 
 		// Initialize the user as a "friend" object
 		user = userInit.initialize(facebook);
 
