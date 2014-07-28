@@ -58,6 +58,11 @@ public class HomeController {
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		return "home";
 	}
+	@RequestMapping(value = "about", method = RequestMethod.GET)
+	public String about(Model model) {
+		model.addAttribute(facebook.userOperations().getUserProfile());
+		return "aboutUs";
+	}
 
 	@RequestMapping(value = "/friendsList", method = RequestMethod.GET)
 	public String friendsCheckboxes(Model model) {
