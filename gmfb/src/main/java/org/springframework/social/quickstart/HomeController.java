@@ -66,7 +66,7 @@ public class HomeController {
 
 
 	@RequestMapping(value = "/friendsList", method = RequestMethod.GET)
-	public String friendsCheckboxes(Model model) {
+	public String friendsList(Model model) {
 
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
@@ -89,7 +89,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/commonFriends", method = RequestMethod.POST)
-	public String friendsCheckboxesSubmit(
+	public String commonFriendsList(
 			@RequestParam(value = "id[]", required = false) String[] idSelected,
 			Model model) {
 
@@ -140,7 +140,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/graphNode", method = RequestMethod.GET)
-	public String GraphNode(Model model, @RequestParam(value = "id") String id) {
+	public String graphNode(Model model, @RequestParam(value = "id") String id) {
 
 		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";

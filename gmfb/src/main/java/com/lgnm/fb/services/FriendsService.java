@@ -22,8 +22,8 @@ public class FriendsService implements FriendsServiceInterface {
 	public FriendsRepository friendsRepo;
 
 	@Override
-	public void addFriends(List<Friend> CommonFriendsList) {
-		friendsRepo.addFriendList(CommonFriendsList);
+	public void addFriends(List<Friend> FriendsList) {
+		friendsRepo.addFriendList(FriendsList);
 	}
 	
 	@Override
