@@ -53,7 +53,7 @@
 
 	</div>
 	<div id="page-wrapper">
-		<div id="welcome" class="container">
+
 			<div class="title">
 				<h2>About Us</h2>
 			</div>
@@ -73,7 +73,6 @@
 			<form id="disconnectionForm" action="${pageContext.request.contextPath}/signout">
 			 <input type="hidden" name="_method" value="delete">
 			</form>
-		</div>
 	</div>
 	<div class="wrapper"></div>
 	<div id="copyright" class="container">

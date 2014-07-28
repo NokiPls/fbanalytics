@@ -53,8 +53,6 @@
 	<div id="page-wrapper">
 		<a href="/gmfb">Personal Profile</a> > <a href="friendsList">Your
 			Friends</a> > Selected Friends
-
-		<div id="welcome" class="container">
 			<div class="title">
 				<h2>Selected Friends</h2>
 			</div>
@@ -79,7 +77,6 @@
 			<form id="disconnectionForm"
 				action="${pageContext.request.contextPath}/signout"></form>
 
-		</div>
 	</div>
 	<div class="wrapper"></div>
 	<div id="copyright" class="container">

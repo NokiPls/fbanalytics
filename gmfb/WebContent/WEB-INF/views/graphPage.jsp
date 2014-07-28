@@ -64,8 +64,6 @@
 	</div>
 	<div id="page-wrapper">
 		<a href="/gmfb">Personal Profile</a> > <a href="friendsList">Your Friends</a> > Selected Friends  > Graph
-	
-		<div id="welcome" class="container">
 			<div class="title">
 				<h2>Graph</h2>
 			</div>
@@ -149,7 +147,6 @@
 			</script>
 		<form id="disconnectionForm" action="${pageContext.request.contextPath}/signout"></form>
 
-		</div>
 	</div>
 	<div class="wrapper"></div>
 	

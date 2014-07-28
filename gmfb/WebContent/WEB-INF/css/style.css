@@ -179,6 +179,7 @@ ul.contact li a:before {
 /*********************************************************************************/
 .title {
 	margin-bottom: 1em;
+	margin-top: 1em;
 }
 
 .title h2 {
@@ -344,7 +345,6 @@ ul.contact li a:before {
 #result{ float:right; width:25%;  }
 #graph{  float:left; width:75%;}
 
-
 #welcome .content {
 	padding: 0em 8em;
 }
@@ -368,7 +368,7 @@ ul.contact li a:before {
 /*********************************************************************************/
 #page-wrapper {
 	overflow: hidden;
-	padding: 0em 0em 0em 0em;
+	padding: 1em 0em 0em 0em;
 	text-align: center;
 }
 

@@ -54,7 +54,6 @@ function Facebook() {
 	</div>
 	<div id="page-wrapper">
 	<a href="/gmfb">Personal Profile</a> > Your Friends
-		<div id="welcome" class="container">
 			<div class="title">
 				<h2>List of Friends</h2>
 			</div>
@@ -75,7 +74,6 @@ function Facebook() {
 			</form>
 			
 			<form id="disconnectionForm" action="${pageContext.request.contextPath}/signout"></form>
-		</div>
 	</div>
 
 	<div class="wrapper"></div>
