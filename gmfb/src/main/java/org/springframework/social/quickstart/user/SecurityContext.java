@@ -2,7 +2,7 @@ package org.springframework.social.quickstart.user;
 
 /**
  * Simple SecurityContext that stores the currently signed-in connection in a thread local.
- * @author Keith Donald
+ * 
  */
 public final class SecurityContext {
 

@@ -10,6 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.lgnm.fb.domain.Friend;
 import com.lgnm.fb.repository.FriendsRepository;
 
+/**
+ * Service to mediate the communication with the persistence layer.
+ * 
+ */
+
 @Service
 @Transactional
 @ComponentScan("com.lgnm.fb.repository")

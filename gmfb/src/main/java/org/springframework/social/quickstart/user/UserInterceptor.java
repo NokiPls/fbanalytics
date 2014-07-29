@@ -12,8 +12,9 @@ import org.springframework.web.servlet.view.RedirectView;
  * Before a request is handled:
  * 1. sets the current User in the SecurityContext from a cookie, if present and the user is still connected to Facebook.
  * 2. requires that the user sign-in if he or she hasn't already.
- * @author Keith Donald
+ * 
  */
+
 public final class UserInterceptor extends HandlerInterceptorAdapter {
 
 	private final UsersConnectionRepository connectionRepository;

@@ -42,7 +42,7 @@ public class SocialConfig implements SocialConfigurer {
 				.getProperty("facebook.appSecret")));
 	}
 
-	/**
+	/*
 	 * Singleton data access object providing access to connections across all
 	 * users.
 	 */

@@ -24,6 +24,11 @@ import com.lgnm.fb.services.FriendsServiceInterface;
 import com.lgnm.fb.services.GraphInterface;
 import com.lgnm.fb.services.UserInitInterface;
 
+/**
+ * The main controller for the application.
+ * 
+ */
+
 @Controller
 @ComponentScan("com.lgnm.fb.services")
 public class HomeController {
@@ -68,10 +73,6 @@ public class HomeController {
 	@RequestMapping(value = "/friendsList", method = RequestMethod.GET)
 	public String friendsList(Model model) {
 
-		if (!facebook.isAuthorized()) {
-			return "redirect:/connect/facebook";
-		}
- 
 		// Initialize the user as a "friend" object
 		user = userInit.initialize(facebook);
 
@@ -93,16 +94,12 @@ public class HomeController {
 			@RequestParam(value = "id[]", required = false) String[] idSelected,
 			Model model) {
 
-		if (!facebook.isAuthorized()) {
-			return "redirect:/connect/facebook";
-		}
 		if (idSelected == null)
 			return "redirect:/friendsList";
 
-		// service crea Lista di amici selezionati e per ognuno di essi la lista
-		// degli amici in comune
+		// Creating the list of both selected friends and common ones
 		commonFriendsList = common.createCommonList(facebook, idSelected, user);
-		// creo grafo per statistica
+		// Creating the graph
 		graph.makeGraph(commonFriendsList, facebook.userOperations()
 				.getUserProfile().getId());
 		graphF = graph.calcMetrics(commonFriendsList, user);
@@ -119,10 +116,6 @@ public class HomeController {
 
 	@RequestMapping(value = "/openGraph", method = RequestMethod.POST)
 	public String newGraph(Model model) {
-
-		if (!facebook.isAuthorized()) {
-			return "redirect:/connect/facebook";
-		}
 
 		json.makeJson(
 				commonFriendsList,
@@ -141,10 +134,6 @@ public class HomeController {
 
 	@RequestMapping(value = "/graphNode", method = RequestMethod.GET)
 	public String graphNode(Model model, @RequestParam(value = "id") String id) {
-
-		if (!facebook.isAuthorized()) {
-			return "redirect:/connect/facebook";
-		}
 
 		FacebookProfile profile = facebook.userOperations().getUserProfile(id);
 

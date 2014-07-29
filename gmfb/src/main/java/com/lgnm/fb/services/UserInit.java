@@ -8,12 +8,15 @@ import org.springframework.stereotype.Service;
 
 import com.lgnm.fb.domain.Friend;
 
+/**
+ * Simple class to create a "Friend" object with the values of the user.
+ * 
+ */
+
 @Service
 public class UserInit implements UserInitInterface {
 
 	private String timeStamp;
-	//private int done = 0;
-
 
 	@Override
 	public Friend initialize(Facebook facebook) {
@@ -27,15 +30,4 @@ public class UserInit implements UserInitInterface {
 				null);
 		return user;
 	}
-/*
-	@Override
-	public int getDone() {
-		return done;
-	}
-
-	@Override
-	public void setDone(int done) {
-		this.done = done;
-	}*/
-
 }

@@ -10,6 +10,13 @@ import org.springframework.stereotype.Service;
 
 import com.lgnm.fb.domain.Friend;
 
+/**
+ * Class to create a JSON suitable for using d3.js client side. The JSON is like
+ * {"nodes":[{"name":"John","id":"facebookID"},{..}],"links":[{"source":
+ * int,"target": int},{...}]}, in which "source" and "target" are the position
+ * in the array "nodes" of the elements to be linked.
+ */
+
 @Service
 public class CreateJson implements CreateJsonInterface {
 	private String json = "";
@@ -23,10 +30,6 @@ public class CreateJson implements CreateJsonInterface {
 	public CreateJson() {
 	}
 
-	// The json is like
-	// {"nodes":[{"name":"John Bonham","id":"facebookID"},{..}],"links":[{"source":int,"target": int},{...}]}
-	// in which "source" and "target" are the position in the array "nodes" of
-	// the elements to be linked
 	@Override
 	public void makeJson(List<Friend> friend, String self, Long fid) {
 		json = "";
@@ -39,6 +42,13 @@ public class CreateJson implements CreateJsonInterface {
 		JSONArray links = new JSONArray();
 		JSONObject link = new JSONObject();
 		ArrayList<Long> idPos = new ArrayList<Long>();
+
+		/*
+		 * The index of a friend in idPos is the same as the position of a
+		 * friend in the "nodes" array. This way it is quick to check if a
+		 * person is already in the JSON and retrieve its position for the
+		 * linking process.
+		 */
 
 		// Adding the user as position 0
 		idPos.add(0, fid);
@@ -56,8 +66,6 @@ public class CreateJson implements CreateJsonInterface {
 
 		node = new JSONObject();
 
-		// The index of a friend in idPos is the same as the position of a
-		// friend in the "nodes" array.
 		// "i" are the selected friends.
 		for (i = 0; i < friend.size(); i++) {
 

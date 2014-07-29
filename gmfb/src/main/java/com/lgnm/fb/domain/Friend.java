@@ -13,13 +13,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * This is the core for our representation of the gathered data.
+ * The "appUserId" stores the id of the current user.
+ * Direct friends of the user are those with no "parent_oid" in the
+ * one-to-many many-to-one relationship, while common friends 
+ * will have such value set accordingly.
+ * 
+ */
+
 @Entity
 @Table(name = "friend")
 public class Friend implements Serializable {
 
 	private static final long serialVersionUID = 8828388186922307614L;
 	private String name;
-	//To separate persons which are friends with different app users
 	private Long appUserId;
 	private double degreeCentrality;
 	private double normalizedDegreeCentrality;
@@ -43,7 +51,8 @@ public class Friend implements Serializable {
 	public Friend() {
 	};
 
-	public Friend(Long newId, String newName, Friend parent, Long appUserId, String loginDate, String searchDate) {
+	public Friend(Long newId, String newName, Friend parent, Long appUserId,
+			String loginDate, String searchDate) {
 		this.setAppUserId(appUserId);
 		this.fbId = newId;
 		this.name = newName;
@@ -144,7 +153,5 @@ public class Friend implements Serializable {
 	public void setSearchDate(String searchDate) {
 		this.searchDate = searchDate;
 	}
-
-	
 
 }

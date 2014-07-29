@@ -11,6 +11,13 @@ import org.springframework.stereotype.Repository;
 
 import com.lgnm.fb.domain.Friend;
 
+/**
+ * Implementation of the DAO.
+ * The configuration for the entity manager is located in
+ * the dataSource-context.xml file.
+ * 
+ */
+
 @ImportResource("classpath:dataSource-context.xml")
 @Repository
 public class JpaFriendsRepo implements FriendsRepository {

@@ -8,8 +8,9 @@ import org.springframework.web.util.CookieGenerator;
 
 /**
  * Utility class for managing the quick_start user cookie that remembers the signed-in user.
- * @author Keith Donald
+ * 
  */
+
 final class UserCookieGenerator {
 
 	private final CookieGenerator userCookieGenerator = new CookieGenerator();

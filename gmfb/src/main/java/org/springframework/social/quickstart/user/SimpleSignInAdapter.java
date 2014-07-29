@@ -13,9 +13,9 @@ import org.springframework.web.context.request.NativeWebRequest;
  * UserInterceptor#preHandle(HttpServletRequest, HttpServletResponse, Object) on
  * subsequent requests.
  * 
- * @author Keith Donald
  * @see UserInterceptor
  */
+
 public final class SimpleSignInAdapter implements SignInAdapter {
 
 	private final UserCookieGenerator userCookieGenerator = new UserCookieGenerator();
