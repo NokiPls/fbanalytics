@@ -63,7 +63,7 @@ function Facebook() {
 				<input type="submit" value="Common Friends" class="button" /> <input
 					type="reset" value="Clear All" class="button" /> <br>
 				<br>
-				<br>
+				
 				<ul class="checkbox-grid">
 					<c:forEach var="i" items="${names}" varStatus="status">
 						<li><input type="checkbox" name="id[]"

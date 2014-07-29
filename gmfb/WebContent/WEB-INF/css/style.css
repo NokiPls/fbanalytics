@@ -30,8 +30,9 @@ ol,ul {
 .checkbox-grid li {
 	display: block;
 	float: left;
-	width: 33%;
+	width: 30%;
 	text-align: left;
+	padding: 0em 0em 0em 2em;
 }
 
 p {
