@@ -24,8 +24,10 @@ public class CreateJson implements CreateJsonInterface {
 	}
 
 	// The json is like
-	// {"nodes":[{"name":"John Bonham","group":1},{..}],"links":[{"source": int,"target": int,"value": int}]}
-	// in which source and target are the position in the array "nodes" of the
+	// {"nodes":[{"name":"John Bonham","group":1},{..}],"links":[{"source":
+	// int,"target": int,"value": int}]}
+	// in which "source" and "target" are the position in the array "nodes" of
+	// the
 	// elements to be linked
 	@Override
 	public void makeJson(List<Friend> friend, String self, Long fid) {
@@ -38,32 +40,41 @@ public class CreateJson implements CreateJsonInterface {
 		JSONObject node = new JSONObject();
 		JSONArray links = new JSONArray();
 		JSONObject link = new JSONObject();
-
 		ArrayList<Long> idPos = new ArrayList<Long>();
+
 		// Adding the user as position 0
 		idPos.add(0, fid);
+
 		if (self.contains("\'")) {
 			self = self.replaceAll("\'", "`");
 		}
-		
+
 		try {
 			node.put(NAME, self).put(ID, fid.toString());
+			nodes.put(node);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		nodes.put(node);
+
 		node = new JSONObject();
 
+		// The index of a friend in idPos is the same as the position of a
+		// friend in the "nodes" array.
+		// "i" are the selected friends.
 		for (i = 0; i < friend.size(); i++) {
-			// "i" are the selected friends
+
+			// In case a direct friend was already found as common friend.
 			if (!idPos.contains(friend.get(i).getFbId())) {
+
 				idPos.add(friend.get(i).getFbId());
 				String nameA = friend.get(i).getName();
+
 				if (nameA.contains("\'")) {
 					nameA = nameA.replaceAll("\'", "`");
 				}
-		
+
 				try {
+					// Put the new node and link it to the user.
 					node.put(NAME, nameA).put(ID,
 							friend.get(i).getFbId().toString());
 					nodes.put(node);
@@ -74,38 +85,40 @@ public class CreateJson implements CreateJsonInterface {
 					e.printStackTrace();
 				}
 
-				// fpos keeps track of the position of the direct friend in the
-				// json
-				// link them to the user
 				node = new JSONObject();
 				link = new JSONObject();
 			}
+
+			// Proceed with the common friends.
 			List<Friend> common = friend.get(i).getCommonFriends();
+			// "j" are the common friends between me and "i"
 			for (j = 0; j < common.size(); j++) {
+				
+				// Check if a friend has already been encountered.
 				if (!idPos.contains(common.get(j).getFbId())) {
 					idPos.add(common.get(j).getFbId());
-					// "j" are the common friends between me and "i"
 					String nameB = common.get(j).getName();
+					
 					if (nameB.contains("'")) {
 						nameB = nameB.replace("'", "`");
 					}
-					
+
 					try {
 						node.put(NAME, nameB).put(ID,
 								common.get(j).getFbId().toString());
 						nodes.put(node);
-						// link them to the user
+						// link to the user
 						link.put(SOURCE, 0).put(TARGET,
 								idPos.indexOf(common.get(j).getFbId()));
 						links.put(link);
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
-	
+
 					node = new JSONObject();
 					link = new JSONObject();
 
-					// link them to the "i" friend
+					// link to the "i" friend
 					try {
 						link.put(SOURCE, idPos.indexOf(common.get(j).getFbId()))
 								.put(TARGET,
@@ -129,8 +142,8 @@ public class CreateJson implements CreateJsonInterface {
 				}
 			}
 		}
-		// finalize the json
-	
+		
+		// Finalize the json.
 		try {
 			mainJson.put(NODES, nodes).put(LINKS, links);
 		} catch (JSONException e) {
@@ -138,7 +151,6 @@ public class CreateJson implements CreateJsonInterface {
 		}
 
 		json = mainJson.toString();
-
 	}
 
 	@Override
