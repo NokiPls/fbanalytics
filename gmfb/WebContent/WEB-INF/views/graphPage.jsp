@@ -6,7 +6,6 @@
 <head>
 <title>Graph</title>
 <link href="<c:url value="/css/style.css" />" rel="stylesheet">
-<link href="<c:url value="/css/style.css" />" rel="stylesheet">
 <link href="<c:url value="/css/fonts.css" />" rel="stylesheet">
 <link
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Quicksand:400,700|Questrial"
@@ -67,7 +66,7 @@
 			<div class="title">
 				<h2>Graph</h2>
 			</div>
-			<br> You have selected:
+			 You have selected:
 			<div>
 				<c:forEach var="i" items="${friends}" varStatus="status">
 		

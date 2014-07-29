@@ -17,15 +17,14 @@
 	<br>
 	<br>
 	<img
-		src="https://graph.facebook.com/${profile.id}/picture?redirect=1&height=140&type=normal&width=140" />
+		src="https://graph.facebook.com/${profile.id}/picture?redirect=1&height=140&type=normal&width=140" class="imageborder" />
 	<br> Name: ${profile.name}
-	<br> Nick Name: ${profile.username}
 	<br>
-	<br> Degree centrality = ${degree}
-	<br> Normalized Degree centrality = ${norm_degree}
-	<br> Betweenness centrality = ${betweenness}
-	<br> Closeness centrality = ${closeness}
-	<br> Normalized Closeness centrality =${norm_closeness}
+	<br> Degree centr. = ${degree}
+	<br> Norm. Degree centr. = ${norm_degree}
+	<br> Betw. centr. = ${betweenness}
+	<br> Clos. centr. = ${closeness}
+	<br> Norm. Clos. centr. = ${norm_closeness}
 
 
 

@@ -34,6 +34,9 @@ ol,ul {
 	text-align: left;
 	padding: 0em 0em 0em 2em;
 }
+.imageborder { 
+  border: 2px solid white; 
+}
 
 p {
 	line-height: 180%;

@@ -58,7 +58,7 @@
 				<h2>Personal Profile</h2>
 			</div>
 			<img
-				src="https://graph.facebook.com/${facebookProfile.id}/picture?redirect=1&height=200&type=normal&width=200" />
+				src="https://graph.facebook.com/${facebookProfile.id}/picture?redirect=1&height=200&type=normal&width=200" class="imageborder" />
 			<h3>
 				Name: <span>${facebookProfile.name}</span>
 			</h3>
