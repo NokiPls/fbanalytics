@@ -24,11 +24,9 @@ public class CreateJson implements CreateJsonInterface {
 	}
 
 	// The json is like
-	// {"nodes":[{"name":"John Bonham","group":1},{..}],"links":[{"source":
-	// int,"target": int,"value": int}]}
+	// {"nodes":[{"name":"John Bonham","id":"facebookID"},{..}],"links":[{"source":int,"target": int},{...}]}
 	// in which "source" and "target" are the position in the array "nodes" of
-	// the
-	// elements to be linked
+	// the elements to be linked
 	@Override
 	public void makeJson(List<Friend> friend, String self, Long fid) {
 		json = "";
@@ -93,12 +91,12 @@ public class CreateJson implements CreateJsonInterface {
 			List<Friend> common = friend.get(i).getCommonFriends();
 			// "j" are the common friends between me and "i"
 			for (j = 0; j < common.size(); j++) {
-				
+
 				// Check if a friend has already been encountered.
 				if (!idPos.contains(common.get(j).getFbId())) {
 					idPos.add(common.get(j).getFbId());
 					String nameB = common.get(j).getName();
-					
+
 					if (nameB.contains("'")) {
 						nameB = nameB.replace("'", "`");
 					}
@@ -142,7 +140,7 @@ public class CreateJson implements CreateJsonInterface {
 				}
 			}
 		}
-		
+
 		// Finalize the json.
 		try {
 			mainJson.put(NODES, nodes).put(LINKS, links);

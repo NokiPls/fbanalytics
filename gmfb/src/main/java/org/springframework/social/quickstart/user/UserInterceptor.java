@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 /**
  * Before a request is handled:
- * 1. sets the current User in the {@link SecurityContext} from a cookie, if present and the user is still connected to Facebook.
+ * 1. sets the current User in the SecurityContext from a cookie, if present and the user is still connected to Facebook.
  * 2. requires that the user sign-in if he or she hasn't already.
  * @author Keith Donald
  */
@@ -24,6 +24,7 @@ public final class UserInterceptor extends HandlerInterceptorAdapter {
 		this.connectionRepository = connectionRepository;
 	}
 	
+	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		rememberUser(request, response);
 		handleSignOut(request, response);			
@@ -34,12 +35,12 @@ public final class UserInterceptor extends HandlerInterceptorAdapter {
 		}
 	}
 	
+	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 		SecurityContext.remove();
 	}
 
 	// internal helpers
-
 	private void rememberUser(HttpServletRequest request, HttpServletResponse response) {
 		String userId = userCookieGenerator.readCookieValue(request);
 		if (userId == null) {
