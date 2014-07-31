@@ -6,7 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<name>FBAnalytics</name>
-	<description>second Spring MVC example </description>
+	<description>Project for AWT 2013-14</description>
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
